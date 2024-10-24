@@ -1,10 +1,11 @@
+package org.example.servletbimo;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.*;
 
 import java.io.IOException;
 
@@ -73,8 +74,6 @@ public class Login extends HttpServlet {
 
         Administrador administrador = new Administrador(nome, email, senha);
         // DAO
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
     private void cadastrarPlanoPagamento(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -85,7 +84,6 @@ public class Login extends HttpServlet {
         PlanoPagamento planoPagamento = new PlanoPagamento(descricao, nome, valor);
         // DAO
 
-        response.sendRedirect("confirmacao.jsp");
     }
 
     private void cadastrarCategoriaCurso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -93,8 +91,6 @@ public class Login extends HttpServlet {
 
         CategoriaCurso categoriaCurso = new CategoriaCurso(nome);
         // DAO
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
     private void cadastrarCategoriaProduto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -102,8 +98,6 @@ public class Login extends HttpServlet {
 
         CategoriaProduto categoriaProduto = new CategoriaProduto(nome);
         // DAO'
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
 
@@ -115,8 +109,6 @@ public class Login extends HttpServlet {
 
         Administrador administrador = new Administrador(id);
         // DAO
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
     private void removerPlanoPagamento(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -124,8 +116,6 @@ public class Login extends HttpServlet {
 
         PlanoPagamento planoPagamento = new PlanoPagamento(id);
         // DAO
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
     private void removerCategoriaCurso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -133,8 +123,6 @@ public class Login extends HttpServlet {
 
         CategoriaCurso categoriaCurso = new CategoriaCurso(id);
         // DAO
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
     private void removerCategoriaProduto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -152,8 +140,6 @@ public class Login extends HttpServlet {
 
         Usuario Usuario = new Usuario(id);
         // DAO
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
     private void removerProduto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -161,8 +147,6 @@ public class Login extends HttpServlet {
 
         Produto produto = new Produto(id);
         // DAO
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
     private void removerCurso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -170,8 +154,6 @@ public class Login extends HttpServlet {
 
         Curso curso = new Curso(id);
         // DAO
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
 
@@ -185,8 +167,6 @@ public class Login extends HttpServlet {
 
         Administrador administrador = new Administrador(id, nome, email, senha);
         // DAO
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
     private void alterarPlanoPagamento(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -203,8 +183,6 @@ public class Login extends HttpServlet {
 
         PlanoPagamento planoPagamento = new PlanoPagamento(id, descricao, nome, valor);
         // DAO
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
     private void alterarCategorioCurso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -213,8 +191,6 @@ public class Login extends HttpServlet {
 
         CategoriaCurso categoriaCurso = new CategoriaCurso(id, nome);
         // DAO
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
     private void alterarCategorioProduto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -223,8 +199,6 @@ public class Login extends HttpServlet {
 
         CategoriaProduto categoriaProduto = new CategoriaProduto(id, nome);
         // DAO
-
-        response.sendRedirect("confirmacao.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

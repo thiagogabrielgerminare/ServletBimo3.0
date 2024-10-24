@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Página de Login</title>
+    <title>Página de org.example.servletbimo.Login</title>
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="login.css">
 </head>
@@ -19,7 +19,7 @@
                 <h1>Faça login</h1>
                 <input type="email" name="email" class="input" placeholder="Digite seu e-mail" required/>
                 <input type="password" name="senha" class="input" placeholder="Digite sua senha" required/>
-                <a href="admin.html"><input type="button" value="Entrar" id="butentrar" /></a>
+                <a><input type="button" value="Entrar" id="butentrar" /></a>
             </div>
         </form>
     </div>
