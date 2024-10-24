@@ -1,5 +1,3 @@
-package org.example.servletbimo;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,7 +29,6 @@ public class Login extends HttpServlet {
                 response.sendRedirect("admin.html");
                 // Obtém a ação do formulário
                 String action = request.getParameter("action");
-
                 // Tratamento de ações
                 if (action != null) {
                     switch (action) {
