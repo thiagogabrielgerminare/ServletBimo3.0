@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class UsuarioDAO {
+
     public boolean removerUsuario(Usuario user){
         Conexao conexao = new Conexao();
         PreparedStatement pstm;

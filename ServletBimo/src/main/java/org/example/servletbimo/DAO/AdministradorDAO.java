@@ -18,6 +18,30 @@ public class AdministradorDAO {
     // Construtor da classe
     public AdministradorDAO() {}
 
+    public boolean BuscarAdministrador(String email, String senha) {
+        String sql = "select * from administrador where email = ? and senha = ?";
+        conexao.conectar();
+        try {
+            PreparedStatement pstmt = conexao.getConn().prepareStatement(sql);
+            pstmt.setString(1, email);
+            pstmt.setString(2, senha);
+            conexao.rs = pstmt.executeQuery();
+
+            if (conexao.rs.next()) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+
+        }finally {
+            conexao.desconectar();
+        }
+
+    }
+
     // Método para inserir um novo administrador
     public int inserirAdministrador(Administrador adm) {
 
