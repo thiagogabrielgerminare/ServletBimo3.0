@@ -1,8 +1,6 @@
-package Dao;
+package org.example.servletbimo.DAO;
 
-import Conexao.Conexao;
-import Modelos.Usuario;
-
+import org.example.servletbimo.modelos.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 

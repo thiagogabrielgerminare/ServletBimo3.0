@@ -1,4 +1,4 @@
-package Modelos;
+package org.example.servletbimo.modelos;
 
 public class Curso {
     // Atributos do curso

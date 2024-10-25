@@ -1,10 +1,9 @@
-package Dao;
+package org.example.servletbimo.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import Conexao.Conexao;
-import Modelos.CategoriaProduto;
+import org.example.servletbimo.modelos.*;
 
 // Classe responsável pela manipulação de categorias de produtos
 public class CategoriaProdutoDAO {

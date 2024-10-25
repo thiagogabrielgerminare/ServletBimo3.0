@@ -1,11 +1,9 @@
-package Dao;
+package org.example.servletbimo.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import Conexao.Conexao;
-import Modelos.Administrador;
-
+import org.example.servletbimo.modelos.*;
 import java.util.InputMismatchException;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;

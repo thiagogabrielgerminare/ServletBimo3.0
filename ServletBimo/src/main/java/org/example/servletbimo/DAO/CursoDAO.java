@@ -1,11 +1,10 @@
-package Dao;
+package org.example.servletbimo.DAO;
 
 import java.sql.PreparedStatement; // Importa a classe para executar instruções SQL preparadas
 import java.sql.SQLException;// Importa a classe para tratar exceções relacionadas ao SQL
+import org.example.servletbimo.modelos.*;
 
-import Modelos.CategoriaProduto;
-import Modelos.Curso;
-import Conexao.Conexao;
+
 
 // Classe responsável pela manipulação de cursos
 public class CursoDAO {

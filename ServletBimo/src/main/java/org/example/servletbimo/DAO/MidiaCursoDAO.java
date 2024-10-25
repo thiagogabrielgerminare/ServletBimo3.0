@@ -1,10 +1,7 @@
-package Dao;
+package org.example.servletbimo.DAO;
 
-import Conexao.Conexao;
-import Modelos.CategoriaCurso;
-import Modelos.CategoriaProduto;
-import Modelos.MidiaCurso;
-import Modelos.PlanoPagamento;
+import org.example.servletbimo.modelos.*;
+
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
