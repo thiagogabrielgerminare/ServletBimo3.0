@@ -19,7 +19,7 @@
                 <h1>Faça login</h1>
                 <input type="email" name="email" class="input" placeholder="Digite seu e-mail" required/>
                 <input type="password" name="senha" class="input" placeholder="Digite sua senha" required/>
-                <a><input type="button" value="Entrar" id="butentrar" /></a>
+                <input type="submit" value="Entrar" id="butentrar" />
             </div>
         </form>
     </div>
