@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <title>Página de Admin</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="admin.css">
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>

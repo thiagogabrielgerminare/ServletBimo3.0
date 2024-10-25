@@ -27,7 +27,8 @@ public class Login extends HttpServlet {
         if (emailADM != null && senhaADM != null) {
             if (emailADM.equals(validEmail) && senhaADM.equals(validPassword)) {
                 // Redireciona para a página de administração se as credenciais forem válidas
-                response.sendRedirect("admin.html");
+                request.getSession().setAttribute("logado",true);
+                response.sendRedirect("admin.jsp");
                 // Obtém a ação do formulário
                 String action = request.getParameter("action");
                 // Tratamento de ações

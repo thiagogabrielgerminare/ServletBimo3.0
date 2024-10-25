@@ -24,7 +24,7 @@
             <input type="submit" value="Entrar" id="butentrar" />
 
             <!-- Exibe mensagem de erro se necessário -->
-            <p id="erro" style="color:red; margin-top: 10%">
+            <p id="erro" style="color:red; margin-top: 8%">
                 <% String erro = request.getParameter("erro");
                     if ("true".equals(erro)) { %>
                 E-mail ou senha inválido. Tente novamente.
