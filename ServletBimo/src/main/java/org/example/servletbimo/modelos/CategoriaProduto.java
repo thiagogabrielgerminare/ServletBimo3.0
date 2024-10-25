@@ -1,4 +1,4 @@
-package org.example.servletbimo;
+package org.example.servletbimo.modelos;
 
 public class CategoriaProduto {
     // Atributos da categoria de produto

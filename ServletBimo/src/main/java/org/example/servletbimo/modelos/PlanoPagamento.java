@@ -1,4 +1,4 @@
-package org.example.servletbimo;
+package org.example.servletbimo.modelos;
 
 public class PlanoPagamento {
     // Atributos da classe, representando as propriedades do plano de pagamento

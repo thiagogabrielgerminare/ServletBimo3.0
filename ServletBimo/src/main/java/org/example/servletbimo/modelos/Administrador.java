@@ -1,4 +1,4 @@
-package org.example.servletbimo;
+package org.example.servletbimo.modelos;
 
 public class Administrador {
     // Atributos do administrador
