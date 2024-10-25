@@ -167,6 +167,7 @@ public class Login extends HttpServlet {
 
         Administrador administrador = new Administrador(id, nome, email, senha);
         // DAO
+
     }
 
     private void alterarPlanoPagamento(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
