@@ -1,10 +1,9 @@
-package Dao;
+package org.example.servletbimo.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import Conexao.Conexao;
-import Modelos.CategoriaCurso;
+import org.example.servletbimo.modelos.*;
 
 public class CategoriaCursoDAO {
     private PreparedStatement pstmt;

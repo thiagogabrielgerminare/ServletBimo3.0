@@ -1,12 +1,11 @@
-package Dao;
+package org.example.servletbimo.DAO;
 
-import Conexao.Conexao;
-import Modelos.Usuario;
-
+import org.example.servletbimo.modelos.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class UsuarioDAO {
+
     public boolean removerUsuario(Usuario user){
         Conexao conexao = new Conexao();
         PreparedStatement pstm;

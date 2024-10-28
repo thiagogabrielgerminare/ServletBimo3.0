@@ -1,6 +1,6 @@
-package Dao;
-import Conexao.Conexao;
-import Modelos.Produto;
+package org.example.servletbimo.DAO;
+import org.example.servletbimo.modelos.*;
+
 
 import java.sql.Date;
 import java.sql.PreparedStatement;

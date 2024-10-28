@@ -1,4 +1,4 @@
-package Modelos;
+package org.example.servletbimo.modelos;
 
 import java.util.Date;
 

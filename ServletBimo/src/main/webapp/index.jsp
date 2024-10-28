@@ -18,6 +18,7 @@
             <div class="clogin">
                 <h1>Faça login</h1>
                 <input type="email" name="email" class="input" placeholder="Digite seu e-mail" required/>
+
                 <input type="password" name="senha" class="input" placeholder="Digite sua senha" required/>
                 <input type="submit" value="Entrar" id="butentrar" />
             </div>
