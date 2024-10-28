@@ -8,16 +8,16 @@ import org.example.servletbimo.DAO.AdministradorDAO;
 
 import java.io.IOException;
 
-@WebServlet ("/loginjsp")
-public class VerificarAdms extends HttpServlet {
+@WebServlet ( name = "loginjsp" ,value ="/loginjsp")
+public class LogarAdm extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         AdministradorDAO administradorDAO = new AdministradorDAO();
         if (administradorDAO.BuscarAdministrador(email, senha)) {
-            response.sendRedirect(request.getContextPath() + "webapp/admin.jsp");
-        }else{
-            request.getRequestDispatcher("webapp/erro_login.jsp").forward(request, response);
+           request.getRequestDispatcher("admin.jsp").forward(request, response);
+        } else{
+            request.getRequestDispatcher("erro_login.jsp").forward(request, response);
         }
 
     }

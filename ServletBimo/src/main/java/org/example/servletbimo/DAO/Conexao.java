@@ -16,6 +16,10 @@ public class Conexao {
     String portaBanco = System.getenv("PORTA_DO_BANCO_DE_DADOS"); // Porta do banco de dados
     String hostBanco = System.getenv("HOST_BANCO_DE_DADOS"); // Host do banco de dados
 
+    // Método para obter a conexão
+    public Connection getConn() {
+        return this.conn; // Retorna o objeto de conexão
+    }
 
     // Método para conectar ao banco de dados
     public boolean conectar() {
@@ -24,7 +28,7 @@ public class Conexao {
             Class.forName("org.postgresql.Driver");
             // Estabelece a conexão com o banco de dados usando as informações fornecidas
             conn = DriverManager.getConnection("jdbc:postgresql://" + hostBanco + ":" + portaBanco + "/" + maintanceBanco, nomeUsusario, senhaBanco);
-            return true; // Retorna true se a conexão for bem-sucedida
+                return true; // Retorna true se a conexão for bem-sucedida
         }
         // Tratamento de exceção para caso o driver não seja encontrado
         catch (ClassNotFoundException cnfe) {
@@ -37,10 +41,6 @@ public class Conexao {
         return false; // Retorna false se a conexão falhar
     }
 
-    // Método para obter a conexão
-    public Connection getConn() {
-        return this.conn; // Retorna o objeto de conexão
-    }
     // Método para desconectar do banco de dados
     public void desconectar() {
         try {

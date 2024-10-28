@@ -11,7 +11,7 @@
 
 <div id="pagelogin">
     <div class="login">
-        <form method="POST" class="formLogin" action="loginjsp">
+        <form method="post" class="formLogin" action="loginjsp">
             <div id="img">
                 <img src="login.png" id="imglogin">
             </div>

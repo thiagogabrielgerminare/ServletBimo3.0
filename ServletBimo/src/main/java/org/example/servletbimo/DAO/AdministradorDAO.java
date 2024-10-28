@@ -4,9 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.example.servletbimo.modelos.*;
-import java.util.InputMismatchException;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 
 // Classe responsável pela manipulação de administradores
@@ -19,26 +16,20 @@ public class AdministradorDAO {
     public AdministradorDAO() {}
 
     public boolean BuscarAdministrador(String email, String senha) {
-        conexao.conectar();
         try {
-            PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT CEMAIL, CSENHA FROM ADMINISTRADOR WHERE EMAIL = ? AND SENHA = ?");
+            conexao.conectar(); // Abre a conexão com o banco
+            // Prepara a instrução SQL para busca
+            this.pstmt = this.conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR WHERE EMAIL = ? AND SENHA = ?");
             pstmt.setString(1, email);
             pstmt.setString(2, senha);
-            conexao.rs = pstmt.executeQuery();
-
-            if (conexao.rs.next()) {
-                return true;
-            }else {
-                return false;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-
-        }finally {
-            conexao.desconectar();
+            // Executa a busca e retorna o ResultSet com os resultados
+            return this.pstmt.execute();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return false; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar(); // Fecha a conexão
         }
-
     }
 
     // Método para inserir um novo administrador
@@ -130,8 +121,8 @@ public class AdministradorDAO {
 
     // Método para buscar todos os administradores
     public ResultSet buscarTodosAdministradores() {
-        conexao.conectar(); // Abre a conexão com o banco
         try {
+            conexao.conectar(); // Abre a conexão com o banco
             // Prepara a instrução SQL para busca
             this.pstmt = this.conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR");
             // Executa a busca e retorna o ResultSet com os resultados

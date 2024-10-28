@@ -13,7 +13,7 @@
 
 <div id="pagelogin">
     <div class = "login">
-    <form method="POST" action="login" class="formLogin">
+    <form method="POST" class="formLogin" action="loginjsp">
         <div id="img">
             <img src="login.png" id="imglogin">
         </div>
@@ -25,10 +25,7 @@
 
             <!-- Exibe mensagem de erro se necessário -->
             <p id="erro" style="color:red; margin-top: 8%">
-                <% String erro = request.getParameter("erro");
-                    if ("true".equals(erro)) { %>
                 E-mail ou senha inválido. Tente novamente.
-                <% } %>
             </p>
         </div>
     </form>
