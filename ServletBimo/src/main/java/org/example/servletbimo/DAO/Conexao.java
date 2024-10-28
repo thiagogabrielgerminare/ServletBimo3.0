@@ -1,9 +1,9 @@
 package org.example.servletbimo.DAO;
-
 import java.sql.Connection; // Importa a classe para gerenciar conexões com o banco de dados
 import java.sql.DriverManager; // Importa a classe para criar uma conexão com o banco de dados
 import java.sql.ResultSet;
 import java.sql.SQLException; // Importa a classe para tratar exceções relacionadas ao SQL
+
 
 // Classe responsável por gerenciar a conexão com o banco de dados
 public class Conexao {
@@ -16,10 +16,6 @@ public class Conexao {
     String portaBanco = System.getenv("PORTA_DO_BANCO_DE_DADOS"); // Porta do banco de dados
     String hostBanco = System.getenv("HOST_BANCO_DE_DADOS"); // Host do banco de dados
 
-    // Método para obter a conexão
-    public Connection getConn() {
-        return conn; // Retorna o objeto de conexão
-    }
 
     // Método para conectar ao banco de dados
     public boolean conectar() {
@@ -41,6 +37,10 @@ public class Conexao {
         return false; // Retorna false se a conexão falhar
     }
 
+    // Método para obter a conexão
+    public Connection getConn() {
+        return this.conn; // Retorna o objeto de conexão
+    }
     // Método para desconectar do banco de dados
     public void desconectar() {
         try {

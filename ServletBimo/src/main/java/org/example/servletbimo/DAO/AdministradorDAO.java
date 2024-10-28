@@ -19,10 +19,9 @@ public class AdministradorDAO {
     public AdministradorDAO() {}
 
     public boolean BuscarAdministrador(String email, String senha) {
-        String sql = "select * from administrador where email = ? and senha = ?";
         conexao.conectar();
         try {
-            PreparedStatement pstmt = conexao.getConn().prepareStatement(sql);
+            PreparedStatement pstmt = conexao.getConn().prepareStatement("SELECT CEMAIL, CSENHA FROM ADMINISTRADOR WHERE EMAIL = ? AND SENHA = ?");
             pstmt.setString(1, email);
             pstmt.setString(2, senha);
             conexao.rs = pstmt.executeQuery();
