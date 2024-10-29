@@ -1,4 +1,5 @@
 package org.example.servletbimo.Servlet;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,18 +9,13 @@ import org.example.servletbimo.DAO.AdministradorDAO;
 
 import java.io.IOException;
 
-@WebServlet(name = "loginjsp", value = "/loginjsp")
-public class LogarAdm extends HttpServlet {
+@WebServlet(name = "addAdm", value = "/addadm")
+public class CadastrarAdm extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         AdministradorDAO administradorDAO = new AdministradorDAO();
-
-        // Chama o método para buscar administrador
-        if (administradorDAO.BuscarAdministrador(email, senha)) {
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("erro_login.jsp").forward(request, response);
-        }
+        administradorDAO.inserirAdministrador(nome, email, senha, );
     }
 }

@@ -19,19 +19,24 @@ public class AdministradorDAO {
         try {
             conexao.conectar(); // Abre a conexão com o banco
             // Prepara a instrução SQL para busca
-            this.pstmt = this.conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR WHERE EMAIL = ? AND SENHA = ?");
+            this.pstmt = this.conexao.getConn().prepareStatement("SELECT CEMAIL, CSENHA FROM ADMINISTRADOR WHERE CEMAIL = ? AND CSENHA = ?");
             pstmt.setString(1, email);
             pstmt.setString(2, senha);
-            // Executa a busca e retorna o ResultSet com os resultados
-            return this.pstmt.execute();
+            // Executa a busca e obtém o ResultSet
+            this.rs = pstmt.executeQuery();
+            // Verifica se o ResultSet não é nulo e contém pelo menos um resultado
+            if (rs != null && rs.next()) {
+                return true; // Encontrou um administrador
+            } else {
+                return false; // Não encontrou nenhum administrador
+            }
         } catch (SQLException sqle) {
             sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
-            return false; // Retorna null em caso de erro
+            return false; // Retorna false em caso de erro
         } finally {
             conexao.desconectar(); // Fecha a conexão
         }
     }
-
     // Método para inserir um novo administrador
     public int inserirAdministrador(Administrador adm) {
 

@@ -1,12 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<% Object logado = request.getSession().getAttribute("logado");
-
-    if (logado == null) {
-        response.sendRedirect(request.getContextPath() + "/index.jsp");
-    }%>
-
 <html>
 <head>
     <meta charset="utf-8">
@@ -43,7 +37,7 @@
             <h2>Cadastrar Novo Administrador</h2>
         </label>
         <div class="form-content">
-            <form>
+            <form method="post" action="addadm">
                 <label for="nome-adm"><h3>Nome</h3></label>
                 <input type="text" id="nome-adm" name="nome" required>
 
