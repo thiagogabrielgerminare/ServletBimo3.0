@@ -1,4 +1,4 @@
-package org.example.servletbimo.modelos;
+package org.example.servletbimo.models;
 
 import java.util.InputMismatchException;
 import java.util.regex.Matcher;
@@ -108,5 +108,4 @@ public class Administrador {
             return false;
         }
     }
-
 }

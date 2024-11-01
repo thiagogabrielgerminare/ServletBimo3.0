@@ -1,99 +1,89 @@
 package org.example.servletbimo.DAO;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import org.example.servletbimo.modelos.*;
+import org.example.servletbimo.models.CategoriaCurso;
+import java.sql.PreparedStatement; // Importa a classe para preparar instruções SQL
+import java.sql.ResultSet; // Importa a classe para trabalhar com resultados de consultas SQL
+import java.sql.SQLException; // Importa a classe para tratar exceções relacionadas ao SQL
+
 
 public class CategoriaCursoDAO {
-    private PreparedStatement pstmt;
-    private ResultSet rs;
-    Conexao conexao = new Conexao();
+    private Conexao conexao; // Instância da classe de conexão
 
-    public CategoriaCursoDAO() {}
+    // Construtor da classe
+    public CategoriaCursoDAO() {
+        conexao = new Conexao(); // Inicializa a conexão ao banco de dados
+    }
 
-    public int inserirCategoria(CategoriaCurso catC) {
-        conexao.conectar();
-        try {
-            this.pstmt = this.conexao.getConn().prepareStatement("INSERT INTO CATEGORIACURSO(CNOME) VALUES (?)");
-            this.pstmt.setString(1, catC.getcNome());
-            return pstmt.executeUpdate();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-            return -1;
-        } finally {
-            conexao.desconectar();
+    // Método para inserir uma nova categoria
+    public boolean inserirCategoriaCurso(CategoriaCurso categoriaCurso) {
+        try (PreparedStatement pstm = conexao.getConn().prepareStatement("INSERT INTO CATEGORIACURSO(cNome) VALUES (?)")) { // Prepara a instrução SQL
+            pstm.setString(1, categoriaCurso.getcNome()); // Define o parâmetro CNOME na instrução SQL
+            return pstm.executeUpdate() > 0;// Executa a inserção e retorna true
+        } catch (SQLException sqle) { // Trata exceções SQL
+            sqle.printStackTrace(); // Exibe a stack trace da exceção
+            return false; // Retorna false em caso de erro
         }
     }
 
-    // Remover
-    public int removerCategoriaCurso(CategoriaCurso catC) {
-        conexao.conectar();
-        try {
-            this.pstmt = conexao.getConn().prepareStatement("UPDATE CATEGORIACURSO SET bisUpdated = false WHERE sId = ?");
-            pstmt.setInt(1, catC.getsId());
-            return pstmt.executeUpdate();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-            return -1;
-        } finally {
-            conexao.desconectar();
+    // Método para remover uma categoria pelo ID
+    public int removerCategoriaCurso(CategoriaCurso categoriaCurso) {
+        try (PreparedStatement pstm = conexao.getConn().prepareStatement("UPDATE CATEGORIACURSO SET bIsInactive = true")) { // Prepara a instrução SQL
+            pstm.setInt(1, categoriaCurso.getsId()); // Define o parâmetro sId na instrução SQL
+            return pstm.executeUpdate(); // Executa a deleção e retorna true
+        }catch (SQLException sqle) { // Trata exceções SQL
+            sqle.printStackTrace(); // Exibe a stack trace da exceção
+            return -1; // Retorna false em caso de erro
         }
     }
 
-    // Alterar Nome
-    public int alterarNome(CategoriaCurso catC) {
-        conexao.conectar();
-        try {
-            this.pstmt = this.conexao.getConn().prepareStatement("UPDATE CATEGORIACURSO SET CNOME = ? WHERE sId = ?");
-            pstmt.setString(1, catC.getcNome());
-            pstmt.setInt(2, catC.getsId());
-            return pstmt.executeUpdate();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-            return -1;
-        } finally {
-            conexao.desconectar();
+    // Método para alterar o nome de uma categoria pelo ID
+    public int alterarNome(CategoriaCurso categoriaCurso) {
+        try (PreparedStatement pstm = conexao.getConn().prepareStatement("UPDATE CATEGORIACURSO SET CNOME = ? WHERE sId = ?")) { // Prepara a instrução SQL
+            pstm.setString(1, categoriaCurso.getcNome()); // Define o novo nome da categoria
+            pstm.setInt(2, categoriaCurso.getsId()); // Define o ID da categoria a ser atualizada
+            return pstm.executeUpdate(); // Executa a atualização e retorna o número de linhas afetadas
+        } catch (SQLException sqle) { // Trata exceções SQL
+            sqle.printStackTrace(); // Exibe a stack trace da exceção
+            return -1; // Retorna -1 em caso de erro
         }
     }
 
-    // Buscar Categoria de Serviço
-    public ResultSet buscar() {
-        conexao.conectar();
+
+    // Método para buscar todas as categorias
+    public ResultSet buscarTodasCategorias() {
         try {
-            this.pstmt = this.conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO");
-            return pstmt.executeQuery();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-            return null;
-        } // connection is not closed here as ResultSet is being returned
+            PreparedStatement pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO"); // Prepara a instrução SQL
+            return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
+        } catch (SQLException sqle) { // Trata exceções SQL
+            sqle.printStackTrace(); // Exibe a stack trace da exceção
+            return null; // Retorna null em caso de erro
+        }
+        // Nota: A conexão não é fechada aqui, pois o ResultSet está sendo retornado.
     }
 
-
-    // Buscar por ID
-    public ResultSet buscarPorId(CategoriaCurso catC) {
-        conexao.conectar();
+    // Método para buscar uma categoria pelo ID
+    public ResultSet buscarPorId(CategoriaCurso categoriaCurso) {
         try {
-            this.pstmt = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO WHERE sId = ?");
-            pstmt.setInt(1, catC.getsId());
-            return pstmt.executeQuery();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-            return null;
-        } // connection is not closed here as ResultSet is being returned
+            PreparedStatement pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO WHERE sId = ?"); // Prepara a instrução SQL
+            pstm.setInt(1, categoriaCurso.getsId()); // Define o ID da categoria a ser buscada
+            return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
+        } catch (SQLException sqle) { // Trata exceções SQL
+            sqle.printStackTrace(); // Exibe a stack trace da exceção
+            return null; // Retorna null em caso de erro
+        }
+        // Nota: A conexão não é fechada aqui, pois o ResultSet está sendo retornado.
     }
 
-    // Buscar por Nome
-    public ResultSet buscarPorNome(CategoriaCurso catC) {
-        conexao.conectar();
+    // Método para buscar uma categoria pelo nome
+    public ResultSet buscarPorNome(CategoriaCurso categoriaCurso) {
         try {
-            this.pstmt = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO WHERE CNOME = ?");
-            pstmt.setString(1, catC.getcNome());
-            return pstmt.executeQuery();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-            return null;
-        } // connection is not closed here as ResultSet is being returned
+            PreparedStatement pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO WHERE CNOME = ?"); // Prepara a instrução SQL
+            pstm.setString(1, categoriaCurso.getcNome()); // Define o nome da categoria a ser buscada
+            return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
+        } catch (SQLException sqle) { // Trata exceções SQL
+            sqle.printStackTrace(); // Exibe a stack trace da exceção
+            return null; // Retorna null em caso de erro
+        }
+        // Nota: A conexão não é fechada aqui, pois o ResultSet está sendo retornado.
     }
 }
-

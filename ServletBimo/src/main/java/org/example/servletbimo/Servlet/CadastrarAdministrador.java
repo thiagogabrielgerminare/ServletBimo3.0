@@ -1,28 +1,36 @@
 package org.example.servletbimo.Servlet;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.servletbimo.DAO.AdministradorDAO;
+import org.example.servletbimo.models.Administrador;
 
 import java.io.IOException;
 
-@WebServlet(name = "loginjsp", value = "/loginjsp")
-public class LogarAdm extends HttpServlet {
+@WebServlet( name = "cadastrarAdm", value = "/cadastrarAdm" )
+public class CadastrarAdministrador extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String senha = request.getParameter("senha");
-        senha = criptografarSenha(senha);
+        String nome = request.getParameter("nome-adm");
+        String email = request.getParameter("email-adm");
+        String senha = request.getParameter("senha-adm");
+
+        String senhaCriptografada = criptografarSenha(senha);
+
+        Administrador administrador = new Administrador(nome, email, senhaCriptografada);
 
         AdministradorDAO administradorDAO = new AdministradorDAO();
+        boolean sucesso = administradorDAO.inserirAdministrador(administrador);
 
-        // Chama o método para buscar administrador
-        if (administradorDAO.BuscarAdministrador(email, senha)) {
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
+        if (sucesso){
+            request.setAttribute("resultado", "foi");
         } else {
-            request.getRequestDispatcher("erro_login.jsp").forward(request, response);
+            request.setAttribute("resultado", "erro ");
         }
+        request.getRequestDispatcher("cadastro.jsp").forward(request, response);
     }
 
     public String criptografarSenha(String senha) {

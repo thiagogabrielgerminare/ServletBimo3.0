@@ -1,9 +1,10 @@
 package org.example.servletbimo.DAO;
 
-import java.sql.PreparedStatement; // Importa a classe para executar instruções SQL preparadas
-import java.sql.SQLException;// Importa a classe para tratar exceções relacionadas ao SQL
-import org.example.servletbimo.modelos.*;
+import org.example.servletbimo.models.Curso;
 
+import java.sql.PreparedStatement; // Importa a classe para executar instruções SQL preparadas
+import java.sql.ResultSet;
+import java.sql.SQLException;// Importa a classe para tratar exceções relacionadas ao SQL
 
 
 // Classe responsável pela manipulação de cursos
@@ -26,11 +27,8 @@ public class CursoDAO {
             pstm.setString(6, curso.getcDuracao());
             pstm.setInt(7, curso.getIdCategoriaCurso());
             // Executa a inserção e verifica se houve sucesso
-            if (pstm.executeUpdate() <= 0) {
-                return false; // Retorna false se a inserção falhar
-            } else {
-                return true; // Retorna true se a inserção for bem-sucedida
-            }
+            return pstm.executeUpdate() > 0;
+            // Retorna false se a inserção
         } catch (SQLException sqle) {
             sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
             return false; // Retorna false em caso de erro
@@ -40,7 +38,7 @@ public class CursoDAO {
     }
 
     // Método para alterar o status de um curso
-    public boolean alterarStatusCurso(Curso curso) {
+    public int alterarStatusCurso(Curso curso) {
         conn.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para atualização do status
@@ -48,21 +46,34 @@ public class CursoDAO {
             pstm.setBoolean(1, curso.getbStatus()); // Define o novo status
             pstm.setInt(2, curso.getsId()); // Define o ID do curso a ser atualizado
             // Executa a atualização e verifica se houve sucesso
-            if (pstm.executeUpdate() <= 0) {
-                return false; // Retorna false se a atualização falhar
-            } else {
-                return true; // Retorna true se a atualização for bem-sucedida
-            }
+            return pstm.executeUpdate();
         } catch (SQLException sqle) {
             sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
-            return false; // Retorna false em caso de erro
+            return -1; // Retorna false em caso de erro
+        } finally {
+            conn.desconectar(); // Fecha a conexão com o banco de dados
+        }
+    }
+
+    public int alterarCertificacao(Curso curso) {
+        conn.conectar(); // Abre a conexão com o banco de dados
+        try {
+            // Prepara a instrução SQL para atualização do status
+            pstm = conn.getConn().prepareStatement("UPDATE Curso SET CCERTIFICACAO = ? WHERE sID = ?");
+            pstm.setString(1, curso.getcCertificacao()); // Define o novo status
+            pstm.setInt(2, curso.getsId()); // Define o ID do curso a ser atualizado
+            // Executa a atualização e verifica se houve sucesso
+            return pstm.executeUpdate();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return -1; // Retorna false em caso de erro
         } finally {
             conn.desconectar(); // Fecha a conexão com o banco de dados
         }
     }
 
     // Método para alterar o nome de um curso
-    public boolean alterarNomeCurso(Curso curso) {
+    public int alterarNomeCurso(Curso curso) {
         conn.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para atualização do nome do curso
@@ -70,21 +81,17 @@ public class CursoDAO {
             pstm.setString(1, curso.getcNome()); // Define o novo nome
             pstm.setInt(2, curso.getsId()); // Define o ID do curso a ser atualizado
             // Executa a atualização e verifica se houve sucesso
-            if (pstm.executeUpdate() <= 0) {
-                return false; // Retorna false se a atualização falhar
-            } else {
-                return true; // Retorna true se a atualização for bem-sucedida
-            }
+            return pstm.executeUpdate();
         } catch (SQLException sqle) {
             sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
-            return false; // Retorna false em caso de erro
+            return -1; // Retorna false em caso de erro
         } finally {
             conn.desconectar(); // Fecha a conexão com o banco de dados
         }
     }
 
     // Método para alterar o valor de um curso
-    public boolean alterarValorCurso(Curso curso) {
+    public int alterarValorCurso(Curso curso) {
         conn.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para atualização do valor do curso
@@ -92,21 +99,17 @@ public class CursoDAO {
             pstm.setDouble(1, curso.getfValor()); // Define o novo valor
             pstm.setInt(2, curso.getsId()); // Define o ID do curso a ser atualizado
             // Executa a atualização e verifica se houve sucesso
-            if (pstm.executeUpdate() <= 0) {
-                return false; // Retorna false se a atualização falhar
-            } else {
-                return true; // Retorna true se a atualização for bem-sucedida
-            }
+            return pstm.executeUpdate();
         } catch (SQLException sqle) {
             sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
-            return false; // Retorna false em caso de erro
+            return -1; // Retorna false em caso de erro
         } finally {
             conn.desconectar(); // Fecha a conexão com o banco de dados
         }
     }
 
     // Método para alterar a descrição de um curso
-    public boolean alterarDescricaoCurso(Curso curso) {
+    public int alterarDescricaoCurso(Curso curso) {
         conn.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para atualização da descrição do curso
@@ -114,32 +117,77 @@ public class CursoDAO {
             pstm.setString(1, curso.getcDescricao()); // Define a nova descrição
             pstm.setInt(2, curso.getsId()); // Define o ID do curso a ser atualizado
             // Executa a atualização e verifica se houve sucesso
-            if (pstm.executeUpdate() <= 0) {
-                return false; // Retorna false se a atualização falhar
-            } else {
-                return true; // Retorna true se a atualização for bem-sucedida
-            }
+            return pstm.executeUpdate();
         } catch (SQLException sqle) {
             sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
-            return false; // Retorna false em caso de erro
+            return -1; // Retorna false em caso de erro
         } finally {
             conn.desconectar(); // Fecha a conexão com o banco de dados
         }
     }
 
-    // Método para remover uma curso pelo SID
+    // Método para remover um curso pelo SID
     public int removerCurso(Curso curso) {
         conn.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para remoção
-            pstm = conn.getConn().prepareStatement("UPDATE CURSO SET bisUpdated = false WHERE sId = ?");
+            pstm = conn.getConn().prepareStatement("UPDATE CURSO SET bisInactive = true WHERE sId = ?");
             pstm.setInt(1, curso.getsId()); // Define o valor do parâmetro SID
-            return pstm.executeUpdate(); // Executa a remoção e retorna o número de linhas afetadas
+            return pstm.executeUpdate();  // Executa a remoção e retorna o número de linhas afetadas
         } catch (SQLException sqle) {
             sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
             return -1; // Retorna -1 em caso de erro
         } finally {
             conn.desconectar(); // Fecha a conexão
         }
+    }
+
+    public ResultSet buscarTodasCursos() {
+        try {
+            PreparedStatement pstm = conn.getConn().prepareStatement("SELECT * FROM CURSO"); // Prepara a instrução SQL
+            return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
+        } catch (SQLException sqle) { // Trata exceções SQL
+            sqle.printStackTrace(); // Exibe a stack trace da exceção
+            return null; // Retorna null em caso de erro
+        }
+        // Nota: A conexão não é fechada aqui, pois o ResultSet está sendo retornado.
+    }
+
+    // Método para buscar um curso pelo ID
+    public ResultSet buscarPorId(Curso curso) {
+        try {
+            PreparedStatement pstm = conn.getConn().prepareStatement("SELECT * FROM CURSO WHERE sId = ?"); // Prepara a instrução SQL
+            pstm.setInt(1, curso.getsId()); // Define o ID da categoria a ser buscada
+            return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
+        } catch (SQLException sqle) { // Trata exceções SQL
+            sqle.printStackTrace(); // Exibe a stack trace da exceção
+            return null; // Retorna null em caso de erro
+        }
+        // Nota: A conexão não é fechada aqui, pois o ResultSet está sendo retornado.
+    }
+
+    // Método para buscar um curso pelo nome
+    public ResultSet buscarPorNome(Curso curso) {
+        try {
+            PreparedStatement pstm = conn.getConn().prepareStatement("SELECT * FROM CURSO WHERE CNOME = ?"); // Prepara a instrução SQL
+            pstm.setString(1, curso.getcNome()); // Define o nome da categoria a ser buscada
+            return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
+        } catch (SQLException sqle) { // Trata exceções SQL
+            sqle.printStackTrace(); // Exibe a stack trace da exceção
+            return null; // Retorna null em caso de erro
+        }
+        // Nota: A conexão não é fechada aqui, pois o ResultSet está sendo retornado.
+    }
+
+    public ResultSet buscarPorValor(Curso curso) {
+        try {
+            PreparedStatement pstm = conn.getConn().prepareStatement("SELECT * FROM CURSO WHERE FVALOR = ?"); // Prepara a instrução SQL
+            pstm.setDouble(1, curso.getfValor()); // Define o nome da categoria a ser buscada
+            return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
+        } catch (SQLException sqle) { // Trata exceções SQL
+            sqle.printStackTrace(); // Exibe a stack trace da exceção
+            return null; // Retorna null em caso de erro
+        }
+        // Nota: A conexão não é fechada aqui, pois o ResultSet está sendo retornado.
     }
 }

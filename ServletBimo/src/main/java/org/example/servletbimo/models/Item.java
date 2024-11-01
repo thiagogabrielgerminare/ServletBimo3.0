@@ -1,4 +1,4 @@
-package org.example.servletbimo.modelos;
+package org.example.servletbimo.models;
 
 public class Item {
     private int iQuantidade;

@@ -1,26 +1,27 @@
-package org.example.servletbimo.DAO;
-import org.example.servletbimo.modelos.*;
+package org.example.servletbimo.DAO; // Pacote que contém a classe DAO
 
+import org.example.servletbimo.models.Produto;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.PreparedStatement; // Importa a classe para preparar instruções SQL
+import java.sql.SQLException; // Importa a classe para tratar exceções relacionadas ao SQL
 
 public class ProdutoDAO {
-    Conexao conexao = new Conexao();
-    PreparedStatement pstm;
+    Conexao conexao = new Conexao(); // Cria uma instância da classe de conexão
+    PreparedStatement pstm; // Declara um PreparedStatement para executar comandos SQL
 
-    public boolean removerProduto(Produto prod){
-        try{
-            conexao.conectar();
-            pstm = conexao.getConn().prepareStatement("UPDATE PRODUTO SET bisUpdated = false WHERE sId = ?");
-            pstm.setInt(1, prod.getsId());
-            return true;
-        }catch(SQLException sqle){
-            sqle.printStackTrace();
-            return false;
-        }finally {
-            conexao.desconectar();
+    // Método para remover um produto pelo ID
+    public int removerProduto(Produto produto) {
+        try {
+            conexao.conectar(); // Estabelece a conexão com o banco de dados
+            // Prepara a instrução SQL para deletar um produto com base no seu ID
+            pstm = conexao.getConn().prepareStatement("DELETE FROM produto WHERE sId = ?");
+            pstm.setInt(1, produto.getsId()); // Define o ID do produto a ser removido
+            return pstm.executeUpdate();
+        } catch (SQLException sqle) { // Trata exceções relacionadas ao SQL
+            sqle.printStackTrace(); // Imprime a stack trace da exceção
+            return -1; // Retorna false em caso de erro
+        } finally {
+            conexao.desconectar(); // Garante que a conexão seja fechada
         }
     }
 }
