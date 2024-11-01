@@ -1,0 +1,16 @@
+# 
+# Build Package
+# 
+FROM maven:3.8.3-openjdk-17 AS build
+COPY . .
+RUN mvn clean package -DskipTests
+
+# 
+# Runtime with Tomcat
+# 
+FROM tomcat:10.1-jdk17-corretto
+COPY --from=build /target/ServletBimo-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
+
+EXPOSE 8080
+
+CMD ["catalina.sh", "run"]
