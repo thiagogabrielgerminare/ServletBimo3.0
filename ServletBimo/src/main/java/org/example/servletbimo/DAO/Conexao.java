@@ -8,7 +8,6 @@ import java.sql.SQLException; // Importa a classe para tratar exceções relacio
 // Classe responsável por gerenciar a conexão com o banco de dados
 public class Conexao {
     private Connection conn;// Objeto para armazenar a conexão com o banco de dados
-    public ResultSet rs;
     // Variáveis para armazenar as credenciais e informações do banco de dados, obtidas a partir de variáveis de ambiente
     String nomeUsusario = System.getenv("NOME_USUARIO_DO_BANCO_DE_DADOS"); // Nome do usuário
     String senhaBanco = System.getenv("SENHA_DO_BANCO_DE_DADOS"); // Senha do banco de dados

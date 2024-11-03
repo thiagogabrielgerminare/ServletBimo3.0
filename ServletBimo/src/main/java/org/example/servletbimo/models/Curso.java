@@ -19,10 +19,9 @@ public class Curso {
     }
 
     // Construtor para inicializar os atributos
-    public Curso(int id, int idCategoriaCurso, String cNome, double fValor,
+    public Curso(int idCategoriaCurso, String cNome, double fValor,
                  String cDescricao, boolean bStatus, int iNumeroInscricao,
-                 String cDuracao) {
-        this.sId = id;
+                 String cDuracao, String cCertificacao) { // construtor para cadastro
         this.idCategoriaCurso = idCategoriaCurso;
         this.cNome = cNome;
         this.fValor = fValor;
@@ -30,6 +29,7 @@ public class Curso {
         this.bStatus = bStatus;
         this.iNumeroInscricao = iNumeroInscricao;
         this.cDuracao = cDuracao;
+        this.cCertificacao = cCertificacao;
     }
 
     // Getters e Setters

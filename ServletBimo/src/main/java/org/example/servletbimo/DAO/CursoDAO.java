@@ -17,15 +17,16 @@ public class CursoDAO {
         conn.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para inserção
-            pstm = conn.getConn().prepareStatement("INSERT INTO Curso(idCategoria, cDescricao, cNome, iNumeroInscricao, fValor, bStatus, cDuracao,  iIdCategoriaCurso) VALUES(?, ?, ?, ?, ?, ?, ?)");
+            pstm = conn.getConn().prepareStatement("INSERT INTO Curso(cdescricao, cnome, inumeroinscricao, fvalor, bstatus, cduracao,  idcategoriacurso, ccertificacao) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
             // Define os valores dos parâmetros
-            pstm.setInt(1, curso.getsId());
+            pstm.setString(1, curso.getcDescricao());
             pstm.setString(2, curso.getcNome());
             pstm.setInt(3, curso.getiNumeroInscricao());
             pstm.setDouble(4, curso.getfValor());
             pstm.setBoolean(5, curso.getbStatus());
             pstm.setString(6, curso.getcDuracao());
             pstm.setInt(7, curso.getIdCategoriaCurso());
+            pstm.setString(8, curso.getcCertificacao());
             // Executa a inserção e verifica se houve sucesso
             return pstm.executeUpdate() > 0;
             // Retorna false se a inserção

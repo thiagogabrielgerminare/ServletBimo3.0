@@ -15,7 +15,7 @@ import java.io.IOException;
 public class CadastrarCategoriaCurso extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            String nome = request.getParameter("nome-categoria-curso");
+            String nome = request.getParameter("nome");
 
             CategoriaCurso categoriaCurso = new CategoriaCurso(nome);
 
@@ -25,7 +25,7 @@ public class CadastrarCategoriaCurso extends HttpServlet {
             if (sucesso) {
                 request.setAttribute("resultado", "foi");
             } else {
-                request.setAttribute("resultado", "erro ");
+                request.setAttribute("resultado", "erro");
             }
             request.getRequestDispatcher("cadastro.jsp").forward(request, response);
     }

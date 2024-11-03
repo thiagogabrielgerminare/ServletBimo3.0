@@ -15,7 +15,7 @@ import java.io.IOException;
 public class CadastrarCategoriaProduto extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nome = request.getParameter("nome-categoria-produto");
+        String nome = request.getParameter("nome");
 
         CategoriaProduto categoriaCurso = new CategoriaProduto(nome);
 

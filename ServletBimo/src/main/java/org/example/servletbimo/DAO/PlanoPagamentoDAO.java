@@ -22,7 +22,7 @@ public class PlanoPagamentoDAO {
         this.conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para inserção
-            this.pstm = this.conexao.getConn().prepareStatement("INSERT INTO PLANO_PAGAMENTO (cNome, cDescricao, fValor) VALUES(?,?,?)");
+            this.pstm = this.conexao.getConn().prepareStatement("INSERT INTO PLANO (CNOME, CDESCRICAO, FVALOR) VALUES(?,?,?)");
             // Define os valores dos parâmetros
             this.pstm.setString(1, planoP.getcNome());
             this.pstm.setString(2, planoP.getcDescricao());
@@ -42,7 +42,7 @@ public class PlanoPagamentoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para atualização da descrição
-            this.pstm = this.conexao.getConn().prepareStatement("UPDATE PLANO_PAGAMENTO SET CDESCRICAO = ? WHERE SID = ?");
+            this.pstm = this.conexao.getConn().prepareStatement("UPDATE PLANO SET CDESCRICAO = ? WHERE SID = ?");
             // Define os parâmetros
             pstm.setString(1, planoP.getcDescricao()); // Atualiza a descrição
             pstm.setInt(2, planoP.getsId()); // Define o ID do plano a ser atualizado
@@ -61,7 +61,7 @@ public class PlanoPagamentoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para atualização do valor
-            this.pstm = this.conexao.getConn().prepareStatement("UPDATE PLANO_PAGAMENTO SET FVALOR = ? WHERE SID = ?");
+            this.pstm = this.conexao.getConn().prepareStatement("UPDATE PLANO SET FVALOR = ? WHERE SID = ?");
             // Define os parâmetros
             pstm.setDouble(1, planoP.getfValor()); // Atualiza o valor
             pstm.setInt(2, planoP.getsId()); // Define o ID do plano a ser atualizado
@@ -80,7 +80,7 @@ public class PlanoPagamentoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para remoção
-            this.pstm = conexao.getConn().prepareStatement("UPDATE PLANOPAGAMENTO SET bisInactive = true WHERE sId = ?");
+            this.pstm = conexao.getConn().prepareStatement("UPDATE PLANO SET bisInactive = true WHERE sId = ?");
             // Define o parâmetro
             pstm.setInt(1, planoP.getsId()); // Define o ID do plano a ser removido
             // Executa a remoção e retorna o número de linhas afetadas
@@ -98,7 +98,7 @@ public class PlanoPagamentoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de todos os planos
-            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM PLANO_PAGAMENTO");
+            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM PLANO");
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
             return rset; // Retorna o ResultSet com os resultados
@@ -115,7 +115,7 @@ public class PlanoPagamentoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de um plano por ID
-            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO_PAGAMENTO WHERE SID = ?");
+            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO WHERE SID = ?");
             pstm.setInt(1, planoP.getsId()); // Define o ID do plano a ser buscado
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
@@ -133,7 +133,7 @@ public class PlanoPagamentoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de um plano por valor
-            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO_PAGAMENTO WHERE FVALOR = ?");
+            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO WHERE FVALOR = ?");
             pstm.setDouble(1, planoP.getfValor()); // Define o valor do plano a ser buscado
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
@@ -151,7 +151,7 @@ public class PlanoPagamentoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de um plano por descrição
-            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO_PAGAMENTO WHERE CDESCRICAO = ?");
+            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO WHERE CDESCRICAO = ?");
             pstm.setString(1, planoP.getcDescricao()); // Define a descrição do plano a ser buscado
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();

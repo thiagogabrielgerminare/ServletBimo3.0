@@ -16,6 +16,7 @@ public class CategoriaCursoDAO {
 
     // Método para inserir uma nova categoria
     public boolean inserirCategoriaCurso(CategoriaCurso categoriaCurso) {
+        conexao.conectar();
         try (PreparedStatement pstm = conexao.getConn().prepareStatement("INSERT INTO CATEGORIACURSO(cNome) VALUES (?)")) { // Prepara a instrução SQL
             pstm.setString(1, categoriaCurso.getcNome()); // Define o parâmetro CNOME na instrução SQL
             return pstm.executeUpdate() > 0;// Executa a inserção e retorna true
