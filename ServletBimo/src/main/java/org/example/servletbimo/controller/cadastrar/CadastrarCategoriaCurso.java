@@ -10,23 +10,30 @@ import org.example.servletbimo.models.CategoriaCurso;
 
 import java.io.IOException;
 
-@WebServlet( name = "cadastrarCategoriaCurso", value = "/cadastrarCategoriaCurso" )
+// Define a servlet que responde a requisições no caminho "/cadastrarCategoriaCurso"
+@WebServlet(name = "cadastrarCategoriaCurso", value = "/cadastrarCategoriaCurso")
 public class CadastrarCategoriaCurso extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            String nome = request.getParameter("nome");
+        // Obtém o parâmetro "nome" enviado no formulário de cadastro
+        String nome = request.getParameter("nome");
 
-            CategoriaCurso categoriaCurso = new CategoriaCurso(nome);
+        // Cria um novo objeto CategoriaCurso com o nome capturado
+        CategoriaCurso categoriaCurso = new CategoriaCurso(nome);
 
-            CategoriaCursoDAO categoriaCursoDAO = new CategoriaCursoDAO();
-            boolean sucesso = categoriaCursoDAO.inserirCategoriaCurso(categoriaCurso);
+        // Instancia o DAO para realizar a inserção da nova categoria de curso no banco de dados
+        CategoriaCursoDAO categoriaCursoDAO = new CategoriaCursoDAO();
+        boolean sucesso = categoriaCursoDAO.inserirCategoriaCurso(categoriaCurso); // Tenta inserir a categoria
 
-            if (sucesso) {
-                request.setAttribute("resultado", "foi");
-            } else {
-                request.setAttribute("resultado", "erro");
-            }
-            request.getRequestDispatcher("cadastro.jsp").forward(request, response);
+        // Define o resultado da operação como atributo da requisição
+        if (sucesso) {
+            request.setAttribute("resultado", "foi"); // Sucesso na inserção
+        } else {
+            request.setAttribute("resultado", "erro"); // Falha na inserção
+        }
+
+        // Redireciona a requisição para a página de cadastro
+        request.getRequestDispatcher("cadastro.jsp").forward(request, response);
     }
 }
-

@@ -8,26 +8,32 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 
-
 import java.io.IOException;
 
-@WebServlet( name = "cadastrarCategoriaProduto", value = "/cadastrarCategoriaProduto" )
+// Define uma servlet que responde a requisições no caminho "/cadastrarCategoriaProduto"
+@WebServlet(name = "cadastrarCategoriaProduto", value = "/cadastrarCategoriaProduto")
 public class CadastrarCategoriaProduto extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Obtém o parâmetro "nome" enviado no formulário de cadastro
         String nome = request.getParameter("nome");
 
-        CategoriaProduto categoriaCurso = new CategoriaProduto(nome);
+        // Cria um novo objeto CategoriaProduto com o nome capturado
+        CategoriaProduto categoriaProduto = new CategoriaProduto(nome);
 
-        CategoriaProdutoDAO categoriaCursoDAO = new CategoriaProdutoDAO();
-        boolean sucesso = categoriaCursoDAO.inserirCategoriaProduto(categoriaCurso);
+        // Instancia o DAO para realizar a inserção da nova categoria de produto no banco de dados
+        CategoriaProdutoDAO categoriaProdutoDAO = new CategoriaProdutoDAO();
+        boolean sucesso = categoriaProdutoDAO.inserirCategoriaProduto(categoriaProduto); // Tenta inserir a categoria
 
+        // Define o resultado da operação como atributo da requisição
         if (sucesso) {
-            request.setAttribute("resultado", "foi");
+            request.setAttribute("resultado", "foi"); // Sucesso na inserção
         } else {
-            request.setAttribute("resultado", "erro ");
+            request.setAttribute("resultado", "erro "); // Falha na inserção
         }
+
+        // Redireciona a requisição para a página de cadastro
         request.getRequestDispatcher("cadastro.jsp").forward(request, response);
     }
 }
-

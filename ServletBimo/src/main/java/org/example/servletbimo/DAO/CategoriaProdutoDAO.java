@@ -19,7 +19,6 @@ public class CategoriaProdutoDAO {
     public boolean inserirCategoriaProduto(CategoriaProduto categoriaProduto) {
         conexao.conectar(); // Abre a conexão com o banco
         try {
-            // Prepara a instrução SQL para inserção
             pstm = conexao.getConn().prepareStatement("INSERT INTO CATEGORIAPRODUTO (cNome) VALUES(?)");
             pstm.setString(1, categoriaProduto.getcNome()); // Define o valor do parâmetro CNOME
             return pstm.executeUpdate() > 0; // Executa a inserção e retorna o número de linhas afetadas

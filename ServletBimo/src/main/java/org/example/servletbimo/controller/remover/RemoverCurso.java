@@ -5,38 +5,47 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.*;
-import org.example.servletbimo.models.*;
+import org.example.servletbimo.DAO.CursoDAO; // Importa o DAO para manipulação de cursos
+import org.example.servletbimo.models.Curso; // Importa o modelo Curso
 
 import java.io.IOException;
 
-@WebServlet( name = "removerCurso", value = "/removerCurso" )
+// Define uma servlet que responde a requisições no caminho "/removerCurso"
+@WebServlet(name = "removerCurso", value = "/removerCurso")
 public class RemoverCurso extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Obtém o parâmetro "id" enviado no formulário para remoção do curso
         String idStr = request.getParameter("id");
 
-        int idInt = 0;
+        int idInt = 0; // Inicializa o ID
 
+        // Converte o ID para int, se não for nulo ou vazio
         if (idStr != null && !idStr.isEmpty()) {
             try {
                 idInt = Integer.parseInt(idStr);
             } catch (NumberFormatException e) {
-                // Trate o caso de formato inválido, caso necessário
+                // Tratamento de erro para formato inválido
                 System.out.println("Erro: o parâmetro não é um número válido.");
             }
         }
 
+        // Cria um objeto Curso com o ID para remoção
         Curso curso = new Curso(idInt);
 
+        // Instancia o DAO para realizar a remoção do curso
         CursoDAO cursoDAO = new CursoDAO();
-        int sucesso = cursoDAO.removerCurso(curso);
+        int sucesso = cursoDAO.removerCurso(curso); // Tenta remover o curso
 
-        if (sucesso > 0){
-            request.setAttribute("resultado", "foi");
+        // Define o resultado da operação como atributo da requisição
+        if (sucesso > 0) {
+            request.setAttribute("resultado", "foi"); // Sucesso na remoção
         } else {
-            request.setAttribute("resultado", "erro ");
+            request.setAttribute("resultado", "erro "); // Falha na remoção
         }
+
+        // Redireciona a requisição para a página de remoção
         request.getRequestDispatcher("remocao.jsp").forward(request, response);
     }
 }

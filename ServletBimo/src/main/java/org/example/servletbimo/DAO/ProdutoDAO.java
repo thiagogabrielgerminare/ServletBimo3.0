@@ -6,8 +6,8 @@ import java.sql.PreparedStatement; // Importa a classe para preparar instruçõe
 import java.sql.SQLException; // Importa a classe para tratar exceções relacionadas ao SQL
 
 public class ProdutoDAO {
-    Conexao conexao = new Conexao(); // Cria uma instância da classe de conexão
-    PreparedStatement pstm; // Declara um PreparedStatement para executar comandos SQL
+    private Conexao conexao = new Conexao(); // Cria uma instância da classe de conexão
+    private PreparedStatement pstm; // Declara um PreparedStatement para executar comandos SQL
 
     // Método para remover um produto pelo ID
     public int removerProduto(Produto produto) {

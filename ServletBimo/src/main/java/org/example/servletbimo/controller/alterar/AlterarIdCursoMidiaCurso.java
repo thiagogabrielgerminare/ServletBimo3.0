@@ -1,56 +1,67 @@
 package org.example.servletbimo.controller.alterar;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CategoriaCursoDAO;
-import org.example.servletbimo.DAO.CategoriaProdutoDAO;
-import org.example.servletbimo.DAO.MidiaCursoDAO;
-import org.example.servletbimo.models.CategoriaProduto;
-import org.example.servletbimo.models.MidiaCurso;
+import jakarta.servlet.ServletException; // Importa a classe para exceções de servlet
+import jakarta.servlet.annotation.WebServlet; // Importa a anotação para definir um servlet
+import jakarta.servlet.http.HttpServlet; // Importa a classe base para servlets HTTP
+import jakarta.servlet.http.HttpServletRequest; // Importa a classe para manipulação de requisições HTTP
+import jakarta.servlet.http.HttpServletResponse; // Importa a classe para manipulação de respostas HTTP
+import org.example.servletbimo.DAO.MidiaCursoDAO; // Importa a classe DAO para interações com a tabela de mídias de curso
+import org.example.servletbimo.models.MidiaCurso; // Importa a classe de modelo para a mídia do curso
 
-import java.io.IOException;
+import java.io.IOException; // Importa a classe de exceções de entrada/saída
 
-@WebServlet( name = "alterarIdCurso", value = "/alterarIdCurso" )
+// Define o servlet e a URL para acesso
+@WebServlet(name = "alterarIdCurso", value = "/alterarIdCurso")
 public class AlterarIdCursoMidiaCurso extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Obtém os parâmetros 'id' e 'id-curso' da requisição
         String idStr = request.getParameter("id");
         String idCursoStr = request.getParameter("id-curso");
 
-        int idInt = 0;
-        int idCursoInt = 0;
+        int idInt = 0; // Inicializa a variável para armazenar o ID da mídia
+        int idCursoInt = 0; // Inicializa a variável para armazenar o ID do curso
 
+        // Verifica se o ID da mídia não é nulo ou vazio
         if (idStr != null && !idStr.isEmpty()) {
             try {
+                // Tenta converter o ID da mídia de String para inteiro
                 idInt = Integer.parseInt(idStr);
             } catch (NumberFormatException e) {
-                // Trate o caso de formato inválido, caso necessário
-                System.out.println("Erro: o parâmetro não é um número válido.");
+                // Trata o caso de formato inválido
+                System.out.println("Erro: o parâmetro não é um número válido."); // Log de erro simples
             }
         }
 
+        // Verifica se o ID do curso não é nulo ou vazio
         if (idCursoStr != null && !idCursoStr.isEmpty()) {
             try {
+                // Tenta converter o ID do curso de String para inteiro
                 idCursoInt = Integer.parseInt(idCursoStr);
             } catch (NumberFormatException e) {
-                // Trate o caso de formato inválido, caso necessário
-                System.out.println("Erro: o parâmetro não é um número válido.");
+                // Trata o caso de formato inválido
+                System.out.println("Erro: o parâmetro não é um número válido."); // Log de erro simples
             }
         }
 
+        // Cria uma nova instância de MidiaCurso com os dados recebidos
         MidiaCurso midiaCurso = new MidiaCurso(idInt, idCursoInt);
 
+        // Instancia o DAO para manipular os dados de mídia do curso
         MidiaCursoDAO midiaCursoDAO = new MidiaCursoDAO();
+
+        // Chama o método para alterar o ID do curso associado à mídia no banco de dados
         int sucesso = midiaCursoDAO.alterarMidiaCursoidCurso(midiaCurso);
 
-        if (sucesso > 0){
-            request.setAttribute("resultado", "foi");
+        // Verifica se a alteração foi bem-sucedida
+        if (sucesso > 0) {
+            request.setAttribute("resultado", "foi"); // Define atributo para sucesso
         } else {
-            request.setAttribute("resultado", "erro ");
+            request.setAttribute("resultado", "erro "); // Define atributo para erro
         }
+
+        // Redireciona para a página de alteração
         request.getRequestDispatcher("alteracao.jsp").forward(request, response);
     }
 }

@@ -11,7 +11,7 @@ import java.sql.SQLException; // Importa a classe para tratar exceções relacio
 // Classe responsável pela manipulação de planos de pagamento
 public class PlanoPagamentoDAO {
     private PreparedStatement pstm; // Objeto para executar comandos SQL preparados
-    Conexao conexao = new Conexao();// Instância da classe de conexão com o banco de dados;
+    private Conexao conexao = new Conexao();// Instância da classe de conexão com o banco de dados;
 
     // Construtor da classe
     public PlanoPagamentoDAO() {

@@ -1,42 +1,55 @@
 package org.example.servletbimo.controller.alterar;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.AdministradorDAO;
-import org.example.servletbimo.models.Administrador;
+import jakarta.servlet.ServletException; // Importa a classe para exceções de servlet
+import jakarta.servlet.annotation.WebServlet; // Importa a anotação para definir um servlet
+import jakarta.servlet.http.HttpServlet; // Importa a classe base para servlets HTTP
+import jakarta.servlet.http.HttpServletRequest; // Importa a classe para manipulação de requisições HTTP
+import jakarta.servlet.http.HttpServletResponse; // Importa a classe para manipulação de respostas HTTP
+import org.example.servletbimo.DAO.AdministradorDAO; // Importa a classe DAO para interações com o banco de dados
+import org.example.servletbimo.models.Administrador; // Importa a classe de modelo do administrador
 
-import java.io.IOException;
+import java.io.IOException; // Importa a classe de exceções de entrada/saída
 
-@WebServlet( name = "alterarEmailAdm", value = "/alterarEmailAdm" )
+// Define o servlet e a URL para acesso
+@WebServlet(name = "alterarEmailAdm", value = "/alterarEmailAdm")
 public class AlterarEmailAdm extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Obtém os parâmetros 'id' e 'email' da requisição
         String idStr = request.getParameter("id");
         String email = request.getParameter("email");
 
-        int idInt = 0;
+        int idInt = 0; // Inicializa a variável para armazenar o ID como inteiro
 
+        // Verifica se o ID não é nulo ou vazio
         if (idStr != null && !idStr.isEmpty()) {
             try {
+                // Tenta converter o ID de String para inteiro
                 idInt = Integer.parseInt(idStr);
             } catch (NumberFormatException e) {
                 // Trate o caso de formato inválido, caso necessário
-                System.out.println("Erro: o parâmetro não é um número válido.");
+                System.out.println("Erro: o parâmetro não é um número válido."); // Log de erro simples
             }
         }
+
+        // Cria uma nova instância de Administrador com os dados recebidos
         Administrador administrador = new Administrador(idInt, email, 2);
 
+        // Instancia o DAO para manipular os dados do administrador
         AdministradorDAO administradorDAO = new AdministradorDAO();
+
+        // Chama o método para alterar o e-mail do administrador no banco de dados
         int sucesso = administradorDAO.alterarEmailAdministrador(administrador);
 
-        if (sucesso > 0){
-            request.setAttribute("resultado", "foi");
+        // Verifica se a alteração foi bem-sucedida
+        if (sucesso > 0) {
+            request.setAttribute("resultado", "foi"); // Define atributo para sucesso
         } else {
-            request.setAttribute("resultado", "erro ");
+            request.setAttribute("resultado", "erro "); // Define atributo para erro
         }
+
+        // Redireciona para a página de alteração
         request.getRequestDispatcher("alteracao.jsp").forward(request, response);
     }
 }

@@ -8,7 +8,7 @@ import java.sql.SQLException; // Importa a classe para tratar exceções relacio
 
 public class MidiaCursoDAO {
     private PreparedStatement pstm; // Objeto para executar comandos SQL preparados
-    Conexao conexao = new Conexao(); // Instância da classe de conexão com o banco de dados
+    private Conexao conexao = new Conexao(); // Instância da classe de conexão com o banco de dados
 
     // Método para remover a mídia de um curso
     public int removerMidiaCurso(MidiaCurso midiaCurso) {
