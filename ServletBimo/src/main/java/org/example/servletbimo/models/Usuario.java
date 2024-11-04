@@ -15,6 +15,10 @@ public class Usuario {
     private String cNome; // Nome do usuário
     private String cEmail; // E-mail do usuário
 
+    public Usuario(int sId) {
+        this.sId = sId;
+    }
+
     public int getsId() {
         return sId;
     }

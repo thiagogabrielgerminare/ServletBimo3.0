@@ -2,8 +2,15 @@ package org.example.servletbimo.models; // Pacote que contém a classe de modelo
 
 public class Midia {
     // Atributos da classe
+    private int sId;
     private String cURLVideo; // URL do vídeo
     private String cURLFoto; // URL da foto
+
+    public Midia(int sId) {
+        this.sId = sId;
+    }
+
+    public int getsId() { return this.sId; }
 
     // Método para obter a URL do vídeo
     public String getcURLVideo() {

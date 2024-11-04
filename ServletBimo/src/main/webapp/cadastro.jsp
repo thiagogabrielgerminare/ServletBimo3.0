@@ -30,13 +30,13 @@
     <div class="form-content">
         <form action="cadastrarAdm" method="post">
             <label for="nome-adm"><h3>Nome</h3></label>
-            <input type="text" id="nome-adm" name="nome-adm" required>
+            <input type="text" id="nome-adm" name="nome" required>
 
             <label for="email-adm"><h3>Email</h3></label>
-            <input type="email" id="email-adm" name="email-adm" required>
+            <input type="email" id="email-adm" name="email" required>
 
             <label for="senha-adm"><h3>Senha</h3></label>
-            <input type="password" id="senha-adm" name="senha-adm" minlength="8" required>
+            <input type="password" id="senha-adm" name="senha" minlength="8" required>
 
             <p>${resultado}</p>
 
@@ -137,6 +137,24 @@
             <input type="number" id="id-categoria" name="id-categoria" required>
 
             <p>${resultado}</p>
+            <button type="submit"><h3>Cadastrar</h3></button>
+        </form>
+    </div>
+</div>
+
+<div class="cardfuncao">
+    <input type="checkbox" id="cadastrar-midia-curso" class="toggle">
+    <label for="cadastrar-midia-curso" class="label-toggle">
+        <h2>Nova Mídia de Curso</h2>
+    </label>
+    <div class="form-content">
+        <form action="cadastrarMidiaCurso" method="post">
+            <label for="id-curso"><h3>ID Curso</h3></label>
+            <input type="number" id="id-curso" name="id" required>
+
+            <label for="url-foto"><h3>URL - Foto</h3></label>
+            <input type="text" id="url-foto" name="url" required>
+
             <button type="submit"><h3>Cadastrar</h3></button>
         </form>
     </div>

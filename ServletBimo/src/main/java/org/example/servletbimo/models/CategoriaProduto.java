@@ -25,6 +25,11 @@ public class CategoriaProduto {
         this.cNome = cNome;
     }
 
+    public CategoriaProduto(int sId, String cNome) { // construtor para alteração
+        this.sId = sId;
+        this.cNome = cNome;
+    }
+
     // Getter para o nome da categoria
     public int getsId(){
         return this.sId;

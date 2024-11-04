@@ -37,6 +37,25 @@ public class PlanoPagamentoDAO {
         }
     }
 
+    // Método para alterar o valor por ID
+    public int alterarNomePlanoPagamento(PlanoPagamento planoP) {
+        conexao.conectar(); // Abre a conexão com o banco de dados
+        try {
+            // Prepara a instrução SQL para atualização do valor
+            this.pstm = this.conexao.getConn().prepareStatement("UPDATE PLANO SET CNOME = ? WHERE SID = ?");
+            // Define os parâmetros
+            pstm.setString(1, planoP.getcNome()); // Atualiza o valor
+            pstm.setInt(2, planoP.getsId()); // Define o ID do plano a ser atualizado
+            // Executa a atualização e retorna o número de linhas afetadas
+            return pstm.executeUpdate();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return -1; // Retorna -1 em caso de erro
+        } finally {
+            conexao.desconectar(); // Fecha a conexão com o banco de dados
+        }
+    }
+
     // Método para alterar a descrição por ID
     public int alterarDescricaoPlanoPagamento(PlanoPagamento planoP) {
         conexao.conectar(); // Abre a conexão com o banco de dados

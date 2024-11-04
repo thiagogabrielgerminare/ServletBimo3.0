@@ -29,6 +29,24 @@ public class MidiaCurso {
         this.bisUpdates = bisUpdates; // Inicializa o estado de atualização
     }
 
+    public MidiaCurso(int id, int tipoId, String cUrlFoto) { // construtor para cadastro e alteração de url
+        if (tipoId == 1){ // 1 é para sId
+            this.sId = id;
+        } else if (tipoId == 2) { // 2 é para idCurso
+            this.idCurso = id;
+        }
+        this.cURLFoto = cUrlFoto;
+    }
+
+    public MidiaCurso(int sId) {
+        this.sId = sId;
+    }
+
+    public MidiaCurso(int sId, int idCurso) {
+        this.sId = sId;
+        this.idCurso = idCurso;
+    }
+
     // Método para obter o ID da mídia
     public int getsId() {
         return this.sId; // Retorna o ID da mídia

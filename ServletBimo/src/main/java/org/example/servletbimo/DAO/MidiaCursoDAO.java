@@ -15,7 +15,7 @@ public class MidiaCursoDAO {
         conexao.conectar(); // Estabelece a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para atualizar a mídia, definindo bisUpdated como false
-            this.pstm = conexao.getConn().prepareStatement("UPDATE MIDIACURSO SET bisInactive = true WHERE sId = ?");
+            this.pstm = conexao.getConn().prepareStatement("UPDATE MIDIACURSO SET bisInactive = 'TRUE' WHERE sId = ?");
             pstm.setInt(1, midiaCurso.getsId()); // Define o ID da mídia a ser atualizada
             return pstm.executeUpdate(); // Executa a atualização e retorna o número de linhas afetadas
         } catch (SQLException sqle) { // Trata exceções relacionadas ao SQL
@@ -31,7 +31,7 @@ public class MidiaCursoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para inserção
-            this.pstm = conexao.getConn().prepareStatement("INSERT INTO MIDIACURSO (idCurso, cUrlFoto) VALUES(?)");
+            this.pstm = conexao.getConn().prepareStatement("INSERT INTO MIDIACURSO (idCurso, cUrlFoto) VALUES(?, ?)");
             this.pstm.setInt(1, midiaCurso.getIdCurso());
             this.pstm.setString(2, midiaCurso.getcURLFoto()); // Define o URL da foto
             return pstm.executeUpdate() > 0; // Executa a inserção e retorna o número de linhas afetadas
@@ -64,7 +64,7 @@ public class MidiaCursoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para atualização
-            pstm = conexao.getConn().prepareStatement("UPDATE MIDIACURSO SET iIdCurso = ? WHERE SID = ?");
+            pstm = conexao.getConn().prepareStatement("UPDATE MIDIACURSO SET IDCURSO = ? WHERE SID = ?");
             pstm.setInt(1, midiaCurso.getIdCurso()); // Define o novo URL da foto
             pstm.setInt(2, midiaCurso.getsId()); // Define o ID da mídia a ser atualizada
             return pstm.executeUpdate(); // Executa a atualização e retorna o número de linhas afetadas

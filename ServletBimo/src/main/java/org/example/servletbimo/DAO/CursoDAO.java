@@ -132,7 +132,7 @@ public class CursoDAO {
         conn.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para remoção
-            pstm = conn.getConn().prepareStatement("UPDATE CURSO SET bisInactive = true WHERE sId = ?");
+            pstm = conn.getConn().prepareStatement("UPDATE CURSO SET bisinactive = 'TRUE' WHERE sId = ?");
             pstm.setInt(1, curso.getsId()); // Define o valor do parâmetro SID
             return pstm.executeUpdate();  // Executa a remoção e retorna o número de linhas afetadas
         } catch (SQLException sqle) {

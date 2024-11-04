@@ -22,16 +22,14 @@ public class Administrador {
         this.sId = sId;
     } // construtor para remoção
 
-    public Administrador(int sId, String cNome, String cEmail, String cSenha) { // construtor para alteração
+    public Administrador(int sId, String algo, int tipoParametro) { //construtor para alteração
         this.sId = sId;
-        if (cNome != null && !cNome.isEmpty()) {
-            this.cNome = cNome;
-        }
-        if (cEmail != null && !cEmail.isEmpty()) {
-            this.cEmail = cEmail;
-        }
-        if (cSenha != null && !cSenha.isEmpty()) {
-            this.cSenha = cSenha;
+        if (tipoParametro == 1){ //1 é para nome
+            this.cNome = algo;
+        } else if (tipoParametro == 2) { //2 é para Email
+            this.cEmail = algo;
+        } else if (tipoParametro == 3) { //3 é para Senha
+            this.cSenha = algo;
         }
     }
 

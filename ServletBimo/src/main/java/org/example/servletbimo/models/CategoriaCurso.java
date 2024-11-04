@@ -16,6 +16,11 @@ public class CategoriaCurso {
         this.cNome = cNome;
     }
 
+    public CategoriaCurso(int sId, String cNome) {
+        this.sId = sId;
+        this.cNome = cNome;
+    }
+
     // Método para verificar se a categoria foi atualizada
     public boolean isBis_updated() {
         return bis_updated; // Retorna o estado de atualização

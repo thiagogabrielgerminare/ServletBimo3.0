@@ -14,7 +14,7 @@ public class UsuarioDAO {
             conexao.conectar(); // Estabelece a conexão com o banco de dados
             // Prepara a instrução SQL para deletar um usuário com base no seu ID
             pstm = conexao.getConn().prepareStatement("DELETE FROM usuario WHERE SID = ?");
-            pstm.setInt(1, user.getsId()); // Define o ID do usuário a ser removido
+            pstm.setInt(1, user.getsId()); // Define o ID do usuário a ser remo vido
             return pstm.executeUpdate(); // Retorna true se a operação for bem-sucedida
         } catch (SQLException sqle) { // Trata exceções relacionadas ao SQL
             sqle.printStackTrace(); // Imprime a stack trace da exceção para depuração

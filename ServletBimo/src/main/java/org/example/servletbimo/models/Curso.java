@@ -32,6 +32,10 @@ public class Curso {
         this.cCertificacao = cCertificacao;
     }
 
+    public Curso(int sId) {
+        this.sId = sId;
+    }
+
     // Getters e Setters
 
 
