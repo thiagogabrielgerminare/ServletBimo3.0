@@ -5,38 +5,47 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.ProdutoDAO;
-import org.example.servletbimo.models.CategoriaCurso;
-import org.example.servletbimo.models.Produto;
+import org.example.servletbimo.DAO.ProdutoDAO; // Importa a classe DAO para manipulação de produtos
+import org.example.servletbimo.models.Produto; // Importa o modelo Produto
 
 import java.io.IOException;
 
-@WebServlet( name = "removerProduto", value = "/removerProduto" )
+// Define uma servlet que responde a requisições no caminho "/removerProduto"
+@WebServlet(name = "removerProduto", value = "/removerProduto")
 public class RemoverProduto extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Obtém o parâmetro "id" enviado no formulário para remoção do produto
         String idStr = request.getParameter("id");
 
-        int idInt = 0;
+        int idInt = 0; // Inicializa o ID
 
+        // Converte o ID para int, se não for nulo ou vazio
         if (idStr != null && !idStr.isEmpty()) {
             try {
-                idInt = Integer.parseInt(idStr);
+                idInt = Integer.parseInt(idStr); // Tenta converter para inteiro
             } catch (NumberFormatException e) {
-                // Trate o caso de formato inválido, caso necessário
+                // Tratamento de erro para formato inválido
                 System.out.println("Erro: o parâmetro não é um número válido.");
             }
         }
+
+        // Cria um objeto Produto com o ID para remoção
         Produto produto = new Produto(idInt);
 
-        ProdutoDAO ProdutoDAO = new ProdutoDAO();
-        int sucesso = ProdutoDAO.removerProduto(produto);
+        // Instancia o DAO para realizar a remoção do produto
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        int sucesso = produtoDAO.removerProduto(produto); // Tenta remover o produto
 
-        if (sucesso > 0){
-            request.setAttribute("resultado", "foi");
+        // Define o resultado da operação como atributo da requisição
+        if (sucesso > 0) {
+            request.setAttribute("resultado", "foi"); // Sucesso na remoção
         } else {
-            request.setAttribute("resultado", "erro ");
+            request.setAttribute("resultado", "erro "); // Falha na remoção
         }
+
+        // Redireciona a requisição para a página de remoção
         request.getRequestDispatcher("remocao.jsp").forward(request, response);
     }
 }

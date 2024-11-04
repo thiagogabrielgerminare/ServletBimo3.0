@@ -9,11 +9,12 @@ import java.sql.SQLException; // Importa a classe para tratar exceções relacio
 
 
 public class MidiaDAO {
+    private Conexao conexao = new Conexao(); // Cria uma nova instância da classe de conexão
+    private PreparedStatement pstm; // Declara um PreparedStatement para executar comandos SQL
+
     // Método para remover um usuário pelo ID
     public int removerMidia(Midia midia){
-        Conexao conexao = new Conexao(); // Cria uma nova instância da classe de conexão
-        PreparedStatement pstm; // Declara um PreparedStatement para executar comandos SQL
-        try {
+       try {
             conexao.conectar(); // Estabelece a conexão com o banco de dados
             // Prepara a instrução SQL para deletar um usuário com base no seu ID
             pstm = conexao.getConn().prepareStatement("DELETE FROM MIDIA WHERE SID = ?");

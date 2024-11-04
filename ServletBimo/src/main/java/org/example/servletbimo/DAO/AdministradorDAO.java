@@ -10,9 +10,7 @@ import java.sql.SQLException;
 // Classe responsável pela manipulação de administradores
 public class AdministradorDAO {
     private PreparedStatement pstm; // Objeto para executar comandos SQL
-
     private ResultSet rs;
-
     private Conexao conexao = new Conexao(); // Instância da classe de conexão ao banco de dados
 
     // Construtor da classe
@@ -22,19 +20,12 @@ public class AdministradorDAO {
     public boolean BuscarAdministrador(String email, String senha) {
         try {
             conexao.conectar(); // Abre a conexão com o banco
-
-            // Prepara a instrução SQL para busca
-            this.pstm = this.conexao.getConn().prepareStatement(
-                    "SELECT CEMAIL, CSENHA FROM ADMINISTRADOR WHERE CEMAIL = ? AND CSENHA = ?"
-            );
-
+            pstm = this.conexao.getConn().prepareStatement("SELECT CEMAIL, CSENHA FROM ADMINISTRADOR WHERE CEMAIL = ? AND CSENHA = ?");
             // Define os parâmetros na consulta SQL
             pstm.setString(1, email);
             pstm.setString(2, senha);
-
             // Executa a busca e obtém o ResultSet
             this.rs = pstm.executeQuery();
-
             // Verifica se o ResultSet contém pelo menos um resultado
             if (rs != null && rs.next()) {
                 return true; // Encontrou um administrador
