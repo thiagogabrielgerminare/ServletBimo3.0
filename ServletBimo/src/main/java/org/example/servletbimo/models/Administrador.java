@@ -33,6 +33,12 @@ public class Administrador {
         }
     }
 
+    public Administrador(String algo, int tipoParametro) { // construtor para busca
+        if (tipoParametro == 1){ // 1 é para nome
+            this.cNome = algo;
+        }
+    }
+
     public String getcSenha(){
         return this.cSenha;
     }

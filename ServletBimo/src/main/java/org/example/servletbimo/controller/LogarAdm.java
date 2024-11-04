@@ -1,4 +1,4 @@
-package org.example.servletbimo.Servlet;
+package org.example.servletbimo.controller;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,6 +19,7 @@ public class LogarAdm extends HttpServlet {
 
         // Chama o método para buscar administrador
         if (administradorDAO.BuscarAdministrador(email, senha)) {
+            request.getSession().setAttribute("logado",true);
             request.getRequestDispatcher("admin.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("erro_login.jsp").forward(request, response);
