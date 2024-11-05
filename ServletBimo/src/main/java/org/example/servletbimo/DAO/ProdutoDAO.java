@@ -56,6 +56,22 @@ public class ProdutoDAO {
         }
     }
 
+    public ResultSet buscarTodosProduto() {
+        conexao.conectar(); // Abre a conexão com o banco de dados
+        try {
+            // Prepara a instrução SQL para seleção de todos os planos
+            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM PRODUTO");
+            // Executa a consulta e armazena o resultado no ResultSet
+            ResultSet rset = pstm.executeQuery();
+            return rset; // Retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar(); // Fecha a conexão com o banco de dados
+        }
+    }
+
     public ResultSet buscarProdutoPorEstado(Produto produto) {
         conexao.conectar(); // Abre a conexão com o banco
         try {

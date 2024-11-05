@@ -40,10 +40,6 @@ public class AdministradorDAO {
         }
     }
 
-
-
-
-
     // Método para inserir um novo administrador
     public boolean inserirAdministrador(Administrador adm) {
         try {

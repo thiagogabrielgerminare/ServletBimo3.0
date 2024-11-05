@@ -35,7 +35,7 @@
         <h2>Buscar todos</h2>
     </label>
     <div class="form-content">
-        <form action="${pageContext.request.contextPath}/buscarTodos" method="post">
+        <form action="${pageContext.request.contextPath}/buscarTodosAdm" method="post">
             <button type="submit"><h3>Buscar</h3></button>
         </form>
     </div>
