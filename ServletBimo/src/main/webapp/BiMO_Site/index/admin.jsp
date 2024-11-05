@@ -14,6 +14,7 @@
 	<meta name="viewport" content="initial-scale=1, width=device-width">
 	<title>Admin BiMO</title>
 	<link rel="stylesheet" href="/BiMO_Site/styles/admin.css">
+	<link rel="stylesheet" href="/BiMO_Site/styles/BI.css">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -42,6 +43,27 @@
 </div>
 
 
+
 <br><br><br><br><br>
+
+<div class="links-bi">
+	<h2>Dashboards de BI</h2>
+
+	<iframe
+			src="https://app.powerbi.com/view?r=eyJrIjoiMGQ4Zjg5OTgtNmM0Yi00MGE2LWI5YzUtZWFiMWViMWY5YTYyIiwidCI6ImIxNDhmMTRjLTIzOTctNDAyYy1hYjZhLTFiNDcxMTE3N2FjMCJ9"
+			width="100%"
+			height="600"
+			frameborder="0"
+			allowFullScreen="true">
+	</iframe>
+
+	<iframe
+			src="https://app.powerbi.com/view?r=eyJrIjoiNzJjZGI5YTgtMjIzYi00NDRmLWJjZWUtNzE5ZmVhZmY2OWM4IiwidCI6ImIxNDhmMTRjLTIzOTctNDAyYy1hYjZhLTFiNDcxMTE3N2FjMCJ9"
+			width="100%"
+			height="600"
+			frameborder="0"
+			allowFullScreen="true">
+	</iframe>
+</div>
 </body>
 </html>
