@@ -23,20 +23,36 @@ public class BuscarTodosMidia extends HttpServlet {
         ResultSet rs = midiaDAO.buscarTodosMidia();
         StringBuilder lista = new StringBuilder();
 
+        lista.append("<style>");
+        lista.append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }");
+        lista.append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }");
+        lista.append("th { background-color: #f2f2f2; font-weight: bold; }");
+        lista.append("tr:nth-child(even) { background-color: #f9f9f9; }");
+        lista.append("</style>");
+
+// Início da tabela HTML
+        lista.append("<table>");
+        lista.append("<tr><th>sId</th><th>idProduto</th><th>cUrlFoto</th></tr>");
+
         try {
-            // Itera sobre o ResultSet para construir a resposta em HTML
-            while (rs.next()) {
-                lista.append("<div class=\"linha\">");
-                lista.append("<p>").append("<div class=\"nomeColuna\">").append("sId: ").append("</div>").append(rs.getInt("SID")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("idProduto: ").append("</div>").append(rs.getInt("IDPRODUTO")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("cUrlFoto: ").append("</div>").append(rs.getString("CURLFOTO")).append("</p>")
-                        .append("</div>").append("<br>"); // Quebra de linha na saída HTML
+            // Itera sobre o ResultSet para criar uma linha de dados para cada registro
+            if (rs == null || !rs.isBeforeFirst()) {
+                request.setAttribute("resultado", "Nenhuma plano midia encontrada.");
+                request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);
+                return;
             }
+            while (rs.next()) {
+                lista.append("<tr>");
+                lista.append("<td>").append(rs.getInt("SID")).append("</td>");
+                lista.append("<td>").append(rs.getInt("IDPRODUTO")).append("</td>");
+                lista.append("<td>").append(rs.getString("CURLFOTO")).append("</td>");
+                lista.append("</tr>");
+            }
+            lista.append("</table>"); // Fecha a tabela
         } catch (SQLException sqle) {
             // Armazena a mensagem de erro na requisição
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
-
         // Define o resultado da busca como atributo da requisição
         request.setAttribute("resultado", lista.toString());
         request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);

@@ -21,18 +21,13 @@ public class BuscarTodosCurso extends HttpServlet {
 
         try (ResultSet rs = cursoDAO.buscarTodosCursos()) {
             // Verifica se o resultado está vazio
-            if (!rs.isBeforeFirst()) {
-                request.setAttribute("resultado", "Nenhum curso encontrado com o nome fornecido.");
-                request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
-                return;
-            }
 
             // Monta a lista de resultados
-            lista.append("<table>");
-            lista.append("<tr><th>sId</th><th>cNome</th><th>fValor</th><th>cDuração</th><th>cDescrição</th>")
-                    .append("<th>cCertificação</th><th>bStatus</th><th>iNúmero Inscrição</th><th>idCategoriaCurso</th>")
-                    .append("<th>transaction_made</th><th>bIsUpdated</th><th>bIsInactive</th></tr>");
-
+            if (rs == null || !rs.isBeforeFirst()) {
+                request.setAttribute("resultado", "Nenhum curso encontrado.");
+                request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);
+                return;
+            }
             while (rs.next()) {
                 lista.append("<tr>")
                         .append("<td>").append(rs.getInt("SID")).append("</td>")

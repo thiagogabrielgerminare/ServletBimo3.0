@@ -18,8 +18,8 @@ public class AdministradorDAO {
 
     //Metodo para o logar adm
     public boolean BuscarAdministrador(String email, String senha) {
+        conexao.conectar(); // Abre a conexão com o banco
         try {
-            conexao.conectar(); // Abre a conexão com o banco
             pstm = this.conexao.getConn().prepareStatement("SELECT CEMAIL, CSENHA FROM ADMINISTRADOR WHERE CEMAIL = ? AND CSENHA = ?");
             // Define os parâmetros na consulta SQL
             pstm.setString(1, email);
@@ -42,8 +42,8 @@ public class AdministradorDAO {
 
     // Método para inserir um novo administrador
     public boolean inserirAdministrador(Administrador adm) {
+        conexao.conectar(); // Abre a conexão com o banco
         try {
-            conexao.conectar(); // Abre a conexão com o banco
 
             // Prepara a instrução SQL para inserção
             pstm = this.conexao.getConn().prepareStatement("INSERT INTO ADMINISTRADOR (CNOME, CEMAIL, CSENHA) VALUES(?,?,?)");

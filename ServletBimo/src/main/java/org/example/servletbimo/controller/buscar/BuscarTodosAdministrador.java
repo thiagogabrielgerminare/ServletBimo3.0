@@ -23,20 +23,42 @@ public class BuscarTodosAdministrador extends HttpServlet {
         // Busca o administrador pelo nome
         ResultSet rs = administradorDAO.buscarTodosAdministradores();
         StringBuilder lista = new StringBuilder();
+        lista.append("<style>");
+        lista.append("table { width: 100%; border-collapse: collapse; }");
+        lista.append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }");
+        lista.append("th { background-color: #f2f2f2; font-weight: bold; }");
+        lista.append("tr:nth-child(even) { background-color: #f9f9f9; }");
+        lista.append("</style>");
+        lista.append("<table>");
+        lista.append("<thead><tr>");
+        lista.append("<th>sId</th>");
+        lista.append("<th>cNome</th>");
+        lista.append("<th>cEmail</th>");
+        lista.append("</tr></thead>");
+        lista.append("<tbody>");
 
         try {
-            // Itera sobre os resultados retornados
+            if (rs == null || !rs.isBeforeFirst()) {
+                request.setAttribute("resultado", "Nenhum Administrador encontrado com o nome fornecido.");
+                request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);
+                return;
+            }
+            // Itera sobre os resultados retornados e cria uma linha para cada registro
             while (rs.next()) {
-                lista.append("<div class=\"linha\">");
-                lista.append("<p>").append("<div class=\"nomeColuna\">").append("sId: ").append("</div>").append(rs.getInt("SID")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("cNome: ").append("</div>").append(rs.getString("CNOME")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("cEmail: ").append("</div>").append(rs.getString("CEMAIL")).append("</p>")
-                        .append("</div>").append("<br>"); // Quebra de linha na saída HTML
+                lista.append("<tr>");
+                lista.append("<td>").append(rs.getInt("SID")).append("</td>");
+                lista.append("<td>").append(rs.getString("CNOME")).append("</td>");
+                lista.append("<td>").append(rs.getString("CEMAIL")).append("</td>");
+                lista.append("</tr>");
             }
         } catch (SQLException sqle) {
             // Armazena a mensagem de erro na requisição
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
+
+        lista.append("</tbody></table>");
+
+
 
         // Define o resultado da busca como atributo da requisição
         request.setAttribute("resultado", lista.toString());

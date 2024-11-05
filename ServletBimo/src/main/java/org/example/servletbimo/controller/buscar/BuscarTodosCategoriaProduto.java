@@ -25,21 +25,49 @@ public class BuscarTodosCategoriaProduto extends HttpServlet {
         ResultSet rs = categoriaProdutoDAO.buscarTodasCategoriaProduto();
         StringBuilder lista = new StringBuilder();
 
+        // Estilo CSS para a tabela
+        lista.append("<style>");
+        lista.append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }");
+        lista.append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }");
+        lista.append("th { background-color: #f2f2f2; font-weight: bold; }");
+        lista.append("tr:nth-child(even) { background-color: #f9f9f9; }");
+        lista.append("</style>");
+
+// Início da tabela HTML
+        lista.append("<table>");
+        lista.append("<thead><tr>");
+        lista.append("<th>sId</th>");
+        lista.append("<th>cNome</th>");
+        lista.append("<th>transaction_made</th>");
+        lista.append("<th>bIsUpdated</th>");
+        lista.append("<th>bIsInactive</th>");
+        lista.append("</tr></thead>");
+        lista.append("<tbody>");
+
         try {
-            // Itera sobre os resultados retornados
+            // Itera sobre os resultados retornados e cria uma linha para cada registro
+            if (rs == null || !rs.isBeforeFirst()) {
+                request.setAttribute("resultado", "Nenhuma categoriaProduto encontrada.");
+                request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);
+                return;
+            }
             while (rs.next()) {
-                lista.append("<div class=\"linha\">");
-                lista.append("<p>").append("<div class=\"nomeColuna\">").append("sId: ").append("</div>").append(rs.getInt("SID")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("cNome: ").append("</div>").append(rs.getString("CNOME")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("transaction_made: ").append("</div>").append(rs.getBoolean("TRANSACTION_MADE")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("bIsUpdated: ").append("</div>").append(rs.getBoolean("BISUPDATED")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("bIsInactive: ").append("</div>").append(rs.getBoolean("BISINACTIVE")).append("</p>")
-                        .append("</div>").append("<br>"); // Quebra de linha na saída HTML
+                lista.append("<tr>");
+                lista.append("<td>").append(rs.getInt("SID")).append("</td>");
+                lista.append("<td>").append(rs.getString("CNOME")).append("</td>");
+                lista.append("<td>").append(rs.getBoolean("TRANSACTION_MADE")).append("</td>");
+                lista.append("<td>").append(rs.getBoolean("BISUPDATED")).append("</td>");
+                lista.append("<td>").append(rs.getBoolean("BISINACTIVE")).append("</td>");
+                lista.append("</tr>");
             }
         } catch (SQLException sqle) {
             // Armazena a mensagem de erro na requisição
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
+
+// Final da tabela HTML
+        lista.append("</tbody></table>");
+
 
         // Define o resultado da busca como atributo da requisição
         request.setAttribute("resultado", lista.toString());
