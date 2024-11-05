@@ -11,11 +11,11 @@ import java.io.IOException;
 @WebServlet(name = "loginjsp", value = "/loginjsp")
 public class LogarAdm extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        AdministradorDAO administradorDAO = new AdministradorDAO();
+
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        senha = criptografarSenha(senha);
-
-        AdministradorDAO administradorDAO = new AdministradorDAO();
+        senha = administradorDAO.criptografarSenha(senha);
 
         // Chama o método para buscar administrador
         if (administradorDAO.BuscarAdministrador(email, senha)) {
@@ -24,33 +24,5 @@ public class LogarAdm extends HttpServlet {
         } else {
             request.getRequestDispatcher("erro_login.jsp").forward(request, response);
         }
-    }
-
-    public String criptografarSenha(String senha) {
-        StringBuilder senhaCriptografada = new StringBuilder();
-        String alfabetoMinusculo = "abcdefghijklmnopqrstuvwxyz";
-        String alfabetoMaiusculo = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        int chaveSt = Integer.parseInt(System.getenv("CHAVE_CRIPTOGRAFIA"));
-
-        for (int i = 0; i < senha.length(); i++) {
-            char caractere = senha.charAt(i);
-
-            if (Character.isLowerCase(caractere)) {
-                int novaPosicao = (alfabetoMinusculo.indexOf(caractere) + chaveSt) % alfabetoMinusculo.length();
-                char novaLetra = alfabetoMinusculo.charAt(novaPosicao);
-                senhaCriptografada.append(novaLetra);
-            } else if (Character.isUpperCase(caractere)) {
-                int novaPosicao = (alfabetoMaiusculo.indexOf(caractere) + chaveSt) % alfabetoMaiusculo.length();
-                char novaLetra = alfabetoMaiusculo.charAt(novaPosicao);
-                senhaCriptografada.append(novaLetra);
-            } else if (Character.isDigit(caractere)) {
-                int novoDigito = (Character.getNumericValue(caractere) + chaveSt) % 10; // Limita a 0-9
-                senhaCriptografada.append(novoDigito);
-            } else {
-                senhaCriptografada.append(caractere); // Mantém caracteres não alfabéticos e não numéricos
-            }
-        }
-
-        return senhaCriptografada.toString();
     }
 }

@@ -16,6 +16,8 @@ public class AlterarSenhaAdm extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        AdministradorDAO administradorDAO = new AdministradorDAO();
+
         // Obtém os parâmetros 'id' e 'senha' da requisição
         String idStr = request.getParameter("id");
         String senha = request.getParameter("senha");
@@ -23,7 +25,7 @@ public class AlterarSenhaAdm extends HttpServlet {
         int idInt = 0;
 
         // Criptografa a senha recebida
-        String senhaCripto = criptografarSenha(senha);
+        String senhaCripto = administradorDAO.criptografarSenha(senha);
 
         // Verifica se o ID não é nulo ou vazio
         if (idStr != null && !idStr.isEmpty()) {
@@ -39,9 +41,6 @@ public class AlterarSenhaAdm extends HttpServlet {
         // Cria uma nova instância de Administrador com os dados recebidos
         Administrador administrador = new Administrador(idInt, senhaCripto, 3);
 
-        // Instancia o DAO para manipular os dados do administrador
-        AdministradorDAO administradorDAO = new AdministradorDAO();
-
         // Chama o método para alterar a senha do administrador no banco de dados
         int sucesso = administradorDAO.alterarSenhaAdministrador(administrador);
 
@@ -54,42 +53,5 @@ public class AlterarSenhaAdm extends HttpServlet {
             request.setAttribute("resultado", "Erro ao fazer a alteração!"); // Define atributo para erro
             request.getRequestDispatcher("erro.jsp").forward(request, response);
         }
-    }
-
-    // Método para criptografar a senha
-    public String criptografarSenha(String senha) {
-        StringBuilder senhaCriptografada = new StringBuilder();
-        String alfabetoMinusculo = "abcdefghijklmnopqrstuvwxyz"; // Alfabeto minúsculo
-        String alfabetoMaiusculo = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Alfabeto maiúsculo
-        int chaveSt = Integer.parseInt(System.getenv("CHAVE_CRIPTOGRAFIA")); // Obtém a chave de criptografia do ambiente
-
-        // Itera sobre cada caractere da senha
-        for (int i = 0; i < senha.length(); i++) {
-            char caractere = senha.charAt(i);
-
-            // Criptografa letras minúsculas
-            if (Character.isLowerCase(caractere)) {
-                int novaPosicao = (alfabetoMinusculo.indexOf(caractere) + chaveSt) % alfabetoMinusculo.length();
-                char novaLetra = alfabetoMinusculo.charAt(novaPosicao);
-                senhaCriptografada.append(novaLetra);
-            }
-            // Criptografa letras maiúsculas
-            else if (Character.isUpperCase(caractere)) {
-                int novaPosicao = (alfabetoMaiusculo.indexOf(caractere) + chaveSt) % alfabetoMaiusculo.length();
-                char novaLetra = alfabetoMaiusculo.charAt(novaPosicao);
-                senhaCriptografada.append(novaLetra);
-            }
-            // Criptografa dígitos
-            else if (Character.isDigit(caractere)) {
-                int novoDigito = (Character.getNumericValue(caractere) + chaveSt) % 10; // Limita a 0-9
-                senhaCriptografada.append(novoDigito);
-            }
-            // Mantém caracteres não alfabéticos e não numéricos
-            else {
-                senhaCriptografada.append(caractere);
-            }
-        }
-
-        return senhaCriptografada.toString(); // Retorna a senha criptografada
     }
 }

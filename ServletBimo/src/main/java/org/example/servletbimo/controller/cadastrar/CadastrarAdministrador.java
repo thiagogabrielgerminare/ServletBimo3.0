@@ -27,7 +27,7 @@ public class CadastrarAdministrador extends HttpServlet {
         String senha = request.getParameter("senha");
 
         // Criptografa a senha fornecida
-        String senhaCriptografada = criptografarSenha(senha);
+        String senhaCriptografada = administradorDAO.criptografarSenha(senha);
 
         if (verificarSenha(senha)) {
             if (administradorDAO.verificarAdministrador(email) && verificarEmail(email)){
@@ -54,46 +54,6 @@ public class CadastrarAdministrador extends HttpServlet {
             request.setAttribute("resultado", "Senha inválida! Certifique-se de que a senha tem mais de 8 caracteres e contém letras maiúsculas, números e caracteres especiais.");
             request.getRequestDispatcher("erro.jsp").forward(request, response);
         }
-    }
-
-    // Método para criptografar a senha
-    public String criptografarSenha(String senha) {
-        StringBuilder senhaCriptografada = new StringBuilder(); // StringBuilder para construir a senha criptografada
-        String alfabetoMinusculo = "abcdefghijklmnopqrstuvwxyz"; // Alfabeto minúsculo
-        String alfabetoMaiusculo = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Alfabeto maiúsculo
-        int chaveSt = Integer.parseInt(System.getenv("CHAVE_CRIPTOGRAFIA")); // Obtém a chave de criptografia do ambiente
-
-        // Itera sobre cada caractere da senha
-        for (int i = 0; i < senha.length(); i++) {
-            char caractere = senha.charAt(i);
-
-            // Verifica se o caractere é uma letra minúscula
-            if (Character.isLowerCase(caractere)) {
-                // Calcula a nova posição do caractere e adiciona ao resultado
-                int novaPosicao = (alfabetoMinusculo.indexOf(caractere) + chaveSt) % alfabetoMinusculo.length();
-                char novaLetra = alfabetoMinusculo.charAt(novaPosicao);
-                senhaCriptografada.append(novaLetra); // Adiciona a nova letra à senha criptografada
-            }
-            // Verifica se o caractere é uma letra maiúscula
-            else if (Character.isUpperCase(caractere)) {
-                // Calcula a nova posição do caractere e adiciona ao resultado
-                int novaPosicao = (alfabetoMaiusculo.indexOf(caractere) + chaveSt) % alfabetoMaiusculo.length();
-                char novaLetra = alfabetoMaiusculo.charAt(novaPosicao);
-                senhaCriptografada.append(novaLetra); // Adiciona a nova letra à senha criptografada
-            }
-            // Verifica se o caractere é um dígito
-            else if (Character.isDigit(caractere)) {
-                // Calcula o novo dígito e adiciona ao resultado (limita entre 0-9)
-                int novoDigito = (Character.getNumericValue(caractere) + chaveSt) % 10;
-                senhaCriptografada.append(novoDigito); // Adiciona o novo dígito à senha criptografada
-            } else {
-                // Mantém caracteres que não são letras nem dígitos inalterados
-                senhaCriptografada.append(caractere);
-            }
-        }
-
-        // Retorna a senha criptografada como uma string
-        return senhaCriptografada.toString();
     }
 
     //Metodo com regex para verificar email;
