@@ -12,38 +12,52 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet( name = "buscarNomeProduto", value = "/buscarNomeProduto" )
+@WebServlet(name = "buscarNomeProduto", value = "/buscarNomeProduto")
 public class BuscarNomeProduto extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nome = request.getParameter("nome");
 
+        // Validação da entrada
+        if (nome == null || nome.trim().isEmpty()) {
+            request.setAttribute("resultado", "O nome do produto não pode ser vazio.");
+            request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
+            return;
+        }
+
         Produto produto = new Produto(nome, 1);
-
         ProdutoDAO produtoDAO = new ProdutoDAO();
-
-        ResultSet rs = produtoDAO.buscarProdutoPorNome(produto);
         StringBuilder lista = new StringBuilder();
 
-        try {
-            while (rs.next()) {
-                lista.append("<div class=\"linha\">");
-                lista.append("<p>").append("<div class=\"nomeColuna\">").append("sId: ").append("</div>").append(rs.getInt("SID")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("cNome: ").append("</div>").append(rs.getString("CNOME")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("fValor: ").append("</div>").append(rs.getDouble("FVALOR")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("cEstado: ").append("</div>").append(rs.getString("CESTADO")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("cDescrição: ").append("</div>").append(rs.getString("CDESCRICAO")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("dDataCriação: ").append("</div>").append(rs.getDate("DDATACRIACAO")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("idUsuario: ").append("</div>").append(rs.getInt("IDUSUARIO")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("idCategoriaProduto: ").append("</div>").append(rs.getInt("IDCATEGORIAPRODUTO")).append("</p>")
-
-
-                        .append("</div>").append("<br>"); // Usando <br> para criar uma nova linha na saída HTML
+        try (ResultSet rs = produtoDAO.buscarProdutoPorNome(produto)) {
+            // Verifica se o resultado está vazio
+            if (rs == null || !rs.isBeforeFirst()) {
+                request.setAttribute("resultado", "Nenhum produto encontrado com o nome fornecido.");
+                request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
+                return;
             }
+
+            // Monta a lista de resultados
+            lista.append("<table>");
+            lista.append("<tr><th>sId</th><th>cNome</th><th>fValor</th><th>cEstado</th><th>cDescrição</th>")
+                    .append("<th>dDataCriação</th><th>idUsuario</th><th>idCategoriaProduto</th></tr>");
+
+            while (rs.next()) {
+                lista.append("<tr>")
+                        .append("<td>").append(rs.getInt("SID")).append("</td>")
+                        .append("<td>").append(rs.getString("CNOME")).append("</td>")
+                        .append("<td>").append(rs.getDouble("FVALOR")).append("</td>")
+                        .append("<td>").append(rs.getString("CESTADO")).append("</td>")
+                        .append("<td>").append(rs.getString("CDESCRICAO")).append("</td>")
+                        .append("<td>").append(rs.getDate("DDATACRIACAO")).append("</td>")
+                        .append("<td>").append(rs.getInt("IDUSUARIO")).append("</td>")
+                        .append("<td>").append(rs.getInt("IDCATEGORIAPRODUTO")).append("</td>")
+                        .append("</tr>");
+            }
+            lista.append("</table>");
         } catch (SQLException sqle) {
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
-
 
         request.setAttribute("resultado", lista.toString());
         request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
