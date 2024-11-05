@@ -12,31 +12,46 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet( name = "buscarUrlMidia", value = "/buscarUrlMidia" )
+@WebServlet(name = "buscarUrlMidia", value = "/buscarUrlMidia")
 public class BuscarUrlMidia extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = request.getParameter("url");
 
+        // Validação da entrada
+        if (url == null || url.trim().isEmpty()) {
+            request.setAttribute("resultado", "A URL não pode ser vazia.");
+            request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
+            return;
+        }
+
         Midia midia = new Midia(url);
-
         MidiaDAO midiaDAO = new MidiaDAO();
-
-        ResultSet rs = midiaDAO.buscarMidiaPorUrl(midia);
         StringBuilder lista = new StringBuilder();
 
-        try {
-            while (rs.next()) {
-                lista.append("<div class=\"linha\">");
-                lista.append("<p>").append("<div class=\"nomeColuna\">").append("sId: ").append("</div>").append(rs.getInt("SID")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("idProduto: ").append("</div>").append(rs.getInt("IDPRODUTO")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("cUrlFoto: ").append("</div>").append(rs.getString("CURLFOTO")).append("</p>")
-                        .append("</div>").append("<br>"); // Usando <br> para criar uma nova linha na saída HTML
+        try (ResultSet rs = midiaDAO.buscarMidiaPorUrl(midia)) {
+            // Verifica se o resultado está vazio
+            if (rs == null || !rs.isBeforeFirst()) {
+                request.setAttribute("resultado", "Nenhuma mídia encontrada com a URL fornecida.");
+                request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
+                return;
             }
+
+            // Monta a lista de resultados em uma tabela
+            lista.append("<table>");
+            lista.append("<tr><th>sId</th><th>idProduto</th><th>cUrlFoto</th></tr>");
+
+            while (rs.next()) {
+                lista.append("<tr>")
+                        .append("<td>").append(rs.getInt("SID")).append("</td>")
+                        .append("<td>").append(rs.getInt("IDPRODUTO")).append("</td>")
+                        .append("<td>").append(rs.getString("CURLFOTO")).append("</td>")
+                        .append("</tr>");
+            }
+            lista.append("</table>");
         } catch (SQLException sqle) {
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
-
 
         request.setAttribute("resultado", lista.toString());
         request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);
