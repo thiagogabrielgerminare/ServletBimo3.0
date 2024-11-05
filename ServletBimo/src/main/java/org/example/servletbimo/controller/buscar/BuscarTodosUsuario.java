@@ -1,4 +1,4 @@
-package org.example.servletbimo.controller.buscar;
+package org.example.servletbimo.controller.buscar.Usuario;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.servletbimo.DAO.UsuarioDAO;
-import org.example.servletbimo.models.Usuario;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -21,7 +20,7 @@ public class BuscarTodosUsuario extends HttpServlet {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
 
         // Realiza a busca pelo usuário no banco de dados
-        ResultSet rs = usuarioDAO.buscarUsuario();
+        ResultSet rs = usuarioDAO.buscarTodosUsuario();
         StringBuilder lista = new StringBuilder();
 
         try {

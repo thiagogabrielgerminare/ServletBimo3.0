@@ -1,4 +1,4 @@
-package org.example.servletbimo.controller.buscar;
+package org.example.servletbimo.controller.buscar.Plano;
 
 // Importações necessárias para a criação do servlet e para manipulação do banco de dados
 import jakarta.servlet.ServletException;

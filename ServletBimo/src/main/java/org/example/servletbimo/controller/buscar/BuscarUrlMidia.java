@@ -1,4 +1,4 @@
-package org.example.servletbimo.controller.buscar;
+package org.example.servletbimo.controller.buscar.Midia;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

@@ -1,4 +1,4 @@
-package org.example.servletbimo.controller.buscar;
+package org.example.servletbimo.controller.buscar.Usuario;
 
 // Importações para funcionamento do servlet e interação com o banco de dados
 import jakarta.servlet.ServletException;
@@ -6,9 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.MidiaCursoDAO;
 import org.example.servletbimo.DAO.UsuarioDAO;
-import org.example.servletbimo.models.MidiaCurso;
 import org.example.servletbimo.models.Usuario;
 
 import java.io.IOException;

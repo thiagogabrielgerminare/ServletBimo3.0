@@ -1,4 +1,4 @@
-package org.example.servletbimo.controller.buscar;
+package org.example.servletbimo.controller.buscar.CategoriaCurso;
 
 // Importações necessárias
 import jakarta.servlet.ServletException;

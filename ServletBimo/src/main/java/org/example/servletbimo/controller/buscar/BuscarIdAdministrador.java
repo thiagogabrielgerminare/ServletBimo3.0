@@ -1,4 +1,4 @@
-package org.example.servletbimo.controller.buscar;
+package org.example.servletbimo.controller.buscar.Administrador;
 
 // Importações necessárias
 import jakarta.servlet.ServletException;
