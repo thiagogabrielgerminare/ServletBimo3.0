@@ -12,24 +12,14 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet(name = "buscarNomeCurso", value = "/buscarNomeCurso")
-public class BuscarNomeCurso extends HttpServlet {
+@WebServlet(name = "buscarTodosCurso", value = "/buscarTodosCurso")
+public class BuscarTodosCurso extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nome = request.getParameter("nome");
-
-        // Validação da entrada
-        if (nome == null || nome.trim().isEmpty()) {
-            request.setAttribute("resultado", "O nome do curso não pode ser vazio.");
-            request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
-            return;
-        }
-
-        Curso curso = new Curso(nome, 1);
         CursoDAO cursoDAO = new CursoDAO();
         StringBuilder lista = new StringBuilder();
 
-        try (ResultSet rs = cursoDAO.buscarPorNome(curso)) {
+        try (ResultSet rs = cursoDAO.buscarTodosCursos()) {
             // Verifica se o resultado está vazio
             if (!rs.isBeforeFirst()) {
                 request.setAttribute("resultado", "Nenhum curso encontrado com o nome fornecido.");

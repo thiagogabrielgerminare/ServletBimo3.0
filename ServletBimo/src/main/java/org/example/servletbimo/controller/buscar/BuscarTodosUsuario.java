@@ -1,4 +1,4 @@
-package org.example.servletbimo.controller.buscar.Usuario;
+package org.example.servletbimo.controller.buscar;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 // Mapeia este servlet para a URL "/buscarIdUsuario"
-@WebServlet(name = "buscarTodosUsuarios", value = "/buscarTodosUsuarios")
+@WebServlet(name = "buscarTodosUsuario", value = "/buscarTodosUsuario")
 public class BuscarTodosUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

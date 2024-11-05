@@ -1,4 +1,4 @@
-package org.example.servletbimo.controller.buscar.Curso;
+package org.example.servletbimo.controller.buscar;
 
 // Importações necessárias para o funcionamento do servlet e interação com o banco de dados
 import jakarta.servlet.ServletException;

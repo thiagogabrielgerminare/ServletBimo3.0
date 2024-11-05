@@ -265,7 +265,7 @@
         <h2>Buscar todos</h2>
     </label>
     <div class="form-content">
-        <form action="${pageContext.request.contextPath}/buscarTodosBVuscarMidia" method="post">
+        <form action="${pageContext.request.contextPath}/buscarTodosBuscarMidia" method="post">
             <button type="submit"><h3>Buscar</h3></button>
         </form>
     </div>
@@ -365,7 +365,7 @@
         <h2>Buscar todos</h2>
     </label>
     <div class="form-content">
-        <form action="${pageContext.request.contextPath}/buscarTodosUsuarios" method="post">
+        <form action="${pageContext.request.contextPath}/buscarTodosUsuario" method="post">
             <button type="submit"><h3>Buscar</h3></button>
         </form>
     </div>

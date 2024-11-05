@@ -5,29 +5,23 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CategoriaCursoDAO;
-import org.example.servletbimo.models.CategoriaCurso;
+import org.example.servletbimo.DAO.AdministradorDAO;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// Mapeia este servlet para a URL "/buscarNomeCategoriaCurso"
-@WebServlet(name = "buscarNomeCategoriaCurso", value = "/buscarNomeCategoriaCurso")
-public class BuscarNomeCategoriaCurso extends HttpServlet {
+// Mapeia este servlet para a URL "/buscarNomeAdm"
+@WebServlet(name = "buscarTodosAdm", value = "/buscarTodosAdm")
+public class BuscarTodosAdministrador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtém o nome da categoria de curso da requisição
-        String nome = request.getParameter("nome");
 
-        // Cria uma nova instância de CategoriaCurso com o nome fornecido
-        CategoriaCurso categoriaCurso = new CategoriaCurso(nome);
+        // Cria uma instância do DAO para acessar dados do administrador
+        AdministradorDAO administradorDAO = new AdministradorDAO();
 
-        // Cria uma instância do DAO para acessar dados da categoria de curso
-        CategoriaCursoDAO categoriaCursoDAO = new CategoriaCursoDAO();
-
-        // Busca a categoria de curso pelo nome
-        ResultSet rs = categoriaCursoDAO.buscarPorNome(categoriaCurso);
+        // Busca o administrador pelo nome
+        ResultSet rs = administradorDAO.buscarTodosAdministradores();
         StringBuilder lista = new StringBuilder();
 
         try {
@@ -36,9 +30,7 @@ public class BuscarNomeCategoriaCurso extends HttpServlet {
                 lista.append("<div class=\"linha\">");
                 lista.append("<p>").append("<div class=\"nomeColuna\">").append("sId: ").append("</div>").append(rs.getInt("SID")).append("</p>")
                         .append("<p>").append("<div class=\"nomeColuna\">").append("cNome: ").append("</div>").append(rs.getString("CNOME")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("transaction_made: ").append("</div>").append(rs.getBoolean("TRANSACTION_MADE")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("bIsUpdated: ").append("</div>").append(rs.getBoolean("BISUPDATED")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("bIsInactive: ").append("</div>").append(rs.getBoolean("BISINACTIVE")).append("</p>")
+                        .append("<p>").append("<div class=\"nomeColuna\">").append("cEmail: ").append("</div>").append(rs.getString("CEMAIL")).append("</p>")
                         .append("</div>").append("<br>"); // Quebra de linha na saída HTML
             }
         } catch (SQLException sqle) {

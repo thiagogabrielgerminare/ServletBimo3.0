@@ -1,4 +1,4 @@
-package org.example.servletbimo.controller.buscar.Usuario;
+package org.example.servletbimo.controller.buscar;
 
 // Importações para funcionamento do servlet e interação com o banco de dados
 import jakarta.servlet.ServletException;

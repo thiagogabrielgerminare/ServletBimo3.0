@@ -87,7 +87,7 @@ public class UsuarioDAO {
         }
     }
 
-    public ResultSet buscarTodoUsuario() {
+    public ResultSet buscarTodosUsuario() {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de todos os planos

@@ -5,31 +5,21 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.MidiaDAO;
-import org.example.servletbimo.models.Midia;
+import org.example.servletbimo.DAO.MidiaCursoDAO;
+import org.example.servletbimo.models.MidiaCurso;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet(name = "buscarUrlMidia", value = "/buscarUrlMidia")
-public class BuscarUrlMidia extends HttpServlet {
+@WebServlet(name = "buscarTodosMidiaCurso", value = "/buscarTodosMidiaCurso")
+public class BuscarTodosMidiaCurso extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = request.getParameter("url");
-
-        // Validação da entrada
-        if (url == null || url.trim().isEmpty()) {
-            request.setAttribute("resultado", "A URL não pode ser vazia.");
-            request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
-            return;
-        }
-
-        Midia midia = new Midia(url);
-        MidiaDAO midiaDAO = new MidiaDAO();
+        MidiaCursoDAO midiaCursoDAO = new MidiaCursoDAO();
         StringBuilder lista = new StringBuilder();
 
-        try (ResultSet rs = midiaDAO.buscarMidiaPorUrl(midia)) {
+        try (ResultSet rs = midiaCursoDAO.buscarTodosMidiaCurso()) {
             // Verifica se o resultado está vazio
             if (rs == null || !rs.isBeforeFirst()) {
                 request.setAttribute("resultado", "Nenhuma mídia encontrada com a URL fornecida.");
@@ -39,13 +29,16 @@ public class BuscarUrlMidia extends HttpServlet {
 
             // Monta a lista de resultados em uma tabela
             lista.append("<table>");
-            lista.append("<tr><th>sId</th><th>idProduto</th><th>cUrlFoto</th></tr>");
+            lista.append("<tr><th>sId</th><th>idProduto</th><th>cUrlFoto</th><th>transaction_made</th><th>bIsUpdated</th><th>bIsInactive</th></tr>");
 
             while (rs.next()) {
                 lista.append("<tr>")
                         .append("<td>").append(rs.getInt("SID")).append("</td>")
-                        .append("<td>").append(rs.getInt("IDPRODUTO")).append("</td>")
+                        .append("<td>").append(rs.getInt("IDCURSO")).append("</td>")
                         .append("<td>").append(rs.getString("CURLFOTO")).append("</td>")
+                        .append("<td>").append(rs.getBoolean("TRANSACTION_MADE")).append("</td>")
+                        .append("<td>").append(rs.getBoolean("BISUPDATED")).append("</td>")
+                        .append("<td>").append(rs.getBoolean("BISINACTIVE")).append("</td>")
                         .append("</tr>");
             }
             lista.append("</table>");

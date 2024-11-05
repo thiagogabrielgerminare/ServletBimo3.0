@@ -1,4 +1,4 @@
-package org.example.servletbimo.controller.buscar.Produto;
+package org.example.servletbimo.controller.buscar;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

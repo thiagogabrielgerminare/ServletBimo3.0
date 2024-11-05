@@ -13,30 +13,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 // Mapeia este servlet para a URL "/buscarIdMidia"
-@WebServlet(name = "buscarIdMidia", value = "/buscarIdMidia")
-public class BuscarIdMidia extends HttpServlet {
+@WebServlet(name = "buscarTodosMidia", value = "/buscarTodosMidia")
+public class BuscarTodosMidia extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtém o ID passado na requisição
-        String idStr = request.getParameter("id");
 
-        int idInt = 0;
-        // Converte o ID para inteiro se não for nulo ou vazio
-        if (idStr != null && !idStr.isEmpty()) {
-            try {
-                idInt = Integer.parseInt(idStr);
-            } catch (NumberFormatException e) {
-                // Tratamento de erro para formato inválido
-                System.out.println("Erro: o parâmetro não é um número válido.");
-            }
-        }
-
-        // Cria uma nova instância de Midia usando o ID
-        Midia midia = new Midia(idInt);
         MidiaDAO midiaDAO = new MidiaDAO();
 
         // Realiza a busca pela mídia no banco de dados
-        ResultSet rs = midiaDAO.buscarMidiaPorId(midia);
+        ResultSet rs = midiaDAO.buscarTodosMidia();
         StringBuilder lista = new StringBuilder();
 
         try {

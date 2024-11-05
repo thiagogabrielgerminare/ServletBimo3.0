@@ -1,4 +1,4 @@
-package org.example.servletbimo.controller.buscar.Administrador;
+package org.example.servletbimo.controller.buscar;
 
 // Importações necessárias para a criação do servlet e manipulação de dados
 import jakarta.servlet.ServletException;
