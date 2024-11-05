@@ -78,7 +78,7 @@ public class CadastrarCurso extends HttpServlet {
         if (sucesso) {
             request.setAttribute("resultado", "Cadastro realizado com sucesso!"); // Sucesso na inserção
             // Redireciona a requisição para a página de cadastro
-            request.getRequestDispatcher("confirmacao.jsp").forward(request, response);
+            request.getRequestDispatcher("/BiMO_Site/index/confirmacao.jsp").forward(request, response);
 
         } else {
             request.setAttribute("resultado", "Erro ao cadastrar!"); // Falha na inserção

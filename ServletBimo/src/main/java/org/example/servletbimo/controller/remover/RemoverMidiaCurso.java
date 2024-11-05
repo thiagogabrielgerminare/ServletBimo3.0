@@ -42,10 +42,10 @@ public class RemoverMidiaCurso extends HttpServlet {
         if (sucesso > 0) {
             request.setAttribute("resultado", "Remoção realizada com sucesso!"); // Sucesso na remoção
             // Redireciona a requisição para a página de remoção
-            request.getRequestDispatcher("confirmacao.jsp").forward(request, response);
+            request.getRequestDispatcher("/BiMO_Site/index/confirmacao.jsp").forward(request, response);
         } else {
             request.setAttribute("resultado", "Erro ao remover!"); // Falha na remoção
-            request.getRequestDispatcher("erro.jsp").forward(request, response);
+            request.getRequestDispatcher("/BiMO_Site/index/erro.jsp").forward(request, response);
         }
     }
 }

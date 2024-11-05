@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiMO - Cadastros</title>
-    <link rel="stylesheet" href="funcoes.css">
+    <link rel="stylesheet" href="/BiMO_Site/styles/funcoes.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,7 +17,7 @@
         <h2>Cadastre novos admins, categorias e planos de forma rápida e prática. Gerencie tudo em um só lugar!</h2>
     </div>
     <div id="divimginicio">
-        <img src="imagem.png" id="imginicio">
+        <img src="/BiMO_Site/image/imagem.png" id="imginicio">
     </div>
     <div id="quadrado"></div>
 </div>
@@ -28,7 +28,7 @@
         <h2>Novo Administrador</h2>
     </label>
     <div class="form-content">
-        <form action="cadastrarAdm" method="post">
+        <form action="${pageContext.request.contextPath}/cadastrarAdm" method="post">
             <label for="nome-adm"><h3>Nome</h3></label>
             <input type="text" id="nome-adm" name="nome" required>
 
@@ -51,7 +51,7 @@
         <h2>Novo Plano</h2>
     </label>
     <div class="form-content">
-        <form action="cadastrarPlano" method="post">
+        <form action="${pageContext.request.contextPath}/cadastrarPlano" method="post">
             <label for="nome-plano"><h3>Nome</h3></label>
             <input type="text" id="nome-plano" name="nome" required>
 
@@ -72,7 +72,7 @@
         <h2>Nova Categoria de Curso</h2>
     </label>
     <div class="form-content">
-        <form action="cadastrarCategoriaCurso" method="post">
+        <form action="${pageContext.request.contextPath}/cadastrarCategoriaCurso" method="post">
             <label for="nome-categoria-curso"><h3>Nome</h3></label>
             <input type="text" id="nome-categoria-curso" name="nome" required>
 
@@ -87,7 +87,7 @@
         <h2>Nova Categoria de Produto</h2>
     </label>
     <div class="form-content">
-        <form action="cadastrarCategoriaProduto" method="post">
+        <form action="${pageContext.request.contextPath}/cadastrarCategoriaProduto" method="post">
             <label for="nome-categoria-produto"><h3>Nome</h3></label>
             <input type="text" id="nome-categoria-produto" name="nome" required>
 
@@ -102,7 +102,7 @@
         <h2>Novo Curso</h2>
     </label>
     <div class="form-content">
-        <form action="cadastrarCurso" method="post">
+        <form action="${pageContext.request.contextPath}/cadastrarCurso" method="post">
             <label for="nome-curso"><h3>Nome</h3></label>
             <input type="text" id="nome-curso" name="nome" required>
 
@@ -148,7 +148,7 @@
         <h2>Nova Mídia de Curso</h2>
     </label>
     <div class="form-content">
-        <form action="cadastrarMidiaCurso" method="post">
+        <form action="${pageContext.request.contextPath}/cadastrarMidiaCurso" method="post">
             <label for="id-curso"><h3>ID Curso</h3></label>
             <input type="number" id="id-curso" name="id" required>
 

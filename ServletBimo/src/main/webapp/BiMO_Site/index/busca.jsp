@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiMO - Buscas</title>
-    <link rel="stylesheet" href="funcoes.css">
+    <link rel="stylesheet" href="/BiMO_Site/styles/funcoes.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,7 +17,7 @@
         <h2>Busque administradores, categorias e planos com agilidade. Encontre tudo o que precisa no BiMO!</h2>
     </div>
     <div id="divimginicio">
-        <img src="imagem.png" id="imginicio">
+        <img src="/BiMO_Site/image/imagem.png" id="imginicio">
     </div>
     <div id="quadrado"></div>
 </div>
@@ -35,7 +35,7 @@
         <h2>Buscar Por ID</h2>
     </label>
     <div class="form-content">
-        <form action="buscarIdAdm" method="post">
+        <form action="${pageContext.request.contextPath}/buscarIdAdm" method="post">
             <label for="id-adm"><h3>ID</h3></label>
             <input type="number" id="id-adm" name="id" required>
 
@@ -50,7 +50,7 @@
         <h2>Buscar Por Nome</h2>
     </label>
     <div class="form-content">
-        <form action="buscarNomeAdm" method="post">
+        <form action="${pageContext.request.contextPath}/buscarNomeAdm" method="post">
             <label for="nome-adm"><h3>Nome</h3></label>
             <input type="text" id="nome-adm" name="nome" required>
 
@@ -65,7 +65,7 @@
         <h2>Buscar Por Email</h2>
     </label>
     <div class="form-content">
-        <form action="buscarEmailAdm" method="post">
+        <form action="${pageContext.request.contextPath}/buscarEmailAdm" method="post">
             <label for="email-adm"><h3>Email</h3></label>
             <input type="email" id="email-adm" name="email" required>
 
@@ -88,7 +88,7 @@
         <h2>Buscar Por ID</h2>
     </label>
     <div class="form-content">
-        <form action="buscarIdPlano" method="post">
+        <form action="${pageContext.request.contextPath}/buscarIdPlano" method="post">
             <label for="id-plano"><h3>ID</h3></label>
             <input type="number" id="id-plano" name="id" required>
 
@@ -103,7 +103,7 @@
         <h2>Buscar Por Nome</h2>
     </label>
     <div class="form-content">
-        <form action="buscarNomePlano" method="post">
+        <form action="${pageContext.request.contextPath}/buscarNomePlano" method="post">
             <label for="nome-plano"><h3>Nome</h3></label>
             <input type="text" id="nome-plano" name="nome" required>
 
@@ -118,7 +118,7 @@
         <h2>Buscar Por Descrição</h2>
     </label>
     <div class="form-content">
-        <form action="buscarDescricaoPlano" method="post">
+        <form action="${pageContext.request.contextPath}/buscarDescricaoPlano" method="post">
             <label for="descricao-plano"><h3>Descrição</h3></label>
             <input type="text" id="descricao-plano" name="descricao" required>
 
@@ -141,7 +141,7 @@
         <h2>Buscar Por ID</h2>
     </label>
     <div class="form-content">
-        <form action="buscarIdCategoriaCurso" method="post">
+        <form action="${pageContext.request.contextPath}/buscarIdCategoriaCurso" method="post">
             <label for="id-categoria-curso"><h3>ID</h3></label>
             <input type="number" id="id-categoria-curso" name="id" required>
 
@@ -156,7 +156,7 @@
         <h2>Buscar Por Nome</h2>
     </label>
     <div class="form-content">
-        <form action="buscarNomeCategoriaCurso" method="post">
+        <form action="${pageContext.request.contextPath}/buscarNomeCategoriaCurso" method="post">
             <label for="nome-categoria-curso"><h3>Nome</h3></label>
             <input type="text" id="nome-categoria-curso" name="nome" required>
 
@@ -179,7 +179,7 @@
         <h2>Buscar Por ID</h2>
     </label>
     <div class="form-content">
-        <form action="buscarIdCategoriaProduto" method="post">
+        <form action="${pageContext.request.contextPath}/buscarIdCategoriaProduto" method="post">
             <label for="id-categoria-produto"><h3>ID</h3></label>
             <input type="number" id="id-categoria-produto" name="id" required>
 
@@ -194,7 +194,7 @@
         <h2>Buscar Por Nome</h2>
     </label>
     <div class="form-content">
-        <form action="buscarNomeCategoriaProduto" method="post">
+        <form action="${pageContext.request.contextPath}/buscarNomeCategoriaProduto" method="post">
             <label for="nome-categoria-produto"><h3>Nome</h3></label>
             <input type="text" id="nome-categoria-produto" name="nome" required>
 
@@ -217,7 +217,7 @@
         <h2>Buscar Por ID</h2>
     </label>
     <div class="form-content">
-        <form action="buscarIdMidia" method="post">
+        <form action="${pageContext.request.contextPath}/buscarIdMidia" method="post">
             <label for="id-midia"><h3>ID</h3></label>
             <input type="number" id="id-midia" name="id" required>
 
@@ -232,7 +232,7 @@
         <h2>Buscar Por URL</h2>
     </label>
     <div class="form-content">
-        <form action="buscarUrlMidia" method="post">
+        <form action="${pageContext.request.contextPath}/buscarUrlMidia" method="post">
             <label for="url-midia"><h3>URL</h3></label>
             <input type="text" id="url-midia" name="url" required>
 
@@ -255,7 +255,7 @@
         <h2>Buscar Por ID</h2>
     </label>
     <div class="form-content">
-        <form action="buscarIdMidiaCurso" method="post">
+        <form action="${pageContext.request.contextPath}/buscarIdMidiaCurso" method="post">
             <label for="id-midia-curso"><h3>ID</h3></label>
             <input type="number" id="id-midia-curso" name="id" required>
 
@@ -270,7 +270,7 @@
         <h2>Buscar Por URL</h2>
     </label>
     <div class="form-content">
-        <form action="buscarUrlMidiaCurso" method="post">
+        <form action="${pageContext.request.contextPath}/buscarUrlMidiaCurso" method="post">
             <label for="url-midia-curso"><h3>URL</h3></label>
             <input type="text" id="url-midia-curso" name="url" required>
 
@@ -293,7 +293,7 @@
         <h2>Buscar Por ID</h2>
     </label>
     <div class="form-content">
-        <form action="buscarIdUsuario" method="post">
+        <form action="${pageContext.request.contextPath}/buscarIdUsuario" method="post">
             <label for="id-usuario"><h3>ID</h3></label>
             <input type="number" id="id-usuario" name="id" required>
 
@@ -308,7 +308,7 @@
         <h2>Buscar Por Nome</h2>
     </label>
     <div class="form-content">
-        <form action="buscarNomeUsuario" method="post">
+        <form action="${pageContext.request.contextPath}/buscarNomeUsuario" method="post">
             <label for="nome-usuario"><h3>Nome</h3></label>
             <input type="text" id="nome-usuario" name="nome" required>
 
@@ -324,7 +324,7 @@
         <h2>Buscar Por Email</h2>
     </label>
     <div class="form-content">
-        <form action="buscarEmailUsuario" method="post">
+        <form action="${pageContext.request.contextPath}/buscarEmailUsuario" method="post">
             <label for="email-usuario"><h3>Email</h3></label>
             <input type="email" id="email-usuario" name="email" required>
 
@@ -339,7 +339,7 @@
         <h2>Buscar Por CPF</h2>
     </label>
     <div class="form-content">
-        <form action="buscarCpfUsuario" method="post">
+        <form action="${pageContext.request.contextPath}/buscarCpfUsuario" method="post">
             <label for="cpf-usuario"><h3>CPF</h3></label>
             <input type="number" id="cpf-usuario" name="cpf" required>
 
@@ -354,7 +354,7 @@
         <h2>Buscar Por CNPJ</h2>
     </label>
     <div class="form-content">
-        <form action="buscarCnpjUsuario" method="post">
+        <form action="${pageContext.request.contextPath}/buscarCnpjUsuario" method="post">
             <label for="cnpj-usuario"><h3>CNPJ</h3></label>
             <input type="number" id="cnpj-usuario" name="cnpj" required>
 
@@ -377,7 +377,7 @@
         <h2>Buscar Por ID</h2>
     </label>
     <div class="form-content">
-        <form action="buscarIdProduto" method="post">
+        <form action="${pageContext.request.contextPath}/buscarIdProduto" method="post">
             <label for="id-produto"><h3>ID</h3></label>
             <input type="number" id="id-produto" name="id" required>
 
@@ -392,7 +392,7 @@
         <h2>Buscar Por Nome</h2>
     </label>
     <div class="form-content">
-        <form action="buscarNomeProduto" method="post">
+        <form action="${pageContext.request.contextPath}/buscarNomeProduto" method="post">
             <label for="nome-produto"><h3>Nome</h3></label>
             <input type="text" id="nome-produto" name="nome" required>
 
@@ -408,7 +408,7 @@
         <h2>Buscar Por Estado</h2>
     </label>
     <div class="form-content">
-        <form action="buscarEstadoProduto" method="post">
+        <form action="${pageContext.request.contextPath}/buscarEstadoProduto" method="post">
             <label for="estado-produto"><h3>Estado</h3></label>
             <input type="text" id="estado-produto" name="estado" required>
 
@@ -431,7 +431,7 @@
         <h2>Buscar Por ID</h2>
     </label>
     <div class="form-content">
-        <form action="buscarIdCurso" method="post">
+        <form action="${pageContext.request.contextPath}/buscarIdCurso" method="post">
             <label for="id-curso"><h3>ID</h3></label>
             <input type="number" id="id-curso" name="id" required>
 
@@ -446,7 +446,7 @@
         <h2>Buscar Por Nome</h2>
     </label>
     <div class="form-content">
-        <form action="buscarNomeCurso" method="post">
+        <form action="${pageContext.request.contextPath}/buscarNomeCurso" method="post">
             <label for="nome-curso"><h3>Nome</h3></label>
             <input type="text" id="nome-curso" name="nome" required>
 
@@ -462,7 +462,7 @@
         <h2>Buscar Por Certificação</h2>
     </label>
     <div class="form-content">
-        <form action="buscarCertificacaoCurso" method="post">
+        <form action="${pageContext.request.contextPath}/buscarCertificacaoCurso" method="post">
             <label for="certificacao-curso"><h3>Email</h3></label>
             <input type="text" id="certificacao-curso" name="certificacao" required>
 

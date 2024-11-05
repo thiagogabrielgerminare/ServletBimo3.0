@@ -48,10 +48,10 @@ public class AlterarSenhaAdm extends HttpServlet {
         if (sucesso > 0) {
             request.setAttribute("resultado", "Alteração realizada com sucesso!"); // Define atributo para sucesso
             // Redireciona para a página de alteração
-            request.getRequestDispatcher("confirmacao.jsp").forward(request, response);
+            request.getRequestDispatcher("/BiMO_Site/index/confirmacao.jsp").forward(request, response);
         } else {
             request.setAttribute("resultado", "Erro ao fazer a alteração!"); // Define atributo para erro
-            request.getRequestDispatcher("erro.jsp").forward(request, response);
+            request.getRequestDispatcher("/BiMO_Site/index/erro.jsp").forward(request, response);
         }
     }
 }

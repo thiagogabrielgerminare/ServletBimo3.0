@@ -41,10 +41,10 @@ public class CadastrarMidiaCurso extends HttpServlet {
         if (success){
             request.setAttribute("resultado", "Cadastro realizado com sucesso!");
             // Redireciona para a página de cadastro
-            request.getRequestDispatcher("confirmacao.jsp").forward(request, response);
+            request.getRequestDispatcher("/BiMO_Site/index/confirmacao.jsp").forward(request, response);
         } else {
             request.setAttribute("resultado", "Erro ao cadastrar!");
-            request.getRequestDispatcher("erro.jsp").forward(request, response);
+            request.getRequestDispatcher("/BiMO_Site/index/erro.jsp").forward(request, response);
         }
     }
 }

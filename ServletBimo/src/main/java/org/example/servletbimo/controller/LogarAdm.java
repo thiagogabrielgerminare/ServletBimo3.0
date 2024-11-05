@@ -20,9 +20,9 @@ public class LogarAdm extends HttpServlet {
         // Chama o método para buscar administrador
         if (administradorDAO.BuscarAdministrador(email, senha)) {
             request.getSession().setAttribute("logado",true);
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
+            request.getRequestDispatcher("/BiMO_Site/index/admin.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("erro_login.jsp").forward(request, response);
+            request.getRequestDispatcher("/BiMO_Site/index/erro_login.jsp").forward(request, response);
         }
     }
 }

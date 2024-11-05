@@ -13,7 +13,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1, width=device-width">
 	<title>Admin BiMO</title>
-	<link rel="stylesheet" href="admin.css">
+	<link rel="stylesheet" href="/BiMO_Site/styles/admin.css">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -25,7 +25,7 @@
 		<h2>Controle e gerencie tudo para promover uma experiência única ao usuário.</h2>
 	</div>
 	<div id="divimginicio">
-		<img src="imagem.png" id="imginicio">
+		<img src="/BiMO_Site/image/imagem.png" id="imginicio">
 	</div>
 	<div id="quadrado"></div>
 </div>
@@ -34,10 +34,10 @@
 	<h1>O que você fará hoje?</h1>
 
 	<div class="opcoes">
-		<a href="cadastro.jsp">Cadastrar</a>
-		<a href="remocao.jsp">Remover</a>
-		<a href="alteracao.jsp">Alterar</a>
-		<a href="busca.jsp">Buscar</a>
+		<a href="/BiMO_Site/index/cadastro.jsp">Cadastrar</a>
+		<a href="/BiMO_Site/index/remocao.jsp">Remover</a>
+		<a href="/BiMO_Site/index/alteracao.jsp">Alterar</a>
+		<a href="/BiMO_Site/index/busca.jsp">Buscar</a>
 	</div>
 </div>
 

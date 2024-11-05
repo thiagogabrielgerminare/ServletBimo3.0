@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>BiMO - Remoções</title>
-	<link rel="stylesheet" href="funcoes.css">
+	<link rel="stylesheet" href="/BiMO_Site/styles/funcoes.css">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,7 +16,7 @@
 		<h2>Remova administradores, categorias e planos com rapidez e segurança. Simplifique a gestão do BiMO!</h2>
 	</div>
 	<div id="divimginicio">
-		<img src="imagem.png" id="imginicio">
+		<img src="/BiMO_Site/image/imagem.png" id="imginicio">
 	</div>
 	<div id="quadrado"></div>
 </div>
@@ -29,7 +29,7 @@
 			<h2>Administrador</h2>
 		</label>
 		<div class="form-content">
-			<form action="removerAdm" method="post">
+			<form action="${pageContext.request.contextPath}/removerAdm" method="post">
 				<label for="id-adm"><h3>ID</h3></label>
 				<input type="number" id="id-adm" name="id" required>
 
@@ -44,7 +44,7 @@
 			<h2>Plano</h2>
 		</label>
 		<div class="form-content">
-			<form action="removerPlano" method="post">
+			<form action="${pageContext.request.contextPath}/removerPlano" method="post">
 				<label for="id-plano"><h3>ID</h3></label>
 				<input type="number" id="id-plano" name="id" required>
 
@@ -59,7 +59,7 @@
 			<h2>Categoria de Curso</h2>
 		</label>
 		<div class="form-content">
-			<form action="removerCategoriaCurso" method="post">
+			<form action="${pageContext.request.contextPath}/removerCategoriaCurso" method="post">
 				<label for="id-categoria-curso"><h3>ID</h3></label>
 				<input type="number" id="id-categoria-curso" name="id" required>
 
@@ -74,7 +74,7 @@
 			<h2>Categoria de Produto</h2>
 		</label>
 		<div class="form-content">
-			<form action="removerCategoriaProduto" method="post">
+			<form action="${pageContext.request.contextPath}/removerCategoriaProduto" method="post">
 				<label for="id-categoria-produto"><h3>ID</h3></label>
 				<input type="number" id="id-categoria-produto" name="id" required>
 
@@ -89,7 +89,7 @@
 			<h2>Usuário</h2>
 		</label>
 		<div class="form-content">
-			<form action="removerUsuario" method="post">
+			<form action="${pageContext.request.contextPath}/removerUsuario" method="post">
 				<label for="id-usuario"><h3>ID</h3></label>
 				<input type="number" id="id-usuario" name="id" required>
 
@@ -104,7 +104,7 @@
 			<h2>Produto</h2>
 		</label>
 		<div class="form-content">
-			<form action="removerProduto" method="post">
+			<form action="${pageContext.request.contextPath}/removerProduto" method="post">
 				<label for="id-produto"><h3>ID</h3></label>
 				<input type="number" id="id-produto" name="id" required>
 
@@ -119,7 +119,7 @@
 			<h2>Curso</h2>
 		</label>
 		<div class="form-content">
-			<form action="removerCurso" method="post">
+			<form action="${pageContext.request.contextPath}/removerCurso" method="post">
 				<label for="id-curso"><h3>ID</h3></label>
 				<input type="number" id="id-curso" name="id" required>
 
@@ -134,7 +134,7 @@
 			<h2>Mídia</h2>
 		</label>
 		<div class="form-content">
-			<form action="removerMidia" method="post">
+			<form action="${pageContext.request.contextPath}/removerMidia" method="post">
 				<label for="id-midia"><h3>ID</h3></label>
 				<input type="number" id="id-midia" name="id" required>
 
@@ -149,7 +149,7 @@
 			<h2>Mídia - Curso</h2>
 		</label>
 		<div class="form-content">
-			<form action="removerMidiaCurso" method="post">
+			<form action="${pageContext.request.contextPath}/removerMidiaCurso" method="post">
 				<label for="id-midia-curso"><h3>ID</h3></label>
 				<input type="number" id="id-midia-curso" name="id" required>
 

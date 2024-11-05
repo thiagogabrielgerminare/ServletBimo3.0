@@ -41,18 +41,18 @@ public class CadastrarAdministrador extends HttpServlet {
                 if (sucesso) {
                     request.setAttribute("resultado", "cadastro realizado com sucesso!"); // Sucesso
                     // Redireciona a requisição para a página de cadastro
-                    request.getRequestDispatcher("confirmacao.jsp").forward(request, response);
+                    request.getRequestDispatcher("/BiMO_Site/index/confirmacao.jsp").forward(request, response);
                 } else {
                     request.setAttribute("resultado", "Erro ao cadastrar!"); // Falha
-                    request.getRequestDispatcher("erro.jsp").forward(request, response);
+                    request.getRequestDispatcher("/BiMO_Site/index/erro.jsp").forward(request, response);
                 }
             } else {
                 request.setAttribute("resultado", "Email inválido! Certifique-se de que não existe nenhum administrador cadastrado com esse email e que ele segue o padrão correto.");
-                request.getRequestDispatcher("erro.jsp").forward(request, response);
+                request.getRequestDispatcher("/BiMO_Site/index/erro.jsp").forward(request, response);
             }
         } else {
             request.setAttribute("resultado", "Senha inválida! Certifique-se de que a senha tem mais de 8 caracteres e contém letras maiúsculas, números e caracteres especiais.");
-            request.getRequestDispatcher("erro.jsp").forward(request, response);
+            request.getRequestDispatcher("/BiMO_Site/index/erro.jsp").forward(request, response);
         }
     }
 

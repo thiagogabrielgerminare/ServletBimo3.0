@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiMO - Alterações</title>
-    <link rel="stylesheet" href="funcoes.css">
+    <link rel="stylesheet" href="/BiMO_Site/styles/funcoes.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,7 +16,7 @@
         <h2>Altere administradores, categorias e planos facilmente. Mantenha tudo atualizado no BiMO!</h2>
     </div>
     <div id="divimginicio">
-        <img src="imagem.png" id="imginicio">
+        <img src="/BiMO_Site/image/imagem.png" id="imginicio">
     </div>
     <div id="quadrado"></div>
 </div>
@@ -34,7 +34,7 @@
             <h2>Nome - Administrador</h2>
         </label>
         <div class="form-content">
-            <form action="alterarNomeAdm" method="post">
+            <form action="${pageContext.request.contextPath}/alterarNomeAdm" method="post">
                 <label for="id-adm"><h3>ID</h3></label>
                 <input type="number" id="id-adm" name="id" required>
 
@@ -52,7 +52,7 @@
             <h2>Email - Administrador</h2>
         </label>
         <div class="form-content">
-            <form action="alterarEmailAdm" method="post">
+            <form action="${pageContext.request.contextPath}/alterarEmailAdm" method="post">
                 <label for="id-adm"><h3>ID</h3></label>
                 <input type="number" id="id-adm" name="id" required>
 
@@ -70,7 +70,7 @@
             <h2>Senha - Administrador</h2>
         </label>
         <div class="form-content">
-            <form action="alterarSenhaAdm" method="post">
+            <form action="${pageContext.request.contextPath}/alterarSenhaAdm" method="post">
                 <label for="id-adm"><h3>ID</h3></label>
                 <input type="number" id="id-adm" name="id" required>
 
@@ -93,7 +93,7 @@
             <h2>Nome - Plano</h2>
         </label>
         <div class="form-content">
-            <form action="alterarNomePlano" method="post">
+            <form action="${pageContext.request.contextPath}/alterarNomePlano" method="post">
                 <label for="id-plano"><h3>ID</h3></label>
                 <input type="number" id="id-plano" name="id" required>
 
@@ -111,7 +111,7 @@
             <h2>Valor - Plano</h2>
         </label>
         <div class="form-content">
-            <form action="alterarValorPlano" method="post">
+            <form action="${pageContext.request.contextPath}/alterarValorPlano" method="post">
                 <label for="id-plano"><h3>ID</h3></label>
                 <input type="number" id="id-plano" name="id" required>
 
@@ -129,7 +129,7 @@
             <h2>Descrição - Plano</h2>
         </label>
         <div class="form-content">
-            <form action="alterarDescricaoPlano" method="post">
+            <form action="${pageContext.request.contextPath}/alterarDescricaoPlano" method="post">
                 <label for="id-plano"><h3>ID</h3></label>
                 <input type="number" id="id-plano" name="id" required>
 
@@ -152,7 +152,7 @@
             <h2>Nome - Categoria de Curso</h2>
         </label>
         <div class="form-content">
-            <form action="alterarNomeCategoriaCurso" method="post">
+            <form action="${pageContext.request.contextPath}/alterarNomeCategoriaCurso" method="post">
                 <label for="id-categoria-curso"><h3>ID</h3></label>
                 <input type="number" id="id-categoria-curso" name="id" required>
 
@@ -175,7 +175,7 @@
             <h2>Nome - Categoria de Produto</h2>
         </label>
         <div class="form-content">
-            <form action="alterarNomeCategoriaProduto" method="post">
+            <form action="${pageContext.request.contextPath}/alterarNomeCategoriaProduto" method="post">
                 <label for="id-categoria-produto"><h3>ID</h3></label>
                 <input type="number" id="id-categoria-produto" name="id" required>
 
@@ -198,7 +198,7 @@
             <h2>ID Curso - Mídia Curso</h2>
         </label>
         <div class="form-content">
-            <form action="alterarIdCurso" method="post">
+            <form action="${pageContext.request.contextPath}/alterarIdCurso" method="post">
                 <label for="id-midia-curso"><h3>ID</h3></label>
                 <input type="number" id="id-midia-curso" name="id" required>
 
@@ -216,7 +216,7 @@
             <h2>URL - Midia Curso</h2>
         </label>
         <div class="form-content">
-            <form action="alterarUrlMidiaCurso" method="post">
+            <form action="${pageContext.request.contextPath}/alterarUrlMidiaCurso" method="post">
                 <label for="id-midia-curso"><h3>ID</h3></label>
                 <input type="number" id="id-midia-curso" name="id" required>
 

@@ -54,6 +54,6 @@ public class BuscarIdMidia extends HttpServlet {
 
 
         request.setAttribute("resultado", lista.toString());
-        request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
+        request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);
     }
 }
