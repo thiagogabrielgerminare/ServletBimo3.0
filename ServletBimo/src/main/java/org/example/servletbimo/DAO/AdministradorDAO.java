@@ -168,7 +168,11 @@ public class AdministradorDAO {
         try{
             pstm = conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR WHERE CEMAIL = ?");
             pstm.setString(1, cEmail);
-            return pstm.executeQuery() != null;
+            if (pstm.executeQuery().next()) {
+                return false;
+            } else {
+                return true;
+            }
         }catch(SQLException sqle){
             sqle.printStackTrace();
             return false;
