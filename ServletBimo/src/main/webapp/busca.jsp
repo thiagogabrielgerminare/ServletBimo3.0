@@ -118,7 +118,7 @@
         <h2>Buscar Por Descrição</h2>
     </label>
     <div class="form-content">
-        <form action="buscarDescricaoAdm" method="post">
+        <form action="buscarDescricaoPlano" method="post">
             <label for="descricao-plano"><h3>Descrição</h3></label>
             <input type="text" id="descricao-plano" name="descricao" required>
 
@@ -179,7 +179,7 @@
         <h2>Buscar Por ID</h2>
     </label>
     <div class="form-content">
-        <form action="buscarIdMidiaCurso" method="post">
+        <form action="buscarIdCategoriaProduto" method="post">
             <label for="id-categoria-produto"><h3>ID</h3></label>
             <input type="number" id="id-categoria-produto" name="id" required>
 
@@ -227,21 +227,6 @@
 </div>
 
 <div class="cardfuncao">
-    <input type="checkbox" id="buscar-id-produto" class="toggle">
-    <label for="buscar-id-produto" class="label-toggle">
-        <h2>Buscar Por ID Produto</h2>
-    </label>
-    <div class="form-content">
-        <form action="buscarIdProdutoMidia" method="post">
-            <label for="id-produto-midia"><h3>ID - Produto</h3></label>
-            <input type="number" id="id-produto-midia" name="id" required>
-
-            <button type="submit"><h3>Buscar</h3></button>
-        </form>
-    </div>
-</div>
-
-<div class="cardfuncao">
     <input type="checkbox" id="buscar-url-midia" class="toggle">
     <label for="buscar-url-midia" class="label-toggle">
         <h2>Buscar Por URL</h2>
@@ -273,21 +258,6 @@
         <form action="buscarIdMidiaCurso" method="post">
             <label for="id-midia-curso"><h3>ID</h3></label>
             <input type="number" id="id-midia-curso" name="id" required>
-
-            <button type="submit"><h3>Buscar</h3></button>
-        </form>
-    </div>
-</div>
-
-<div class="cardfuncao">
-    <input type="checkbox" id="buscar-id-curso-midia-curso" class="toggle">
-    <label for="buscar-id-curso-midia-curso" class="label-toggle">
-        <h2>Buscar Por ID Curso</h2>
-    </label>
-    <div class="form-content">
-        <form action="buscarIdCursoMidiaCurso" method="post">
-            <label for="id-curso-midia-curso"><h3>ID - Curso</h3></label>
-            <input type="number" id="id-curso-midia-curso" name="id" required>
 
             <button type="submit"><h3>Buscar</h3></button>
         </form>
@@ -385,7 +355,7 @@
     </label>
     <div class="form-content">
         <form action="buscarCnpjUsuario" method="post">
-            <label for="cnpj-usuario"><h3>CPF</h3></label>
+            <label for="cnpj-usuario"><h3>CNPJ</h3></label>
             <input type="number" id="cnpj-usuario" name="cnpj" required>
 
             <button type="submit"><h3>Buscar</h3></button>

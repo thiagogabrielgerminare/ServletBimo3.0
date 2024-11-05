@@ -147,6 +147,24 @@ public class PlanoPagamentoDAO {
         }
     }
 
+    // Método para buscar um plano de pagamento por NOME
+    public ResultSet buscarPlanoPagamentoPorNome(PlanoPagamento planoP) {
+        conexao.conectar(); // Abre a conexão com o banco de dados
+        try {
+            // Prepara a instrução SQL para seleção de um plano por ID
+            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO WHERE CNOME = ?");
+            pstm.setString(1, planoP.getcNome()); // Define o NOME do plano a ser buscado
+            // Executa a consulta e armazena o resultado no ResultSet
+            ResultSet rset = pstm.executeQuery();
+            return rset; // Retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar(); // Fecha a conexão com o banco de dados
+        }
+    }
+
     // Método para buscar um plano de pagamento por valor
     public ResultSet buscarPlanoPagamentoPorValor(PlanoPagamento planoP) {
         conexao.conectar(); // Abre a conexão com o banco de dados

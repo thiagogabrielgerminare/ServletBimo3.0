@@ -144,18 +144,22 @@ public class CursoDAO {
     }
 
     public ResultSet buscarTodasCursos() {
+        conexao.conectar();
         try {
             pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO"); // Prepara a instrução SQL
             return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
         } catch (SQLException sqle) { // Trata exceções SQL
             sqle.printStackTrace(); // Exibe a stack trace da exceção
             return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();;
         }
         // Nota: A conexão não é fechada aqui, pois o ResultSet está sendo retornado.
     }
 
     // Método para buscar um curso pelo ID
     public ResultSet buscarPorId(Curso curso) {
+        conexao.conectar();
         try {
             pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO WHERE sId = ?"); // Prepara a instrução SQL
             pstm.setInt(1, curso.getsId()); // Define o ID da categoria a ser buscada
@@ -163,12 +167,15 @@ public class CursoDAO {
         } catch (SQLException sqle) { // Trata exceções SQL
             sqle.printStackTrace(); // Exibe a stack trace da exceção
             return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
         }
         // Nota: A conexão não é fechada aqui, pois o ResultSet está sendo retornado.
     }
 
     // Método para buscar um curso pelo nome
     public ResultSet buscarPorNome(Curso curso) {
+        conexao.conectar();
         try {
             pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO WHERE CNOME = ?"); // Prepara a instrução SQL
             pstm.setString(1, curso.getcNome()); // Define o nome da categoria a ser buscada
@@ -176,11 +183,14 @@ public class CursoDAO {
         } catch (SQLException sqle) { // Trata exceções SQL
             sqle.printStackTrace(); // Exibe a stack trace da exceção
             return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
         }
         // Nota: A conexão não é fechada aqui, pois o ResultSet está sendo retornado.
     }
 
     public ResultSet buscarPorValor(Curso curso) {
+        conexao.conectar();
         try {
             pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO WHERE FVALOR = ?"); // Prepara a instrução SQL
             pstm.setDouble(1, curso.getfValor()); // Define o nome da categoria a ser buscada
@@ -188,6 +198,24 @@ public class CursoDAO {
         } catch (SQLException sqle) { // Trata exceções SQL
             sqle.printStackTrace(); // Exibe a stack trace da exceção
             return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
+        }
+        // Nota: A conexão não é fechada aqui, pois o ResultSet está sendo retornado.
+    }
+
+    // Método para buscar um curso pelo nome
+    public ResultSet buscarPorCertificacao(Curso curso) {
+        conexao.conectar();
+        try {
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO WHERE CCERTIFICACAO = ?"); // Prepara a instrução SQL
+            pstm.setString(1, curso.getcCertificacao()); // Define o nome da categoria a ser buscada
+            return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
+        } catch (SQLException sqle) { // Trata exceções SQL
+            sqle.printStackTrace(); // Exibe a stack trace da exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
         }
         // Nota: A conexão não é fechada aqui, pois o ResultSet está sendo retornado.
     }

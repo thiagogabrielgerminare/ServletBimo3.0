@@ -19,6 +19,18 @@ public class Usuario {
         this.sId = sId;
     }
 
+    public Usuario(String variavel, int tipoVariavel) {
+        if (tipoVariavel == 1){ //1 é para nome
+            this.cNome = variavel;
+        } else if (tipoVariavel == 2) { //2 é para email
+            this.cEmail = variavel;
+        } else if (tipoVariavel == 3) { //3 é para cpf
+            this.cCpf = variavel;
+        } else if (tipoVariavel == 4) { //4 é para cnpj
+            this.cCnpj = variavel;
+        }
+    }
+
     public int getsId() {
         return sId;
     }

@@ -44,12 +44,13 @@ public class CadastrarPlanoPagamento extends HttpServlet {
 
         // Define o resultado da operação como atributo da requisição
         if (success) {
-            request.setAttribute("resultado", "foi"); // Sucesso na inserção
+            request.setAttribute("resultado", "Cadastro realizado com sucesso!"); // Sucesso na inserção
+            // Redireciona a requisição para a página de cadastro
+            request.getRequestDispatcher("confirmacao.jsp").forward(request, response);
         } else {
-            request.setAttribute("resultado", "não foi"); // Falha na inserção
+            request.setAttribute("resultado", "Erro ao cadastrar!"); // Falha na inserção
+            request.getRequestDispatcher("erro.jsp").forward(request, response);
         }
 
-        // Redireciona a requisição para a página de cadastro
-        request.getRequestDispatcher("cadastro.jsp").forward(request, response);
     }
 }

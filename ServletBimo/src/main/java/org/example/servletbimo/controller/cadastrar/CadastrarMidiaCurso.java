@@ -39,12 +39,12 @@ public class CadastrarMidiaCurso extends HttpServlet {
 
         // Define o resultado da operação
         if (success){
-            request.setAttribute("resultado", "foi");
+            request.setAttribute("resultado", "Cadastro realizado com sucesso!");
+            // Redireciona para a página de cadastro
+            request.getRequestDispatcher("confirmacao.jsp").forward(request, response);
         } else {
-            request.setAttribute("resultado", "não foi");
+            request.setAttribute("resultado", "Erro ao cadastrar!");
+            request.getRequestDispatcher("erro.jsp").forward(request, response);
         }
-
-        // Redireciona para a página de cadastro
-        request.getRequestDispatcher("cadastro.jsp").forward(request, response);
     }
 }

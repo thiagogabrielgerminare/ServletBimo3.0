@@ -1,16 +1,19 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mariannaluna-ieg
-  Date: 31/10/2024
-  Time: 12:41
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<%@ page contentType="text/html; charset=UTF-8" %>
 <head>
-    <title>Deu certo!!!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erro</title>
+    <link rel="stylesheet" href="confirmacao.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Funfou</h1>
+<div class="container">
+    <div class="error-box">
+        <h1>${resultado}</h1>
+        <!-- <div class="icon"><img src="confirmacao.png" alt="check"></div> -->
+    </div>
+</div>
 </body>
 </html>

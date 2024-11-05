@@ -10,6 +10,7 @@ import org.example.servletbimo.models.Administrador;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @WebServlet( name = "buscarNomeAdm", value = "/buscarNomeAdm" )
 public class BuscarNomeAdministrador extends HttpServlet {
@@ -20,9 +21,24 @@ public class BuscarNomeAdministrador extends HttpServlet {
         Administrador administrador = new Administrador(nome, 1);
 
         AdministradorDAO administradorDAO = new AdministradorDAO();
-        ResultSet sucesso = administradorDAO.buscarAdministradorPorNome(administrador);
+
+        ResultSet rs = administradorDAO.buscarAdministradorPorNome(administrador);
+        StringBuilder lista = new StringBuilder();
+
+        try {
+            while (rs.next()) {
+                lista.append("<div class=\"linha\">");
+                lista.append("<p>").append("<div class=\"nomeColuna\">").append("sId: ").append("</div>").append(rs.getInt("SID")).append("</p>")
+                        .append("<p>").append("<div class=\"nomeColuna\">").append("cNome: ").append("</div>").append(rs.getString("CNOME")).append("</p>")
+                        .append("<p>").append("<div class=\"nomeColuna\">").append("cEmail: ").append("</div>").append(rs.getString("CEMAIL")).append("</p>")
+                        .append("</div>").append("<br>"); // Usando <br> para criar uma nova linha na saída HTML
+            }
+        } catch (SQLException sqle) {
+            request.setAttribute("resultado", "Erro: " + sqle.getMessage());
+        }
 
 
+        request.setAttribute("resultado", lista.toString());
         request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
     }
 }

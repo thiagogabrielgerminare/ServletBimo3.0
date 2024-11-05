@@ -1,9 +1,11 @@
 package org.example.servletbimo.DAO; // Pacote que contém a classe DAO
 
 
+import org.example.servletbimo.models.Midia;
 import org.example.servletbimo.models.MidiaCurso;
 
 import java.sql.PreparedStatement; // Importa a classe para preparar instruções SQL
+import java.sql.ResultSet;
 import java.sql.SQLException; // Importa a classe para tratar exceções relacionadas ao SQL
 
 public class MidiaCursoDAO {
@@ -73,6 +75,36 @@ public class MidiaCursoDAO {
             return -1; // Retorna -1 em caso de erro
         } finally {
             conexao.desconectar(); // Fecha a conexão
+        }
+    }
+
+    public ResultSet buscarMidiaCursoPorId(MidiaCurso midiaCurso) {
+        conexao.conectar(); // Abre a conexão com o banco
+        try {
+            // Prepara a instrução SQL para busca por ID
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM MIDIACURSO WHERE SID = ?");
+            pstm.setInt(1, midiaCurso.getsId()); // Define o valor do parâmetro SID
+            return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
+        }
+    }
+
+    public ResultSet buscarMidiaCursoPorUrl(MidiaCurso midiaCurso) {
+        conexao.conectar(); // Abre a conexão com o banco
+        try {
+            // Prepara a instrução SQL para busca por ID
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM MIDIACURSO WHERE CURLFOTO = ?");
+            pstm.setString(1, midiaCurso.getcURLFoto()); // Define o valor do parâmetro SID
+            return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
         }
     }
 }

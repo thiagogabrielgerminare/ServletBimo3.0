@@ -24,18 +24,26 @@ public class PlanoPagamento {
         this.sId = sId;
     }
 
-    public PlanoPagamento(int sId, String algo, int tipoParametro) { // construtor para alteração de nome e descrição
+    public PlanoPagamento(int sId, String variavel, int tipoVariavel) { // construtor para alteração de nome e descrição
         this.sId = sId;
-        if (tipoParametro == 1) { // 1 é para nome
-            this.cNome = algo;
-        } else if (tipoParametro == 2) { // 2 é para descrição
-            this.cDescricao = algo;
+        if (tipoVariavel == 1) { // 1 é para nome
+            this.cNome = variavel;
+        } else if (tipoVariavel == 2) { // 2 é para descrição
+            this.cDescricao = variavel;
         }
     }
 
     public PlanoPagamento(int sId, double fValor) { // construtor para alteração de valor
         this.sId = sId;
         this.fValor = fValor;
+    }
+
+    public PlanoPagamento(String variavel, int tipoVariavel) {
+        if (tipoVariavel == 1) { //1 é para nome
+            this.cNome = variavel;
+        } else if (tipoVariavel == 2) { //2 é para descrição
+            this.cDescricao = variavel;
+        }
     }
 
     // Getters e Setters para acessar e modificar os atributos

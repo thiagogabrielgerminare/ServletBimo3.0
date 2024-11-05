@@ -47,6 +47,10 @@ public class MidiaCurso {
         this.idCurso = idCurso;
     }
 
+    public MidiaCurso(String cURLFoto) {
+        this.cURLFoto = cURLFoto;
+    }
+
     // Método para obter o ID da mídia
     public int getsId() {
         return this.sId; // Retorna o ID da mídia

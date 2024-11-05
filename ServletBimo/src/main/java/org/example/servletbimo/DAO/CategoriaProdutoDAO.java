@@ -74,7 +74,7 @@ public class CategoriaProdutoDAO {
             sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
             return null; // Retorna null em caso de erro
         } finally {
-            // Não fecha a conexão aqui, pois o ResultSet ainda pode ser utilizado
+            conexao.desconectar();
         }
     }
 
@@ -90,7 +90,7 @@ public class CategoriaProdutoDAO {
             sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
             return null; // Retorna null em caso de erro
         } finally {
-            // Não fecha a conexão aqui, pois o ResultSet ainda pode ser utilizado
+            conexao.desconectar();
         }
     }
 
@@ -106,7 +106,7 @@ public class CategoriaProdutoDAO {
             sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
             return null; // Retorna null em caso de erro
         } finally {
-            // Não fecha a conexão aqui, pois o ResultSet ainda pode ser utilizado
+            conexao.desconectar();
         }
     }
 }

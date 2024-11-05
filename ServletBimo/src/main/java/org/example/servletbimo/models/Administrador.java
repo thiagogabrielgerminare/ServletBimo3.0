@@ -22,20 +22,22 @@ public class Administrador {
         this.sId = sId;
     } // construtor para remoção
 
-    public Administrador(int sId, String algo, int tipoParametro) { //construtor para alteração
+    public Administrador(int sId, String variavel, int tipoVariavel) { //construtor para alteração
         this.sId = sId;
-        if (tipoParametro == 1){ //1 é para nome
-            this.cNome = algo;
-        } else if (tipoParametro == 2) { //2 é para Email
-            this.cEmail = algo;
-        } else if (tipoParametro == 3) { //3 é para Senha
-            this.cSenha = algo;
+        if (tipoVariavel == 1){ //1 é para nome
+            this.cNome = variavel;
+        } else if (tipoVariavel == 2) { //2 é para Email
+            this.cEmail = variavel;
+        } else if (tipoVariavel == 3) { //3 é para Senha
+            this.cSenha = variavel;
         }
     }
 
-    public Administrador(String algo, int tipoParametro) { // construtor para busca
-        if (tipoParametro == 1){ // 1 é para nome
-            this.cNome = algo;
+    public Administrador(String variavel, int tipoVariavel) { // construtor para busca
+        if (tipoVariavel == 1){ // 1 é para nome
+            this.cNome = variavel;
+        } else if (tipoVariavel == 2) { //2 é para email
+            this.cEmail = variavel;
         }
     }
 
@@ -73,43 +75,5 @@ public class Administrador {
                 "Nome='" + this.cNome + '\'' +
                 ", Email='" + this.cEmail + '\'' +
                 '}';
-    }
-
-    //Metodo com regex para verificar email;
-    public static boolean verificarEmail(String email){
-        String regexEmail = "^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2}$";
-        try{
-            // Cria um objeto Pattern compilando o padrão
-            Pattern pattern = Pattern.compile(regexEmail);
-            // Cria um objeto Matcher chamando o metodo matcher no objeto Pattern, passando a string de email de entrada
-            Matcher verificacao = pattern.matcher(email);
-            if(verificacao.matches()){
-                return true;
-            }else{
-                return false;
-            }
-        }catch(InputMismatchException ime){
-            ime.printStackTrace();
-            return false;
-        }
-    }
-
-    //Metodo com regex para verificar senha;
-    public static boolean verificarSenha(String senha){
-        String regexSenha = "^(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$\n";
-        try{
-            // Cria um objeto Pattern compilando o padrão
-            Pattern pattern = Pattern.compile(regexSenha);
-            // Cria um objeto Matcher chamando o método matcher no objeto Pattern, passando a string de email de entrada
-            Matcher verificacao = pattern.matcher(senha);
-            if(verificacao.matches()){
-                return true;
-            }else{
-                return false;
-            }
-        }catch(InputMismatchException ime){
-            ime.printStackTrace();
-            return false;
-        }
     }
 }

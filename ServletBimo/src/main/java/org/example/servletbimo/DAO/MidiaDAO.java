@@ -1,10 +1,12 @@
 package org.example.servletbimo.DAO;
 
+import org.example.servletbimo.models.CategoriaProduto;
 import org.example.servletbimo.models.Usuario;
 
 import org.example.servletbimo.models.Midia;
 
 import java.sql.PreparedStatement; // Importa a classe para preparar instruções SQL
+import java.sql.ResultSet;
 import java.sql.SQLException; // Importa a classe para tratar exceções relacionadas ao SQL
 
 
@@ -25,6 +27,38 @@ public class MidiaDAO {
             return -1; // Retorna false em caso de erro
         } finally {
             conexao.desconectar(); // Garante que a conexão seja fechada
+        }
+    }
+
+    // Método para buscar midia por sId
+    public ResultSet buscarMidiaPorId(Midia midia) {
+        conexao.conectar(); // Abre a conexão com o banco
+        try {
+            // Prepara a instrução SQL para busca por ID
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM MIDIA WHERE SID = ?");
+            pstm.setInt(1, midia.getsId()); // Define o valor do parâmetro SID
+            return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
+        }
+    }
+
+    // Método para buscar midia por sId
+    public ResultSet buscarMidiaPorUrl(Midia midia) {
+        conexao.conectar(); // Abre a conexão com o banco
+        try {
+            // Prepara a instrução SQL para busca por ID
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM MIDIA WHERE CURLFOTO = ?");
+            pstm.setString(1, midia.getcURLFoto()); // Define o valor do parâmetro SID
+            return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
         }
     }
 }

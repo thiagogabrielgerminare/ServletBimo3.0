@@ -36,6 +36,14 @@ public class Curso {
         this.sId = sId;
     }
 
+    public Curso(String variavel, int tipoVariavel) {
+        if (tipoVariavel == 1){ //1 é para nome
+            this.cNome = variavel;
+        } else if (tipoVariavel == 2) { //2 é para certificação
+            this.cCertificacao = variavel;
+        }
+    }
+
     // Getters e Setters
 
 

@@ -44,12 +44,12 @@ public class AlterarDescricaoPlano extends HttpServlet {
 
         // Verifica se a alteração foi bem-sucedida
         if (sucesso > 0) {
-            request.setAttribute("resultado", "foi"); // Define atributo para sucesso
+            request.setAttribute("resultado", "Alteração realizada com sucesso!"); // Define atributo para sucesso
+            // Redireciona para a página de alteração
+            request.getRequestDispatcher("confirmacao.jsp").forward(request, response);
         } else {
-            request.setAttribute("resultado", "erro "); // Define atributo para erro
+            request.setAttribute("resultado", "Erro ao fazer a alteração!"); // Define atributo para erro
+            request.getRequestDispatcher("erro.jsp").forward(request, response);
         }
-
-        // Redireciona para a página de alteração
-        request.getRequestDispatcher("alteracao.jsp").forward(request, response);
     }
 }

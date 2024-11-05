@@ -3,6 +3,7 @@ package org.example.servletbimo.DAO; // Pacote que contém a classe DAO
 import org.example.servletbimo.models.Produto;
 
 import java.sql.PreparedStatement; // Importa a classe para preparar instruções SQL
+import java.sql.ResultSet;
 import java.sql.SQLException; // Importa a classe para tratar exceções relacionadas ao SQL
 
 public class ProdutoDAO {
@@ -22,6 +23,51 @@ public class ProdutoDAO {
             return -1; // Retorna false em caso de erro
         } finally {
             conexao.desconectar(); // Garante que a conexão seja fechada
+        }
+    }
+
+    public ResultSet buscarProdutoPorId(Produto produto) {
+        conexao.conectar(); // Abre a conexão com o banco
+        try {
+            // Prepara a instrução SQL para busca por ID
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM PRODUTO WHERE SID = ?");
+            pstm.setInt(1, produto.getsId()); // Define o valor do parâmetro SID
+            return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            // Não fecha a conexão aqui, pois o ResultSet ainda pode ser utilizado
+        }
+    }
+
+    public ResultSet buscarProdutoPorNome(Produto produto) {
+        conexao.conectar(); // Abre a conexão com o banco
+        try {
+            // Prepara a instrução SQL para busca por NOME
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM PRODUTO WHERE CNOME = ?");
+            pstm.setString(1, produto.getcNome()); // Define o valor do parâmetro CNOME
+            return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            // Não fecha a conexão aqui, pois o ResultSet ainda pode ser utilizado
+        }
+    }
+
+    public ResultSet buscarProdutoPorEstado(Produto produto) {
+        conexao.conectar(); // Abre a conexão com o banco
+        try {
+            // Prepara a instrução SQL para busca por ESTADO
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM PRODUTO WHERE CESTADO = ?");
+            pstm.setString(1, produto.getcEstado()); // Define o valor do parâmetro CESTADO
+            return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            // Não fecha a conexão aqui, pois o ResultSet ainda pode ser utilizado
         }
     }
 }

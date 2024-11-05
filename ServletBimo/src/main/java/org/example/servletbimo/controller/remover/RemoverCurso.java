@@ -40,12 +40,12 @@ public class RemoverCurso extends HttpServlet {
 
         // Define o resultado da operação como atributo da requisição
         if (sucesso > 0) {
-            request.setAttribute("resultado", "foi"); // Sucesso na remoção
+            request.setAttribute("resultado", "Remoção realizada com sucesso!"); // Sucesso na remoção
+            // Redireciona a requisição para a página de remoção
+            request.getRequestDispatcher("confirmacao.jsp").forward(request, response);
         } else {
-            request.setAttribute("resultado", "erro "); // Falha na remoção
+            request.setAttribute("resultado", "Erro ao remover!"); // Falha na remoção
+            request.getRequestDispatcher("erro.jsp").forward(request, response);
         }
-
-        // Redireciona a requisição para a página de remoção
-        request.getRequestDispatcher("remocao.jsp").forward(request, response);
     }
 }

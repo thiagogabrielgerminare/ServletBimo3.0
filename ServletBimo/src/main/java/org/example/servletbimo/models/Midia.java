@@ -10,6 +10,10 @@ public class Midia {
         this.sId = sId;
     }
 
+    public Midia(String cURLFoto) {
+        this.cURLFoto = cURLFoto;
+    }
+
     public int getsId() { return this.sId; }
 
     // Método para obter a URL do vídeo

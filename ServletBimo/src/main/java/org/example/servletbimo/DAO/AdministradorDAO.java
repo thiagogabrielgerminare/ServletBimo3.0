@@ -163,6 +163,18 @@ public class AdministradorDAO {
         }
     }
 
+    public boolean verificarAdministrador(String cEmail){
+        conexao.conectar();
+        try{
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR WHERE CEMAIL = ?");
+            pstm.setString(1, cEmail);
+            return pstm.executeQuery() != null;
+        }catch(SQLException sqle){
+            sqle.printStackTrace();
+            return false;
+        }
+    }
+
     // Método para buscar um administrador pelo nome
     public ResultSet buscarAdministradorPorNome(Administrador adm) {
         conexao.conectar(); // Abre a conexão com o banco

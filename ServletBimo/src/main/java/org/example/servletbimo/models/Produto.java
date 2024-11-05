@@ -16,6 +16,14 @@ public class Produto {
         this.sId = sId;
     }
 
+    public Produto(String variavel, int tipoVariavel) {
+        if (tipoVariavel == 1){ //1 é para nome
+            this.cNome = variavel;
+        } else if (tipoVariavel == 2) { //2 é para estado
+            this.cEstado = variavel;
+        }
+    }
+
     public int getsId() {
         return sId;
     }

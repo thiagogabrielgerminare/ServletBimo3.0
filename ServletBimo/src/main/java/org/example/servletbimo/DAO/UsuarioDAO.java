@@ -3,6 +3,7 @@ package org.example.servletbimo.DAO; // Pacote que contém a classe DAO
 import org.example.servletbimo.models.Usuario;
 
 import java.sql.PreparedStatement; // Importa a classe para preparar instruções SQL
+import java.sql.ResultSet;
 import java.sql.SQLException; // Importa a classe para tratar exceções relacionadas ao SQL
 
 public class UsuarioDAO {
@@ -23,6 +24,81 @@ public class UsuarioDAO {
             return -1; // Retorna false em caso de erro
         } finally {
             conexao.desconectar(); // Garante que a conexão seja fechada
+        }
+    }
+
+    public ResultSet buscarUsuarioPorId(Usuario usuario) {
+        conexao.conectar(); // Abre a conexão com o banco
+        try {
+            // Prepara a instrução SQL para busca por ID
+                pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE SID = ?");
+            pstm.setInt(1, usuario.getsId()); // Define o valor do parâmetro SID
+            return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
+        }
+    }
+
+    public ResultSet buscarUsuarioPorNome(Usuario usuario) {
+        conexao.conectar(); // Abre a conexão com o banco
+        try {
+            // Prepara a instrução SQL para busca por ID
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE CNOME = ?");
+            pstm.setString(1, usuario.getcNome()); // Define o valor do parâmetro CNOME
+            return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
+        }
+    }
+
+    public ResultSet buscarUsuarioPorEmail(Usuario usuario) {
+        conexao.conectar(); // Abre a conexão com o banco
+        try {
+            // Prepara a instrução SQL para busca por NOME
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE CEMAIL = ?");
+            pstm.setString(1, usuario.getcEmail()); // Define o valor do parâmetro CEMAIL
+            return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
+        }
+    }
+
+    public ResultSet buscarUsuarioPorCpf(Usuario usuario) {
+        conexao.conectar(); // Abre a conexão com o banco
+        try {
+            // Prepara a instrução SQL para busca por CPF
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE CCPF = ?");
+            pstm.setString(1, usuario.getcCpf()); // Define o valor do parâmetro CCPF
+            return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
+        }
+    }
+
+    public ResultSet buscarUsuarioPorCnpj(Usuario usuario) {
+        conexao.conectar(); // Abre a conexão com o banco
+        try {
+            // Prepara a instrução SQL para busca por CCNPJ
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE CCNPJ = ?");
+            pstm.setString(1, usuario.getcCnpj()); // Define o valor do parâmetro CCNPJ
+            return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
+        } catch (SQLException sqle) {
+            sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
+            return null; // Retorna null em caso de erro
+        } finally {
+            conexao.desconectar();
         }
     }
 }
