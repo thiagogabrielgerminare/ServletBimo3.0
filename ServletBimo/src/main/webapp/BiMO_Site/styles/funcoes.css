@@ -99,7 +99,7 @@ h3 {
 .funcao-title {
     /* font-size: 50px; */
     color: #0FAAF1;
-    text-align: center;
+    text-align: center;    
     background-color: #F4F7E6;
     width: 60%;
 }
@@ -176,19 +176,6 @@ button {
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease;
-}
-
-.status-curso {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.radio {
-    display: inline-flex;
-}
-
-.radio label{
-    margin-top: -6px;
 }
 
 
@@ -295,6 +282,6 @@ button {
 
 @media print {
     * {
-        display: none;
+       display: none;
     }
 }

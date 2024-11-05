@@ -1,3 +1,4 @@
+
 /* Reset de margens e padding */
 * {
     margin: 0;
@@ -27,7 +28,7 @@ html {
     padding: 60px 80px;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    width: 100%;
+    width: 100%; 
 }
 
 /* Título e subtítulo */
@@ -45,9 +46,13 @@ h2 {
 
 /* Ícone de erro */
 .icon {
+    font-size: 6em;
+    background: linear-gradient(270deg, #23C2FF 28.21%, #2CFC71 97.09%);
     color: white;
+    padding: 40px;
+    border-radius: 50%;
     display: inline-block;
-    margin:  10% 0;
+    margin: 30px 0;
     width: 50%;
 }
 
