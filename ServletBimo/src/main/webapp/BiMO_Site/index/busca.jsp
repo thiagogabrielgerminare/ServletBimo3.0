@@ -30,6 +30,18 @@
 <br>
 
 <div class="cardfuncao">
+    <input type="checkbox" id="buscar-todos-adm" class="toggle">
+    <label for="buscar-todos-adm" class="label-toggle">
+        <h2>Buscar todos</h2>
+    </label>
+    <div class="form-content">
+        <form action="${pageContext.request.contextPath}/buscarTodos" method="post">
+            <button type="submit"><h3>Buscar</h3></button>
+        </form>
+    </div>
+</div>
+
+<div class="cardfuncao">
     <input type="checkbox" id="buscar-id-adm" class="toggle">
     <label for="buscar-id-adm" class="label-toggle">
         <h2>Buscar Por ID</h2>
@@ -81,6 +93,18 @@
     <h1 class="funcao-title">Plano</h1>
 </div>
 <br>
+
+<div class="cardfuncao">
+    <input type="checkbox" id="buscar-todos-planos" class="toggle">
+    <label for="buscar-todos-planos" class="label-toggle">
+        <h2>Buscar todos</h2>
+    </label>
+    <div class="form-content">
+        <form action="${pageContext.request.contextPath}/buscarTodosPlano" method="post">
+            <button type="submit"><h3>Buscar</h3></button>
+        </form>
+    </div>
+</div>
 
 <div class="cardfuncao">
     <input type="checkbox" id="buscar-id-plano" class="toggle">
@@ -136,6 +160,18 @@
 <br>
 
 <div class="cardfuncao">
+    <input type="checkbox" id="buscar-todos-categoriaCurso" class="toggle">
+    <label for="buscar-todos-categoriaCurso" class="label-toggle">
+        <h2>Buscar todos</h2>
+    </label>
+    <div class="form-content">
+        <form action="${pageContext.request.contextPath}/buscarTodosCategoriaCurso" method="post">
+            <button type="submit"><h3>Buscar</h3></button>
+        </form>
+    </div>
+</div>
+
+<div class="cardfuncao">
     <input type="checkbox" id="buscar-id-categoria-curso" class="toggle">
     <label for="buscar-id-categoria-curso" class="label-toggle">
         <h2>Buscar Por ID</h2>
@@ -172,6 +208,18 @@
     <h1 class="funcao-title">Categoria Produto</h1>
 </div>
 <br>
+
+<div class="cardfuncao">
+    <input type="checkbox" id="buscar-todos-categoriaProduto" class="toggle">
+    <label for="buscar-todos-categoriaProduto" class="label-toggle">
+        <h2>Buscar todos</h2>
+    </label>
+    <div class="form-content">
+        <form action="${pageContext.request.contextPath}/buscarTodosCategoriaProduto" method="post">
+            <button type="submit"><h3>Buscar</h3></button>
+        </form>
+    </div>
+</div>
 
 <div class="cardfuncao">
     <input type="checkbox" id="buscar-id-categoria-produto" class="toggle">
@@ -212,6 +260,18 @@
 <br>
 
 <div class="cardfuncao">
+    <input type="checkbox" id="buscar-todos-buscarMidia" class="toggle">
+    <label for="buscar-todos-buscarMidia" class="label-toggle">
+        <h2>Buscar todos</h2>
+    </label>
+    <div class="form-content">
+        <form action="${pageContext.request.contextPath}/buscarTodosBVuscarMidia" method="post">
+            <button type="submit"><h3>Buscar</h3></button>
+        </form>
+    </div>
+</div>
+
+<div class="cardfuncao">
     <input type="checkbox" id="buscar-id-midia" class="toggle">
     <label for="buscar-id-midia" class="label-toggle">
         <h2>Buscar Por ID</h2>
@@ -250,6 +310,18 @@
 <br>
 
 <div class="cardfuncao">
+    <input type="checkbox" id="buscar-todos-midiaCurso" class="toggle">
+    <label for="buscar-todos-midiaCurso" class="label-toggle">
+        <h2>Buscar todos</h2>
+    </label>
+    <div class="form-content">
+        <form action="${pageContext.request.contextPath}/buscarTodosMidiaCurso" method="post">
+            <button type="submit"><h3>Buscar</h3></button>
+        </form>
+    </div>
+</div>
+
+<div class="cardfuncao">
     <input type="checkbox" id="buscar-id-midia-curso" class="toggle">
     <label for="buscar-id-midia-curso" class="label-toggle">
         <h2>Buscar Por ID</h2>
@@ -286,6 +358,18 @@
     <h1 class="funcao-title">Usuário</h1>
 </div>
 <br>
+
+<div class="cardfuncao">
+    <input type="checkbox" id="buscar-todos-usuarios" class="toggle">
+    <label for="buscar-todos-usuarios" class="label-toggle">
+        <h2>Buscar todos</h2>
+    </label>
+    <div class="form-content">
+        <form action="${pageContext.request.contextPath}/buscarTodosUsuarios" method="post">
+            <button type="submit"><h3>Buscar</h3></button>
+        </form>
+    </div>
+</div>
 
 <div class="cardfuncao">
     <input type="checkbox" id="buscar-usuario" class="toggle">
@@ -372,6 +456,18 @@
 <br>
 
 <div class="cardfuncao">
+    <input type="checkbox" id="buscar-todos-Produto" class="toggle">
+    <label for="buscar-todos-Produto" class="label-toggle">
+        <h2>Buscar todos</h2>
+    </label>
+    <div class="form-content">
+        <form action="${pageContext.request.contextPath}/buscarTodosProduto" method="post">
+            <button type="submit"><h3>Buscar</h3></button>
+        </form>
+    </div>
+</div>
+
+<div class="cardfuncao">
     <input type="checkbox" id="buscar-produto" class="toggle">
     <label for="buscar-produto" class="label-toggle">
         <h2>Buscar Por ID</h2>
@@ -424,6 +520,18 @@
     <h1 class="funcao-title">Curso</h1>
 </div>
 <br>
+
+<div class="cardfuncao">
+    <input type="checkbox" id="buscar-todos-curso" class="toggle">
+    <label for="buscar-todos-curso" class="label-toggle">
+        <h2>Buscar todos</h2>
+    </label>
+    <div class="form-content">
+        <form action="${pageContext.request.contextPath}/buscarTodosCurso" method="post">
+            <button type="submit"><h3>Buscar</h3></button>
+        </form>
+    </div>
+</div>
 
 <div class="cardfuncao">
     <input type="checkbox" id="buscar-id-curso" class="toggle">
