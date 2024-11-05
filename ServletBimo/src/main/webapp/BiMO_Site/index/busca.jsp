@@ -95,8 +95,8 @@
 <br>
 
 <div class="cardfuncao">
-    <input type="checkbox" id="buscar-todos-planos" class="toggle">
-    <label for="buscar-todos-planos" class="label-toggle">
+    <input type="checkbox" id="buscar-todos-plano" class="toggle">
+    <label for="buscar-todos-plano" class="label-toggle">
         <h2>Buscar todos</h2>
     </label>
     <div class="form-content">
@@ -265,7 +265,7 @@
         <h2>Buscar todos</h2>
     </label>
     <div class="form-content">
-        <form action="${pageContext.request.contextPath}/buscarTodosBuscarMidia" method="post">
+        <form action="${pageContext.request.contextPath}/buscarTodosMidia" method="post">
             <button type="submit"><h3>Buscar</h3></button>
         </form>
     </div>

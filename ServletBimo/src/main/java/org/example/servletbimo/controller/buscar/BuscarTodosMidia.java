@@ -17,7 +17,6 @@ import java.sql.SQLException;
 public class BuscarTodosMidia extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         MidiaDAO midiaDAO = new MidiaDAO();
 
         // Realiza a busca pela mídia no banco de dados
