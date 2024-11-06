@@ -15,7 +15,7 @@ RUN chmod +x run.sh
 
 # Copiar o arquivo .war gerado na etapa de construção para o diretório de aplicativos do Tomcat com um nome único
 WORKDIR /usr/local/tomcat/webapps
-COPY  --from=warfile /tropicalias/target/ServletBimo-1.0-SNAPSHOT.war bimo.war
+COPY  --from=warfile /bimo/target/ServletBimo-1.0-SNAPSHOT.war bimo.war
 
 # Inicializando o Tomcat
 # Expose ports
