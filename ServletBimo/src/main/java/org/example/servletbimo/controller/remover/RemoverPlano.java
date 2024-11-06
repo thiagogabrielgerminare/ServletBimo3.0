@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.PlanoPagamentoDAO; // Importa o DAO para manipulação de planos de pagamento
+import org.example.servletbimo.dao.PlanoPagamentoDAO; // Importa o DAO para manipulação de planos de pagamento
 import org.example.servletbimo.models.PlanoPagamento; // Importa o modelo PlanoPagamento
 
 import java.io.IOException;

@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.PlanoPagamentoDAO;
+import org.example.servletbimo.dao.PlanoPagamentoDAO;
 import org.example.servletbimo.models.PlanoPagamento;
 
 import java.io.IOException;

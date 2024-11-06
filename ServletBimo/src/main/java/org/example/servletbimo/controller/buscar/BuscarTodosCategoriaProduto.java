@@ -5,8 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CategoriaProdutoDAO;
-import org.example.servletbimo.models.CategoriaProduto;
+import org.example.servletbimo.dao.CategoriaProdutoDAO;
 
 import java.io.IOException;
 import java.sql.ResultSet;
