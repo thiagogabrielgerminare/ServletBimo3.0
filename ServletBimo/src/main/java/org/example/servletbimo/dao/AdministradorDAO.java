@@ -20,7 +20,7 @@ public class AdministradorDAO {
     public boolean BuscarAdministrador(String email, String senha) {
         conexao.conectar(); // Abre a conexão com o banco
         try {
-            pstm = this.conexao.getConn().prepareStatement("SELECT CEMAIL, CSENHA FROM ADMINISTRADOR WHERE CEMAIL = ? AND CSENHA = ?");
+            pstm = this.conexao.getConn().prepareStatement("SELECT CEMAIL, CSENHA FROM ADMINISTRADOR WHERE CEMAIL = ? AND CSENHA = ? ORDER BY 1");
             // Define os parâmetros na consulta SQL
             pstm.setString(1, email);
             pstm.setString(2, senha);
@@ -132,7 +132,7 @@ public class AdministradorDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca
-            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR");
+            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR ORDER BY 1");
             // Executa a busca e retorna o ResultSet com os resultados
             return pstm.executeQuery();
         } catch (SQLException sqle) {
@@ -148,7 +148,7 @@ public class AdministradorDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por ID
-            this.pstm = conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR WHERE SID = ?");
+            this.pstm = conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR WHERE SID = ? ORDER BY 1");
             pstm.setInt(1, adm.getsId()); // Define o valor do parâmetro SID
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
@@ -162,7 +162,7 @@ public class AdministradorDAO {
     public boolean verificarAdministrador(String cEmail){
         conexao.conectar();
         try{
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR WHERE CEMAIL = ?");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR WHERE CEMAIL = ? ORDER BY 1");
             pstm.setString(1, cEmail);
             if (pstm.executeQuery().next()) {
                 return false;
@@ -180,7 +180,7 @@ public class AdministradorDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por nome
-            this.pstm = conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR WHERE CNOME = ?");
+            this.pstm = conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR WHERE CNOME = ? ORDER BY 1");
             pstm.setString(1, adm.getcNome()); // Define o valor do parâmetro CNOME
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
@@ -196,7 +196,7 @@ public class AdministradorDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por email
-            this.pstm = conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR WHERE CEMAIL = ?");
+            this.pstm = conexao.getConn().prepareStatement("SELECT * FROM ADMINISTRADOR WHERE CEMAIL = ? ORDER BY 1");
             pstm.setString(1, adm.getcEmail()); // Define o valor do parâmetro CEMAIL
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {

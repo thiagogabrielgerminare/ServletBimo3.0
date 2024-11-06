@@ -63,7 +63,7 @@ public class CategoriaCursoDAO {
     public ResultSet buscarTodasCategorias() {
         conexao.conectar();
         try {
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO"); // Prepara a instrução SQL
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO ORDER BY 1"); // Prepara a instrução SQL
             return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
         } catch (SQLException sqle) { // Trata exceções SQL
             sqle.printStackTrace(); // Exibe a stack trace da exceção
@@ -78,7 +78,7 @@ public class CategoriaCursoDAO {
     public ResultSet buscarPorId(CategoriaCurso categoriaCurso) {
         conexao.conectar();
         try {
-            PreparedStatement pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO WHERE sId = ?"); // Prepara a instrução SQL
+            PreparedStatement pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO WHERE sId = ? ORDER BY 1"); // Prepara a instrução SQL
             pstm.setInt(1, categoriaCurso.getsId()); // Define o ID da categoria a ser buscada
             return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
         } catch (SQLException sqle) { // Trata exceções SQL
@@ -94,7 +94,7 @@ public class CategoriaCursoDAO {
     public ResultSet buscarPorNome(CategoriaCurso categoriaCurso) {
         conexao.conectar();
         try {
-            PreparedStatement pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO WHERE CNOME = ?"); // Prepara a instrução SQL
+            PreparedStatement pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO WHERE CNOME = ? ORDER BY 1"); // Prepara a instrução SQL
             pstm.setString(1, categoriaCurso.getcNome()); // Define o nome da categoria a ser buscada
             return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
         } catch (SQLException sqle) { // Trata exceções SQL
@@ -110,7 +110,7 @@ public class CategoriaCursoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de todos os planos
-            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO");
+            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM CATEGORIACURSO ORDER BY 1");
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
             return rset; // Retorna o ResultSet com os resultados

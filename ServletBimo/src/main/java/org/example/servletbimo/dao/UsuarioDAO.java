@@ -31,7 +31,7 @@ public class UsuarioDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por ID
-                pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE SID = ?");
+                pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE SID = ? ORDER BY 1");
             pstm.setInt(1, usuario.getsId()); // Define o valor do parâmetro SID
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
@@ -46,7 +46,7 @@ public class UsuarioDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por ID
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE CNOME = ?");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE CNOME = ? ORDER BY 1");
             pstm.setString(1, usuario.getcNome()); // Define o valor do parâmetro CNOME
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
@@ -61,7 +61,7 @@ public class UsuarioDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por NOME
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE CEMAIL = ?");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE CEMAIL = ? ORDER BY 1");
             pstm.setString(1, usuario.getcEmail()); // Define o valor do parâmetro CEMAIL
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
@@ -76,7 +76,7 @@ public class UsuarioDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por CPF
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE CCPF = ?");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE CCPF = ? ORDER BY 1");
             pstm.setString(1, usuario.getcCpf()); // Define o valor do parâmetro CCPF
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
@@ -91,7 +91,7 @@ public class UsuarioDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de todos os planos
-            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM USUARIO");
+            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM USUARIO ORDER BY 1");
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
             return rset; // Retorna o ResultSet com os resultados
@@ -107,7 +107,7 @@ public class UsuarioDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por CCNPJ
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE CCNPJ = ?");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM USUARIO WHERE CCNPJ = ? ORDER BY 1");
             pstm.setString(1, usuario.getcCnpj()); // Define o valor do parâmetro CCNPJ
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {

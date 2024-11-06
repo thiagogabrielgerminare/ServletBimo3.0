@@ -68,7 +68,7 @@ public class CategoriaProdutoDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIAPRODUTO");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIAPRODUTO ORDER BY 1");
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
             sqle.printStackTrace(); // Imprime a pilha de erros em caso de exceção
@@ -83,7 +83,7 @@ public class CategoriaProdutoDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por ID
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIAPRODUTO WHERE sId = ?");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIAPRODUTO WHERE sId = ? ORDER BY 1");
             pstm.setInt(1, categoriaProduto.getsId()); // Define o valor do parâmetro SID
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
@@ -99,7 +99,7 @@ public class CategoriaProdutoDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por nome
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIAPRODUTO WHERE CNOME = ?");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM CATEGORIAPRODUTO WHERE CNOME = ? ORDER BY 1");
             pstm.setString(1, categoriaProduto.getcNome()); // Define o valor do parâmetro CNOME
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
@@ -114,7 +114,7 @@ public class CategoriaProdutoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de todos os planos
-            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM CATEGORIAPRODUTO");
+            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM CATEGORIAPRODUTO ORDER BY 1");
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
             return rset; // Retorna o ResultSet com os resultados

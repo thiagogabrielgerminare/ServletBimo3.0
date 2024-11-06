@@ -148,7 +148,7 @@ public class CursoDAO {
     public ResultSet buscarPorId(Curso curso) {
         conexao.conectar();
         try {
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO WHERE sId = ?"); // Prepara a instrução SQL
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO WHERE sId = ? ORDER BY 1"); // Prepara a instrução SQL
             pstm.setInt(1, curso.getsId()); // Define o ID da categoria a ser buscada
             return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
         } catch (SQLException sqle) { // Trata exceções SQL
@@ -164,7 +164,7 @@ public class CursoDAO {
     public ResultSet buscarPorNome(Curso curso) {
         conexao.conectar();
         try {
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO WHERE CNOME = ?"); // Prepara a instrução SQL
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO WHERE CNOME = ? ORDER BY 1"); // Prepara a instrução SQL
             pstm.setString(1, curso.getcNome()); // Define o nome da categoria a ser buscada
             return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
         } catch (SQLException sqle) { // Trata exceções SQL
@@ -179,7 +179,7 @@ public class CursoDAO {
     public ResultSet buscarPorValor(Curso curso) {
         conexao.conectar();
         try {
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO WHERE FVALOR = ?"); // Prepara a instrução SQL
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO WHERE FVALOR = ? ORDER BY 1"); // Prepara a instrução SQL
             pstm.setDouble(1, curso.getfValor()); // Define o nome da categoria a ser buscada
             return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
         } catch (SQLException sqle) { // Trata exceções SQL
@@ -195,7 +195,7 @@ public class CursoDAO {
     public ResultSet buscarPorCertificacao(Curso curso) {
         conexao.conectar();
         try {
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO WHERE CCERTIFICACAO = ?"); // Prepara a instrução SQL
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM CURSO WHERE CCERTIFICACAO = ? ORDER BY 1"); // Prepara a instrução SQL
             pstm.setString(1, curso.getcCertificacao()); // Define o nome da categoria a ser buscada
             return pstm.executeQuery(); // Executa a consulta e retorna o ResultSet
         } catch (SQLException sqle) { // Trata exceções SQL
@@ -211,7 +211,7 @@ public class CursoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de todos os planos
-            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM CURSO");
+            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM CURSO ORDER BY 1");
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
             return rset; // Retorna o ResultSet com os resultados

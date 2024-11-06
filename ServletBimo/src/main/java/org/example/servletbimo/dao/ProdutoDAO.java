@@ -30,7 +30,7 @@ public class ProdutoDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por ID
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM PRODUTO WHERE SID = ?");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM PRODUTO WHERE SID = ? ORDER BY 1");
             pstm.setInt(1, produto.getsId()); // Define o valor do parâmetro SID
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
@@ -45,7 +45,7 @@ public class ProdutoDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por NOME
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM PRODUTO WHERE CNOME = ?");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM PRODUTO WHERE CNOME = ? ORDER BY 1");
             pstm.setString(1, produto.getcNome()); // Define o valor do parâmetro CNOME
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
@@ -60,7 +60,7 @@ public class ProdutoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de todos os planos
-            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM PRODUTO");
+            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM PRODUTO ORDER BY 1");
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
             return rset; // Retorna o ResultSet com os resultados
@@ -76,7 +76,7 @@ public class ProdutoDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por ESTADO
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM PRODUTO WHERE CESTADO = ?");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM PRODUTO WHERE CESTADO = ? ORDER BY 1");
             pstm.setString(1, produto.getcEstado()); // Define o valor do parâmetro CESTADO
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {

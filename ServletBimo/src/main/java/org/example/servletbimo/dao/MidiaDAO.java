@@ -32,7 +32,7 @@ public class MidiaDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por ID
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM MIDIA WHERE SID = ?");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM MIDIA WHERE SID = ? ORDER BY 1");
             pstm.setInt(1, midia.getsId()); // Define o valor do parâmetro SID
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
@@ -48,7 +48,7 @@ public class MidiaDAO {
         conexao.conectar(); // Abre a conexão com o banco
         try {
             // Prepara a instrução SQL para busca por ID
-            pstm = conexao.getConn().prepareStatement("SELECT * FROM MIDIA WHERE CURLFOTO = ?");
+            pstm = conexao.getConn().prepareStatement("SELECT * FROM MIDIA WHERE CURLFOTO = ? ORDER BY 1");
             pstm.setString(1, midia.getcURLFoto()); // Define o valor do parâmetro SID
             return pstm.executeQuery(); // Executa a busca e retorna o ResultSet com os resultados
         } catch (SQLException sqle) {
@@ -63,7 +63,7 @@ public class MidiaDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de todos os planos
-            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM MIDIA");
+            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM MIDIA ORDER BY 1");
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
             return rset; // Retorna o ResultSet com os resultados

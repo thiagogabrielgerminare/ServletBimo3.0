@@ -117,7 +117,7 @@ public class PlanoPagamentoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de todos os planos
-            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM PLANO");
+            this.pstm = this.conexao.getConn().prepareStatement("SELECT * FROM PLANO ORDER BY 1");
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
             return rset; // Retorna o ResultSet com os resultados
@@ -134,7 +134,7 @@ public class PlanoPagamentoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de um plano por ID
-            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO WHERE SID = ?");
+            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO WHERE SID = ? ORDER BY 1");
             pstm.setInt(1, planoP.getsId()); // Define o ID do plano a ser buscado
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
@@ -152,7 +152,7 @@ public class PlanoPagamentoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de um plano por ID
-            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO WHERE CNOME = ?");
+            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO WHERE CNOME = ? ORDER BY 1");
             pstm.setString(1, planoP.getcNome()); // Define o NOME do plano a ser buscado
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
@@ -170,7 +170,7 @@ public class PlanoPagamentoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de um plano por valor
-            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO WHERE FVALOR = ?");
+            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO WHERE FVALOR = ? ORDER BY 1");
             pstm.setDouble(1, planoP.getfValor()); // Define o valor do plano a ser buscado
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
@@ -188,7 +188,7 @@ public class PlanoPagamentoDAO {
         conexao.conectar(); // Abre a conexão com o banco de dados
         try {
             // Prepara a instrução SQL para seleção de um plano por descrição
-            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO WHERE CDESCRICAO = ?");
+            this.pstm = conexao.getConn().prepareStatement("SELECT * from PLANO WHERE CDESCRICAO = ? ORDER BY 1");
             pstm.setString(1, planoP.getcDescricao()); // Define a descrição do plano a ser buscado
             // Executa a consulta e armazena o resultado no ResultSet
             ResultSet rset = pstm.executeQuery();
