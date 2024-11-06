@@ -39,7 +39,7 @@
 		<a href="./BiMO_Site/index/remocao.jsp">Remover</a>
 		<a href="./BiMO_Site/index/alteracao.jsp">Alterar</a>
 		<a href="./BiMO_Site/index/busca.jsp">Buscar</a>
-		<a href="#####">Dashboard de BI</a>
+		<a href="https://restrictedareaweb.onrender.com">Dashboard de BI</a>
 	</div>
 </div>
 
