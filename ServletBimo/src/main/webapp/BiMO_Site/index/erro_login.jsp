@@ -12,25 +12,45 @@
 <body>
 
 <div id="pagelogin">
-    <div class = "login">
-    <form method="POST" class="formLogin" action="${pageContext.request.contextPath}/loginjsp">
-        <div id="img">
-            <img src="/BiMO_Site/image/login.png" id="imglogin">
-        </div>
-        <div class="clogin">
-            <h1>Faça login</h1>
-            <input type="email" name="email" class="input" placeholder="Digite seu e-mail" required/>
-            <input type="password" name="senha" class="input" placeholder="Digite sua senha" required/>
-            <input type="submit" value="Entrar" id="butentrar" />
+    <a href="index.html" id="seta"><p>⬅️</p></a>
+    <div class="login">
+        <form method="post" class="formLogin" action="${pageContext.request.contextPath}/loginjsp">
+            <div id="img">
+                <img src="./BiMO_Site/image/login.png" id="imglogin">
+            </div>
+            <div class="clogin">
+                <h1>Faça login</h1>
+                <input type="email" name="email" class="input" placeholder="Digite seu e-mail" required/>
+                <div class="olho-senha">
+                    <input type="password" name="senha" class="input" id="password" placeholder="Digite sua senha">
+                    <img src="./BiMO_Site/image/olho-cortado.png" alt="Mostrar/Esconder Senha" id="olhinho" onclick="togglePassword()" style="cursor: pointer;">
+                </div>
+                <a href="./BiMO_Site/index/admin.jsp"><input type="submit" value="Entrar" id="butentrar" /></a>
 
-            <!-- Exibe mensagem de erro se necessário -->
-            <p id="erro" style="color:red; margin-top: 8%">
-                E-mail ou senha inválido. Tente novamente.
-            </p>
-        </div>
-    </form>
+                <!-- Exibe mensagem de erro se necessário -->
+                <p id="erro" style="color:red; margin-top: 8%">
+                    E-mail ou senha inválido. Tente novamente.
+                </p>
+            </div>
+        </form>
     </div>
 </div>
+
+<script>
+    function togglePassword() {
+        const passwordInput = document.getElementById("password");
+        const eyeIcon = document.getElementById("olhinho");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.src = './BiMO_Site/image/olho.png'; // Altera o ícone para olho fechado
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.src = './BiMO_Site/image/olho-cortado.png'; // Altera o ícone para olho aberto
+        }
+    }
+</script>
+
 
 </body>
 </html>

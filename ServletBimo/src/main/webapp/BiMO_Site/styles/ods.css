@@ -174,3 +174,9 @@ h1 {
         width: 90%;
     }
 }
+
+@media screen and (max-width: 360px) {
+    .inicio{
+        height: 120vh;
+    }
+}
