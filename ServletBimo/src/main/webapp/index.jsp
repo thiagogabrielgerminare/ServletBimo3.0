@@ -14,7 +14,7 @@
 <div id="pagelogin">
     <a href="index.html" id="seta"><p>⬅️</p></a>
     <div class="login">
-        <form method="post" class="formLogin" action="loginjsp">
+        <form method="post" class="formLogin" action="${pageContext.request.contextPath}/loginjsp">
             <div id="img">
                 <img src="./BiMO_Site/image/login.png" id="imglogin">
             </div>
