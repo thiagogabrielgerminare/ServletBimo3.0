@@ -38,10 +38,10 @@
 
         if (passwordInput.type === "password") {
             passwordInput.type = "text";
-            eyeIcon.src = '/BiMO_Site/image/olho.png'; // Altera o ícone para olho fechado
+            eyeIcon.src = './BiMO_Site/image/olho.png'; // Altera o ícone para olho fechado
         } else {
             passwordInput.type = "password";
-            eyeIcon.src = '/BiMO_Site/image/olho-cortado.png'; // Altera o ícone para olho aberto
+            eyeIcon.src = './BiMO_Site/image/olho-cortado.png'; // Altera o ícone para olho aberto
         }
     }
 </script>
