@@ -7,8 +7,18 @@
     <title>Admin BiMO</title>
     <link rel="stylesheet" href="/BiMO_Site/styles/resultadoBusca.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        #seta{
+            font-size: 300%;
+            padding: 0.5%;
+            color: #23C2FF;
+        }
+    </style>
 </head>
 <body>
+<div id="pagelogin">
+    <a href="/BiMO_Site/index/busca.jsp" id="seta"><p>⬅️</p></a>
+</div>
 <h1>Resultado da Busca</h1>
 <div class="resultado">
     ${resultado}

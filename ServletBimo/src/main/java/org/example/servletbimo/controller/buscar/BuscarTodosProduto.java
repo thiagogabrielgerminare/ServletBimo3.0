@@ -18,17 +18,11 @@ public class BuscarTodosProduto extends HttpServlet {
 
         ProdutoDAO produtoDAO = new ProdutoDAO();
         StringBuilder lista = new StringBuilder();
-
-        try (ResultSet rs = produtoDAO.buscarTodosProduto()) {
+        ResultSet rs = produtoDAO.buscarTodosProduto();
+        try {
             // Verifica se o resultado está vazio
-            if (rs == null || !rs.isBeforeFirst()) {
-                request.setAttribute("resultado", "Nenhum produto encontrado com o nome fornecido.");
-                request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);
-                return;
-            }
 
-            // Monta a lista de resultados
-            // Adiciona estilo CSS para a tabela
+            // Adiciona o estilo CSS para a tabela
             lista.append("<style>");
             lista.append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }");
             lista.append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }");
@@ -37,33 +31,45 @@ public class BuscarTodosProduto extends HttpServlet {
             lista.append("tr:hover { background-color: #e2e2e2; }"); // Efeito hover nas linhas
             lista.append("</style>");
 
-// Monta a lista de resultados em uma tabela
+            // Monta a lista de resultados em uma tabela
             lista.append("<table>");
-            lista.append("<tr><th>sId</th><th>cNome</th><th>fValor</th><th>cEstado</th><th>cDescrição</th>")
-                    .append("<th>dDataCriação</th><th>idUsuario</th><th>idCategoriaProduto</th></tr>");
+            lista.append("<thead>")
+                    .append("<tr>")
+                    .append("<th>sId</th>")
+                    .append("<th>cNome</th>")
+                    .append("<th>fValor</th>")
+                    .append("<th>cEstado</th>")
+                    .append("<th>cDescrição</th>")
+                    .append("<th>dDataCriação</th>")
+                    .append("<th>idUsuario</th>")
+                    .append("<th>idCategoriaProduto</th>")
+                    .append("</tr>")
+                    .append("</thead>");
 
-            try {
-                while (rs.next()) {
-                    lista.append("<tr>")
-                            .append("<td>").append(rs.getInt("SID")).append("</td>")
-                            .append("<td>").append(rs.getString("CNOME")).append("</td>")
-                            .append("<td>").append(rs.getDouble("FVALOR")).append("</td>")
-                            .append("<td>").append(rs.getString("CESTADO")).append("</td>")
-                            .append("<td>").append(rs.getString("CDESCRICAO")).append("</td>")
-                            .append("<td>").append(rs.getDate("DDATACRIACAO")).append("</td>")
-                            .append("<td>").append(rs.getInt("IDUSUARIO")).append("</td>")
-                            .append("<td>").append(rs.getInt("IDCATEGORIAPRODUTO")).append("</td>")
-                            .append("</tr>");
-                }
-                lista.append("</table>"); // Fecha a tabela
-            } catch (SQLException sqle) {
-                // Armazena a mensagem de erro na requisição
-                request.setAttribute("resultado", "Erro: " + sqle.getMessage());
+            lista.append("<tbody>");
+            while (rs.next()) {
+                // Formatação de data para exibição amigável
+                java.sql.Date dataCriacao = rs.getDate("DDATACRIACAO");
+                String dataFormatada = (dataCriacao != null) ? new java.text.SimpleDateFormat("dd/MM/yyyy").format(dataCriacao) : "";
+
+                lista.append("<tr>")
+                        .append("<td>").append(rs.getInt("SID")).append("</td>")
+                        .append("<td>").append(rs.getString("CNOME")).append("</td>")
+                        .append("<td>").append(rs.getDouble("FVALOR")).append("</td>")
+                        .append("<td>").append(rs.getString("CESTADO")).append("</td>")
+                        .append("<td>").append(rs.getString("CDESCRICAO")).append("</td>")
+                        .append("<td>").append(dataFormatada).append("</td>")
+                        .append("<td>").append(rs.getInt("IDUSUARIO")).append("</td>")
+                        .append("<td>").append(rs.getInt("IDCATEGORIAPRODUTO")).append("</td>")
+                        .append("</tr>");
             }
+            lista.append("</tbody>");
+            lista.append("</table>"); // Fecha a tabela
 
         } catch (SQLException sqle) {
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
+
 
         request.setAttribute("resultado", lista.toString());
         request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);

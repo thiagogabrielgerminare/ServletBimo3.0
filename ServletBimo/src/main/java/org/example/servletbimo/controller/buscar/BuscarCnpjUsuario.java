@@ -34,13 +34,21 @@ public class BuscarCnpjUsuario extends HttpServlet {
         // StringBuilder para armazenar o HTML gerado com os dados do usuário
         StringBuilder lista = new StringBuilder();
 
-        try {
-            // Itera sobre o ResultSet para extrair os dados dos usuários encontrados
-            while (rs.next()) {
-                lista.append("<div class=\"linha\">");
+        // Adiciona o estilo CSS para as linhas e colunas
+        lista.append("<style>")
+                .append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }")
+                .append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }")
+                .append("th { background-color: #f2f2f2; font-weight: bold; }")
+                .append("tr:nth-child(even) { background-color: #f9f9f9; }")
+                .append("tr:hover { background-color: #e2e2e2; }")
+                .append("td, th { text-align: center; }")
+                .append("</style>");
 
-                // Monta o HTML com os dados do usuário recuperados do banco
-                lista.append("<p>").append("<div class=\"nomeColuna\">").append("sId: ").append("</div>").append(rs.getInt("SID")).append("</p>")
+        try {
+            // Itera sobre o ResultSet para montar o HTML com os dados do usuário
+            while (rs.next()) {
+                lista.append("<div class=\"linha\">")
+                        .append("<p>").append("<div class=\"nomeColuna\">").append("sId: ").append("</div>").append(rs.getInt("SID")).append("</p>")
                         .append("<p>").append("<div class=\"nomeColuna\">").append("cEmail: ").append("</div>").append(rs.getString("CEMAIL")).append("</p>")
                         .append("<p>").append("<div class=\"nomeColuna\">").append("cTelefone: ").append("</div>").append(rs.getString("CTELEFONE")).append("</p>")
                         .append("<p>").append("<div class=\"nomeColuna\">").append("dDataNascimento: ").append("</div>").append(rs.getDate("DDATANASCIMENTO")).append("</p>")
@@ -50,12 +58,13 @@ public class BuscarCnpjUsuario extends HttpServlet {
                         .append("<p>").append("<div class=\"nomeColuna\">").append("cCPF: ").append("</div>").append(rs.getString("CCPF")).append("</p>")
                         .append("<p>").append("<div class=\"nomeColuna\">").append("dDataCriação: ").append("</div>").append(rs.getDate("DDATACRIACAO")).append("</p>")
                         .append("<p>").append("<div class=\"nomeColuna\">").append("idPlano: ").append("</div>").append(rs.getInt("IDPLANO")).append("</p>")
-                        .append("</div>").append("<br>"); // Usa <br> para criar uma nova linha na saída HTML
+                        .append("</div>"); // Fim da linha
             }
         } catch (SQLException sqle) {
-            // Em caso de erro na consulta, adiciona a mensagem de erro como atributo de requisição
+            // Adiciona a mensagem de erro como atributo de requisição
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
+
 
         // Define o resultado gerado como atributo de requisição e encaminha para a página "resultadoBusca.jsp"
         request.setAttribute("resultado", lista.toString());

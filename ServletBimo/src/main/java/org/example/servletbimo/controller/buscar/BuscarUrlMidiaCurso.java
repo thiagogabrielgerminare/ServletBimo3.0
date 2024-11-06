@@ -19,23 +19,19 @@ public class BuscarUrlMidiaCurso extends HttpServlet {
         String url = request.getParameter("url");
 
         // Validação da entrada
-        if (url == null || url.trim().isEmpty()) {
-            request.setAttribute("resultado", "A URL não pode ser vazia.");
-            request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
-            return;
-        }
-
         MidiaCurso midiaCurso = new MidiaCurso(url);
         MidiaCursoDAO midiaCursoDAO = new MidiaCursoDAO();
         StringBuilder lista = new StringBuilder();
-
-        try (ResultSet rs = midiaCursoDAO.buscarMidiaCursoPorUrl(midiaCurso)) {
-            // Verifica se o resultado está vazio
-            if (rs == null || !rs.isBeforeFirst()) {
-                request.setAttribute("resultado", "Nenhuma mídia encontrada com a URL fornecida.");
-                request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
-                return;
-            }
+        ResultSet rs = midiaCursoDAO.buscarMidiaCursoPorUrl(midiaCurso);
+        try  {
+            // Adiciona o estilo CSS para a tabela
+            lista.append("<style>");
+            lista.append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }");
+            lista.append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }");
+            lista.append("th { background-color: #f2f2f2; font-weight: bold; }");
+            lista.append("tr:nth-child(even) { background-color: #f9f9f9; }"); // Linhas alternadas
+            lista.append("tr:hover { background-color: #e2e2e2; }"); // Efeito hover nas linhas
+            lista.append("</style>");
 
             // Monta a lista de resultados em uma tabela
             lista.append("<table>");
@@ -55,6 +51,7 @@ public class BuscarUrlMidiaCurso extends HttpServlet {
         } catch (SQLException sqle) {
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
+
 
         request.setAttribute("resultado", lista.toString());
         request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);

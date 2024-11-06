@@ -29,13 +29,18 @@ public class BuscarNomeCurso extends HttpServlet {
         CursoDAO cursoDAO = new CursoDAO();
         StringBuilder lista = new StringBuilder();
 
-        try (ResultSet rs = cursoDAO.buscarPorNome(curso)) {
-            // Verifica se o resultado está vazio
-            if (!rs.isBeforeFirst()) {
-                request.setAttribute("resultado", "Nenhum curso encontrado com o nome fornecido.");
-                request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
-                return;
-            }
+        ResultSet rs = cursoDAO.buscarPorNome(curso);
+
+        try {
+            // Adiciona estilo CSS para a tabela
+            lista.append("<style>")
+                    .append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }")
+                    .append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }")
+                    .append("th { background-color: #f2f2f2; font-weight: bold; }")
+                    .append("tr:nth-child(even) { background-color: #f9f9f9; }")
+                    .append("tr:hover { background-color: #e2e2e2; }")
+                    .append("td, th { text-align: center; }")
+                    .append("</style>");
 
             // Monta a lista de resultados
             lista.append("<table>");
@@ -61,8 +66,10 @@ public class BuscarNomeCurso extends HttpServlet {
             }
             lista.append("</table>");
         } catch (SQLException sqle) {
+            // Em caso de erro, armazena a mensagem de erro na requisição
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
+
 
         request.setAttribute("resultado", lista.toString());
         request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);

@@ -19,31 +19,21 @@ public class BuscarTodosPlano extends HttpServlet {
 
         PlanoPagamentoDAO planoPagamentoDAO = new PlanoPagamentoDAO();
         StringBuilder lista = new StringBuilder();
-
-        try (ResultSet rs = planoPagamentoDAO.buscarTodosPlanoPagamento()) {
-            // Verifica se o resultado está vazio
-            if (rs == null || !rs.isBeforeFirst()) {
-                request.setAttribute("resultado", "Nenhum plano encontrado com o nome fornecido.");
-                request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);
-                return;
-            }
-
-            // Monta a lista de resultados
-            // Adiciona estilo CSS para a tabela
-            lista.append("<style>");
-            lista.append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }");
-            lista.append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }");
-            lista.append("th { background-color: #f2f2f2; font-weight: bold; }");
-            lista.append("tr:nth-child(even) { background-color: #f9f9f9; }"); // Linhas alternadas
-            lista.append("tr:hover { background-color: #e2e2e2; }"); // Efeito hover nas linhas
-            lista.append("</style>");
-
-// Monta a lista de resultados em uma tabela
-            lista.append("<table>");
-            lista.append("<tr><th>sId</th><th>cNome</th><th>cDescricao</th><th>fValor</th>")
-                    .append("<th>transaction_made</th><th>bIsUpdated</th><th>bIsInactive</th></tr>");
+        ResultSet rs = planoPagamentoDAO.buscarTodosPlanoPagamento();
 
             try {
+                lista.append("<style>");
+                lista.append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }");
+                lista.append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }");
+                lista.append("th { background-color: #f2f2f2; font-weight: bold; }");
+                lista.append("tr:nth-child(even) { background-color: #f9f9f9; }"); // Linhas alternadas
+                lista.append("tr:hover { background-color: #e2e2e2; }"); // Efeito hover nas linhas
+                lista.append("</style>");
+
+// Monta a lista de resultados em uma tabela
+                lista.append("<table>");
+                lista.append("<tr><th>sId</th><th>cNome</th><th>cDescricao</th><th>fValor</th>")
+                        .append("<th>transaction_made</th><th>bIsUpdated</th><th>bIsInactive</th></tr>");
                 while (rs.next()) {
                     lista.append("<tr>")
                             .append("<td>").append(rs.getInt("SID")).append("</td>")
@@ -60,10 +50,6 @@ public class BuscarTodosPlano extends HttpServlet {
                 // Armazena a mensagem de erro na requisição
                 request.setAttribute("resultado", "Erro: " + sqle.getMessage());
             }
-
-        } catch (SQLException sqle) {
-            request.setAttribute("resultado", "Erro: " + sqle.getMessage());
-        }
 
         request.setAttribute("resultado", lista.toString());
         request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);

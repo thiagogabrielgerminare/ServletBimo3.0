@@ -34,6 +34,16 @@ public class BuscarCpfUsuario extends HttpServlet {
         // StringBuilder para armazenar o HTML gerado com os dados do usuário
         StringBuilder lista = new StringBuilder();
 
+        // Adiciona o estilo CSS para as linhas e colunas
+        lista.append("<style>")
+                .append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }")
+                .append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }")
+                .append("th { background-color: #f2f2f2; font-weight: bold; }")
+                .append("tr:nth-child(even) { background-color: #f9f9f9; }")
+                .append("tr:hover { background-color: #e2e2e2; }")
+                .append("td, th { text-align: center; }")
+                .append("</style>");
+
         try {
             // Itera sobre o ResultSet para extrair os dados dos usuários encontrados
             while (rs.next()) {
@@ -56,6 +66,7 @@ public class BuscarCpfUsuario extends HttpServlet {
             // Em caso de erro na consulta, adiciona a mensagem de erro como atributo de requisição
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
+
 
         // Define o resultado gerado como atributo de requisição e encaminha para a página "resultadoBusca.jsp"
         request.setAttribute("resultado", lista.toString());

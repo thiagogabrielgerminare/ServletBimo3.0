@@ -40,21 +40,44 @@ public class BuscarIdMidiaCurso extends HttpServlet {
         StringBuilder lista = new StringBuilder();
 
         try {
-            // Itera sobre o ResultSet para construir a resposta em HTML
+            // Adiciona o estilo inline para a tabela
+            lista.append("<style>")
+                    .append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }")
+                    .append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }")
+                    .append("th { background-color: #f2f2f2; font-weight: bold; }")
+                    .append("tr:nth-child(even) { background-color: #f9f9f9; }")
+                    .append("tr:hover { background-color: #e2e2e2; }")
+                    .append("td, th { text-align: center; }")
+                    .append("</style>");
+
+            // Monta a lista de resultados em uma tabela HTML
+            lista.append("<table>");
+            lista.append("<tr>")
+                    .append("<th>sId</th>")
+                    .append("<th>idProduto</th>")
+                    .append("<th>cUrlFoto</th>")
+                    .append("<th>transaction_made</th>")
+                    .append("<th>bIsUpdated</th>")
+                    .append("<th>bIsInactive</th>")
+                    .append("</tr>");
+
             while (rs.next()) {
-                lista.append("<div class=\"linha\">");
-                lista.append("<p>").append("<div class=\"nomeColuna\">").append("sId: ").append("</div>").append(rs.getInt("SID")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("idProduto: ").append("</div>").append(rs.getInt("IDCURSO")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("cUrlFoto: ").append("</div>").append(rs.getString("CURLFOTO")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("transaction_made: ").append("</div>").append(rs.getBoolean("TRANSACTION_MADE")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("bIsUpdated: ").append("</div>").append(rs.getBoolean("BISUPDATED")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("bIsInactive: ").append("</div>").append(rs.getBoolean("BISINACTIVE")).append("</p>")
-                        .append("</div>").append("<br>"); // Quebra de linha na saída HTML
+                lista.append("<tr>")
+                        .append("<td>").append(rs.getInt("SID")).append("</td>")
+                        .append("<td>").append(rs.getInt("IDCURSO")).append("</td>")
+                        .append("<td>").append(rs.getString("CURLFOTO")).append("</td>")
+                        .append("<td>").append(rs.getBoolean("TRANSACTION_MADE")).append("</td>")
+                        .append("<td>").append(rs.getBoolean("BISUPDATED")).append("</td>")
+                        .append("<td>").append(rs.getBoolean("BISINACTIVE")).append("</td>")
+                        .append("</tr>");
             }
+
+            lista.append("</table>");  // Fecha a tabela
         } catch (SQLException sqle) {
-            // Armazena a mensagem de erro na requisição
+            // Em caso de erro na consulta, adiciona a mensagem de erro como atributo da requisição
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
+
 
         // Define o resultado da busca como atributo da requisição
         request.setAttribute("resultado", lista.toString());

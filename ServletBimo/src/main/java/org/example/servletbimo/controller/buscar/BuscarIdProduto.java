@@ -40,27 +40,49 @@ public class BuscarIdProduto extends HttpServlet {
         StringBuilder lista = new StringBuilder();
 
         try {
-            // Itera sobre o ResultSet para construir a resposta em HTML
-            if (!rs.isBeforeFirst()) {
-                request.setAttribute("resultado", "Nenhum produto encontrado para o ID fornecido.");
-            } else {
+                // Adiciona o estilo da tabela
+            lista.append("<style>")
+                    .append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }")
+                    .append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }")
+                    .append("th { background-color: #f2f2f2; font-weight: bold; }")
+                    .append("tr:nth-child(even) { background-color: #f9f9f9; }")
+                    .append("tr:hover { background-color: #e2e2e2; }")
+                    .append("td, th { text-align: center; }")
+                    .append("</style>");
+
+                // Começa a construção da tabela HTML
+                lista.append("<table>");
+                lista.append("<tr>")
+                        .append("<th>sId</th>")
+                        .append("<th>cNome</th>")
+                        .append("<th>fValor</th>")
+                        .append("<th>cEstado</th>")
+                        .append("<th>cDescrição</th>")
+                        .append("<th>dDataCriação</th>")
+                        .append("<th>idUsuario</th>")
+                        .append("<th>idCategoriaProduto</th>")
+                        .append("</tr>");
+
+                // Itera sobre o ResultSet e adiciona os dados à tabela
                 while (rs.next()) {
-                    lista.append("<div class=\"linha\">");
-                    lista.append("<p>").append("<div class=\"nomeColuna\">").append("sId: ").append("</div>").append(rs.getInt("SID")).append("</p>")
-                            .append("<p>").append("<div class=\"nomeColuna\">").append("cNome: ").append("</div>").append(rs.getString("CNOME")).append("</p>")
-                            .append("<p>").append("<div class=\"nomeColuna\">").append("fValor: ").append("</div>").append(rs.getDouble("FVALOR")).append("</p>")
-                            .append("<p>").append("<div class=\"nomeColuna\">").append("cEstado: ").append("</div>").append(rs.getString("CESTADO")).append("</p>")
-                            .append("<p>").append("<div class=\"nomeColuna\">").append("cDescrição: ").append("</div>").append(rs.getString("CDESCRICAO")).append("</p>")
-                            .append("<p>").append("<div class=\"nomeColuna\">").append("dDataCriação: ").append("</div>").append(rs.getDate("DDATACRIACAO")).append("</p>")
-                            .append("<p>").append("<div class=\"nomeColuna\">").append("idUsuario: ").append("</div>").append(rs.getInt("IDUSUARIO")).append("</p>")
-                            .append("<p>").append("<div class=\"nomeColuna\">").append("idCategoriaProduto: ").append("</div>").append(rs.getInt("IDCATEGORIAPRODUTO")).append("</p>")
-                            .append("</div>").append("<br>"); // Quebra de linha na saída HTML
+                    lista.append("<tr>")
+                            .append("<td>").append(rs.getInt("SID")).append("</td>")
+                            .append("<td>").append(rs.getString("CNOME")).append("</td>")
+                            .append("<td>").append(rs.getDouble("FVALOR")).append("</td>")
+                            .append("<td>").append(rs.getString("CESTADO")).append("</td>")
+                            .append("<td>").append(rs.getString("CDESCRICAO")).append("</td>")
+                            .append("<td>").append(rs.getDate("DDATACRIACAO")).append("</td>")
+                            .append("<td>").append(rs.getInt("IDUSUARIO")).append("</td>")
+                            .append("<td>").append(rs.getInt("IDCATEGORIAPRODUTO")).append("</td>")
+                            .append("</tr>");
                 }
-            }
+
+                lista.append("</table>");  // Fecha a tabela
         } catch (SQLException sqle) {
-            // Armazena a mensagem de erro na requisição
+            // Em caso de erro na consulta, armazena a mensagem de erro na requisição
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
+
 
         // Define o resultado da busca como atributo da requisição
         request.setAttribute("resultado", lista.toString());

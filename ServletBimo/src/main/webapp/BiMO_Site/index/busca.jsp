@@ -571,7 +571,7 @@
     </label>
     <div class="form-content">
         <form action="${pageContext.request.contextPath}/buscarCertificacaoCurso" method="post">
-            <label for="certificacao-curso"><h3>Email</h3></label>
+            <label for="certificacao-curso"><h3>Certificação</h3></label>
             <input type="text" id="certificacao-curso" name="certificacao" required>
 
             <button type="submit"><h3>Buscar</h3></button>

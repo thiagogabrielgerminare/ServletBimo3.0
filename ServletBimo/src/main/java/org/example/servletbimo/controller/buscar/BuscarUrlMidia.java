@@ -17,25 +17,23 @@ public class BuscarUrlMidia extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = request.getParameter("url");
-
         // Validação da entrada
-        if (url == null || url.trim().isEmpty()) {
-            request.setAttribute("resultado", "A URL não pode ser vazia.");
-            request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
-            return;
-        }
 
         Midia midia = new Midia(url);
         MidiaDAO midiaDAO = new MidiaDAO();
         StringBuilder lista = new StringBuilder();
-
-        try (ResultSet rs = midiaDAO.buscarMidiaPorUrl(midia)) {
+        ResultSet rs = midiaDAO.buscarMidiaPorUrl(midia);
+        try  {
             // Verifica se o resultado está vazio
-            if (rs == null || !rs.isBeforeFirst()) {
-                request.setAttribute("resultado", "Nenhuma mídia encontrada com a URL fornecida.");
-                request.getRequestDispatcher("resultadoBusca.jsp").forward(request, response);
-                return;
-            }
+
+            // Adiciona o estilo CSS para a tabela
+            lista.append("<style>");
+            lista.append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }");
+            lista.append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }");
+            lista.append("th { background-color: #f2f2f2; font-weight: bold; }");
+            lista.append("tr:nth-child(even) { background-color: #f9f9f9; }"); // Linhas alternadas
+            lista.append("tr:hover { background-color: #e2e2e2; }"); // Efeito hover nas linhas
+            lista.append("</style>");
 
             // Monta a lista de resultados em uma tabela
             lista.append("<table>");

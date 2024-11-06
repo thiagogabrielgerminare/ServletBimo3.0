@@ -23,38 +23,35 @@ public class BuscarTodosAdministrador extends HttpServlet {
         // Busca o administrador pelo nome
         ResultSet rs = administradorDAO.buscarTodosAdministradores();
         StringBuilder lista = new StringBuilder();
-        lista.append("<style>");
-        lista.append("table { width: 100%; border-collapse: collapse; }");
-        lista.append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }");
-        lista.append("th { background-color: #f2f2f2; font-weight: bold; }");
-        lista.append("tr:nth-child(even) { background-color: #f9f9f9; }");
-        lista.append("</style>");
-        lista.append("<table>");
-        lista.append("<thead><tr>");
-        lista.append("<th>sId</th>");
-        lista.append("<th>cNome</th>");
-        lista.append("<th>cEmail</th>");
-        lista.append("</tr></thead>");
-        lista.append("<tbody>");
-
         try {
-            if (rs == null || !rs.isBeforeFirst()) {
-                request.setAttribute("resultado", "Nenhum Administrador encontrado com o nome fornecido.");
-                request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);
-                return;
-            }
-            // Itera sobre os resultados retornados e cria uma linha para cada registro
-            while (rs.next()) {
-                lista.append("<tr>");
-                lista.append("<td>").append(rs.getInt("SID")).append("</td>");
-                lista.append("<td>").append(rs.getString("CNOME")).append("</td>");
-                lista.append("<td>").append(rs.getString("CEMAIL")).append("</td>");
-                lista.append("</tr>");
-            }
+                lista.append("<style>")
+                    .append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }")
+                    .append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }")
+                    .append("th { background-color: #f2f2f2; font-weight: bold; }")
+                    .append("tr:nth-child(even) { background-color: #f9f9f9; }")
+                    .append("tr:hover { background-color: #e2e2e2; }")
+                    .append("td, th { text-align: center; }")
+                    .append("</style>");
+                // Cria a estrutura da tabela
+                lista.append("<table>");
+                lista.append("<thead><tr><th>sId</th><th>cNome</th><th>cEmail</th></tr></thead>");
+                lista.append("<tbody>");
+
+                // Itera sobre os resultados retornados e cria uma linha para cada registro
+                while (rs.next()) {
+                    lista.append("<tr>");
+                    lista.append("<td>").append(rs.getInt("SID")).append("</td>");
+                    lista.append("<td>").append(rs.getString("CNOME")).append("</td>");
+                    lista.append("<td>").append(rs.getString("CEMAIL")).append("</td>");
+                    lista.append("</tr>");
+                }
+                lista.append("</tbody>");
+                lista.append("</table>");
         } catch (SQLException sqle) {
             // Armazena a mensagem de erro na requisição
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
+
 
         lista.append("</tbody></table>");
 

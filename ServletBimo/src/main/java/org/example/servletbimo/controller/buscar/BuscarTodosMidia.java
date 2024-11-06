@@ -23,36 +23,41 @@ public class BuscarTodosMidia extends HttpServlet {
         ResultSet rs = midiaDAO.buscarTodosMidia();
         StringBuilder lista = new StringBuilder();
 
-        lista.append("<style>");
-        lista.append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }");
-        lista.append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }");
-        lista.append("th { background-color: #f2f2f2; font-weight: bold; }");
-        lista.append("tr:nth-child(even) { background-color: #f9f9f9; }");
-        lista.append("</style>");
-
-// Início da tabela HTML
-        lista.append("<table>");
-        lista.append("<tr><th>sId</th><th>idProduto</th><th>cUrlFoto</th></tr>");
-
         try {
-            // Itera sobre o ResultSet para criar uma linha de dados para cada registro
-            if (rs == null || !rs.isBeforeFirst()) {
-                request.setAttribute("resultado", "Nenhuma plano midia encontrada.");
-                request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);
-                return;
-            }
+            lista.append("<style>")
+                    .append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }")
+                    .append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }")
+                    .append("th { background-color: #f2f2f2; font-weight: bold; }")
+                    .append("tr:nth-child(even) { background-color: #f9f9f9; }")
+                    .append("tr:hover { background-color: #e2e2e2; }")
+                    .append("td, th { text-align: center; }")
+                    .append("</style>");
+
+            // Inicia a tabela com o cabeçalho
+            lista.append("<table>");
+            lista.append("<thead><tr>")
+                    .append("<th>sId</th>")
+                    .append("<th>idProduto</th>")
+                    .append("<th>URL Foto</th>")
+                    .append("</tr></thead>");
+
+            lista.append("<tbody>");
+
+            // Itera sobre os resultados do ResultSet e preenche a tabela
             while (rs.next()) {
-                lista.append("<tr>");
-                lista.append("<td>").append(rs.getInt("SID")).append("</td>");
-                lista.append("<td>").append(rs.getInt("IDPRODUTO")).append("</td>");
-                lista.append("<td>").append(rs.getString("CURLFOTO")).append("</td>");
-                lista.append("</tr>");
+                lista.append("<tr>")
+                        .append("<td>").append(rs.getInt("SID")).append("</td>")
+                        .append("<td>").append(rs.getInt("IDPRODUTO")).append("</td>")
+                        .append("<td>").append(rs.getString("CURLFOTO")).append("</td>")
+                        .append("</tr>");
             }
+            lista.append("</tbody>");
             lista.append("</table>"); // Fecha a tabela
         } catch (SQLException sqle) {
             // Armazena a mensagem de erro na requisição
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
+
         // Define o resultado da busca como atributo da requisição
         request.setAttribute("resultado", lista.toString());
         request.getRequestDispatcher("/BiMO_Site/index/resultadoBusca.jsp").forward(request, response);

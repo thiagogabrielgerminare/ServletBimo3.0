@@ -31,18 +31,44 @@ public class BuscarNomeAdministrador extends HttpServlet {
         StringBuilder lista = new StringBuilder();
 
         try {
-            // Itera sobre os resultados retornados
-            while (rs.next()) {
-                lista.append("<div class=\"linha\">");
-                lista.append("<p>").append("<div class=\"nomeColuna\">").append("sId: ").append("</div>").append(rs.getInt("SID")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("cNome: ").append("</div>").append(rs.getString("CNOME")).append("</p>")
-                        .append("<p>").append("<div class=\"nomeColuna\">").append("cEmail: ").append("</div>").append(rs.getString("CEMAIL")).append("</p>")
-                        .append("</div>").append("<br>"); // Quebra de linha na saída HTML
+            // Verifica se o ResultSet contém resultados
+            if (!rs.isBeforeFirst()) {
+                request.setAttribute("resultado", "Nenhum usuário encontrado.");
+            } else {
+                // Adiciona o estilo da tabela
+                lista.append("<style>")
+                        .append("table { width: 100%; border-collapse: collapse; margin-top: 20px; }")
+                        .append("th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }")
+                        .append("th { background-color: #f2f2f2; font-weight: bold; }")
+                        .append("tr:nth-child(even) { background-color: #f9f9f9; }")
+                        .append("tr:hover { background-color: #e2e2e2; }")
+                        .append("td, th { text-align: center; }")
+                        .append("</style>");
+
+                // Começa a construção da tabela HTML
+                lista.append("<table>");
+                lista.append("<tr>")
+                        .append("<th>sId</th>")
+                        .append("<th>cNome</th>")
+                        .append("<th>cEmail</th>")
+                        .append("</tr>");
+
+                // Itera sobre o ResultSet e adiciona os dados à tabela
+                while (rs.next()) {
+                    lista.append("<tr>")
+                            .append("<td>").append(rs.getInt("SID")).append("</td>")
+                            .append("<td>").append(rs.getString("CNOME")).append("</td>")
+                            .append("<td>").append(rs.getString("CEMAIL")).append("</td>")
+                            .append("</tr>");
+                }
+
+                lista.append("</table>");  // Fecha a tabela
             }
         } catch (SQLException sqle) {
-            // Armazena a mensagem de erro na requisição
+            // Em caso de erro, armazena a mensagem de erro na requisição
             request.setAttribute("resultado", "Erro: " + sqle.getMessage());
         }
+
 
         // Define o resultado da busca como atributo da requisição
         request.setAttribute("resultado", lista.toString());
