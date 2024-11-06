@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.UsuarioDAO; // Importa a classe DAO para manipulação de usuários
+import org.example.servletbimo.dao.UsuarioDAO; // Importa a classe DAO para manipulação de usuários
 import org.example.servletbimo.models.Usuario; // Importa o modelo Usuario
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package org.example.servletbimo.DAO;
+package org.example.servletbimo.dao;
 
 import org.example.servletbimo.models.CategoriaCurso;
 import java.sql.PreparedStatement; // Importa a classe para preparar instruções SQL

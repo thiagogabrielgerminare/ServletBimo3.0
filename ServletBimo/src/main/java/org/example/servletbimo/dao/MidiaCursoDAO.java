@@ -1,7 +1,6 @@
-package org.example.servletbimo.DAO; // Pacote que contém a classe DAO
+package org.example.servletbimo.dao; // Pacote que contém a classe DAO
 
 
-import org.example.servletbimo.models.Midia;
 import org.example.servletbimo.models.MidiaCurso;
 
 import java.sql.PreparedStatement; // Importa a classe para preparar instruções SQL

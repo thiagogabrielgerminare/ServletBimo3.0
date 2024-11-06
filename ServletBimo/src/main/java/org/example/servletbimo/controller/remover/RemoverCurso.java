@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CursoDAO; // Importa o DAO para manipulação de cursos
+import org.example.servletbimo.dao.CursoDAO; // Importa o DAO para manipulação de cursos
 import org.example.servletbimo.models.Curso; // Importa o modelo Curso
 
 import java.io.IOException;

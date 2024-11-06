@@ -1,7 +1,4 @@
-package org.example.servletbimo.DAO;
-
-import org.example.servletbimo.models.CategoriaProduto;
-import org.example.servletbimo.models.Usuario;
+package org.example.servletbimo.dao;
 
 import org.example.servletbimo.models.Midia;
 
