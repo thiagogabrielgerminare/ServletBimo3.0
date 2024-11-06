@@ -41,9 +41,9 @@ body{
     padding: 0;
     margin: 0;
     font-weight: 500;
-    font-size: 230%; 
+    font-size: 230%;
     text-align: center;
-   
+
 }
 /* Cor do "p" */
 .formLogin p {
@@ -63,7 +63,7 @@ body{
     transition: all linear 160ms;
     outline: none;
     width: 400px;
-}   
+}
 
 .formLogin .input::placeholder{
     color: #23C2FF;
@@ -208,7 +208,7 @@ body{
     #seta{
        font-size: 250%;
     }
-    
+
     .login{
         align-items: center;
         height: 450px;
@@ -243,7 +243,7 @@ body{
     #pagelogin{
         height: 200%;
      }
-     
+
      .login{
          align-items: center;
          height: 320px;

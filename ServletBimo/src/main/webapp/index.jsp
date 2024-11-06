@@ -1,13 +1,13 @@
-<!-- PAGINA DE LOGIN DA AREA RESTRITA-->
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Página de Login</title>
-    <link rel="shortcut icon" href="BiMO_Site/image/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="BiMO_Site/styles/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de login</title>
+    <link rel="stylesheet" href="/BiMO_Site/styles/login.css">
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon">
 </head>
 <body>
 
@@ -26,6 +26,8 @@
                     <img src="./BiMO_Site/image/olho-cortado.png" alt="Mostrar/Esconder Senha" id="olhinho" onclick="togglePassword()" style="cursor: pointer;">
                 </div>
                 <a href="./BiMO_Site/index/admin.jsp"><input type="submit" value="Entrar" id="butentrar" /></a>
+
+
             </div>
         </form>
     </div>
@@ -45,6 +47,7 @@
         }
     }
 </script>
+
 
 </body>
 </html>
