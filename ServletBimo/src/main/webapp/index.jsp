@@ -25,7 +25,7 @@
                     <input type="password" name="senha" class="input" id="password" placeholder="Digite sua senha">
                     <img src="./BiMO_Site/image/olho-cortado.png" alt="Mostrar/Esconder Senha" id="olhinho" onclick="togglePassword()" style="cursor: pointer;">
                 </div>
-                <a href="./BiMO_Site/index/admin.jsp"><input type="button" value="Entrar" id="butentrar" /></a>
+                <a href="./BiMO_Site/index/admin.jsp"><input type="submit" value="Entrar" id="butentrar" /></a>
             </div>
         </form>
     </div>
