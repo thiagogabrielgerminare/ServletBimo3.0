@@ -16,16 +16,16 @@
     <div class="login">
         <form method="post" class="formLogin" action="${pageContext.request.contextPath}/login">
             <div id="img">
-                <img src="login.png" id="imglogin">
+                <img src="./BiMO_Site/image/login.png" id="imglogin">
             </div>
             <div class="clogin">
                 <h1>Faça login</h1>
                 <input type="email" name="email" class="input" placeholder="Digite seu e-mail" required/>
                 <div class="olho-senha">
                     <input type="password" name="senha" class="input" id="password" placeholder="Digite sua senha">
-                    <img src="olho-cortado.png" alt="Mostrar/Esconder Senha" id="olhinho" onclick="togglePassword()" style="cursor: pointer;">
+                    <img src="./BiMO_Site/image/olho-cortado.png" alt="Mostrar/Esconder Senha" id="olhinho" onclick="togglePassword()" style="cursor: pointer;">
                 </div>
-                <a href="pag_inicial.html"><input type="button" value="Entrar" id="butentrar" /></a>
+                <a href="./BiMO_Site/index/admin.jsp"><input type="button" value="Entrar" id="butentrar" /></a>
             </div>
         </form>
     </div>
@@ -38,10 +38,10 @@
 
         if (passwordInput.type === "password") {
             passwordInput.type = "text";
-            eyeIcon.src = 'olho.png'; // Altera o ícone para olho fechado
+            eyeIcon.src = '/BiMO_Site/image/olho.png'; // Altera o ícone para olho fechado
         } else {
             passwordInput.type = "password";
-            eyeIcon.src = 'olho-cortado.png'; // Altera o ícone para olho aberto
+            eyeIcon.src = '/BiMO_Site/image/olho-cortado.png'; // Altera o ícone para olho aberto
         }
     }
 </script>
