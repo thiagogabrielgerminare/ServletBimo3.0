@@ -2,7 +2,7 @@ package org.example.servletbimo.controller.cadastrar;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.dao.CategoriaProdutoDAO;
+import org.example.servletbimo.DAO.CategoriaProdutoDAO;
 import org.example.servletbimo.models.CategoriaProduto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

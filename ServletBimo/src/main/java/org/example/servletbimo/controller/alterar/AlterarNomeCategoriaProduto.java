@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet; // Importa a anotação para defin
 import jakarta.servlet.http.HttpServlet; // Importa a classe base para servlets HTTP
 import jakarta.servlet.http.HttpServletRequest; // Importa a classe para manipulação de requisições HTTP
 import jakarta.servlet.http.HttpServletResponse; // Importa a classe para manipulação de respostas HTTP
-import org.example.servletbimo.dao.CategoriaProdutoDAO; // Importa a classe DAO para interações com a tabela de categorias de produtos
+import org.example.servletbimo.DAO.CategoriaProdutoDAO; // Importa a classe DAO para interações com a tabela de categorias de produtos
 import org.example.servletbimo.models.CategoriaProduto; // Importa a classe de modelo para a categoria do produto
 
 import java.io.IOException; // Importa a classe de exceções de entrada/saída

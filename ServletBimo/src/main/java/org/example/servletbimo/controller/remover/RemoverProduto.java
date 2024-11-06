@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.dao.ProdutoDAO; // Importa a classe DAO para manipulação de produtos
+import org.example.servletbimo.DAO.ProdutoDAO; // Importa a classe DAO para manipulação de produtos
 import org.example.servletbimo.models.Produto; // Importa o modelo Produto
 
 import java.io.IOException;

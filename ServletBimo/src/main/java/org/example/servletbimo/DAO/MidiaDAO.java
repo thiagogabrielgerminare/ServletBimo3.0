@@ -1,4 +1,4 @@
-package org.example.servletbimo.dao;
+package org.example.servletbimo.DAO;
 
 import org.example.servletbimo.models.Midia;
 

@@ -1,4 +1,4 @@
-package org.example.servletbimo.dao; // Pacote que contém a classe DAO
+package org.example.servletbimo.DAO; // Pacote que contém a classe DAO
 
 
 import org.example.servletbimo.models.MidiaCurso;

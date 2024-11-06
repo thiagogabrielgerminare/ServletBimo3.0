@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.dao.MidiaCursoDAO; // Importa o DAO para manipulação de mídias de curso
+import org.example.servletbimo.DAO.MidiaCursoDAO; // Importa o DAO para manipulação de mídias de curso
 import org.example.servletbimo.models.MidiaCurso; // Importa o modelo MidiaCurso
 
 import java.io.IOException;

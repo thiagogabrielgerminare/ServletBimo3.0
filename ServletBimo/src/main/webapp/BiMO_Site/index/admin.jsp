@@ -39,6 +39,7 @@
 		<a href="./BiMO_Site/index/remocao.jsp">Remover</a>
 		<a href="./BiMO_Site/index/alteracao.jsp">Alterar</a>
 		<a href="./BiMO_Site/index/busca.jsp">Buscar</a>
+		<a href="#####">Dashboard de BI</a>
 	</div>
 </div>
 
@@ -46,24 +47,7 @@
 
 <br><br><br><br><br>
 
-<div class="links-bi">
-	<h2>Dashboards de BI</h2>
 
-	<iframe
-			src="https://app.powerbi.com/view?r=eyJrIjoiMGQ4Zjg5OTgtNmM0Yi00MGE2LWI5YzUtZWFiMWViMWY5YTYyIiwidCI6ImIxNDhmMTRjLTIzOTctNDAyYy1hYjZhLTFiNDcxMTE3N2FjMCJ9"
-			width="100%"
-			height="600"
-			frameborder="0"
-			allowFullScreen="true">
-	</iframe>
 
-	<iframe
-			src="https://app.powerbi.com/view?r=eyJrIjoiNzJjZGI5YTgtMjIzYi00NDRmLWJjZWUtNzE5ZmVhZmY2OWM4IiwidCI6ImIxNDhmMTRjLTIzOTctNDAyYy1hYjZhLTFiNDcxMTE3N2FjMCJ9"
-			width="100%"
-			height="600"
-			frameborder="0"
-			allowFullScreen="true">
-	</iframe>
-</div>
 </body>
 </html>
