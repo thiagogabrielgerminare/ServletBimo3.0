@@ -6,6 +6,7 @@
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <title>Admin BiMO</title>
     <link rel="stylesheet" href="/BiMO_Site/styles/resultadoBusca.css">
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         #seta{

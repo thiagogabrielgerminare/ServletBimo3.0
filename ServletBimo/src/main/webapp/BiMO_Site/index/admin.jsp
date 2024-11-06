@@ -15,6 +15,7 @@
 	<title>Admin BiMO</title>
 	<link rel="stylesheet" href="/BiMO_Site/styles/admin.css">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="shortcut icon" href="../image/logo.png" type="image/x-icon">
 </head>
 <body>
 <!--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=INICIO-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->

@@ -8,6 +8,7 @@
     <title>Erro</title>
     <link rel="shortcut icon" href="/BiMO_Site/image/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/BiMO_Site/styles/login.css">
+    <link rel="shortcut icon" href="../image/logo.png" type="image/x-icon">
 </head>
 <body>
 
