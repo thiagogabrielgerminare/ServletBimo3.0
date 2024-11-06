@@ -201,10 +201,13 @@ h1 {
     #textoods{
         width: 90%;
         margin-top: 20px;
+        text-align: start;
     }
 
     #textobaixo{
-        width: 100%;
+        max-width: 90%;
+        text-align: start;
+        /* background-color: red; */
     }
 
     .textofinal p{
