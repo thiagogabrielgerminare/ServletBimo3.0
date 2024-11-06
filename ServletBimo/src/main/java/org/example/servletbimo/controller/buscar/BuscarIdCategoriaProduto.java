@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CategoriaProdutoDAO;
+import org.example.servletbimo.dao.CategoriaProdutoDAO;
 import org.example.servletbimo.models.CategoriaProduto;
 
 import java.io.IOException;
@@ -36,7 +36,7 @@ public class BuscarIdCategoriaProduto extends HttpServlet {
         // Cria um objeto CategoriaProduto utilizando o ID fornecido
         CategoriaProduto categoriaProduto = new CategoriaProduto(idInt);
 
-        // Instancia o DAO de categoria de produto para interagir com o banco de dados
+        // Instancia o dao de categoria de produto para interagir com o banco de dados
         CategoriaProdutoDAO categoriaProdutoDAO = new CategoriaProdutoDAO();
 
         // Realiza a busca da categoria de produto pelo ID no banco de dados

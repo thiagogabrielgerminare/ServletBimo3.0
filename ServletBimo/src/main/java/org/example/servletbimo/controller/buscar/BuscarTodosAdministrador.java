@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.AdministradorDAO;
+import org.example.servletbimo.dao.AdministradorDAO;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -17,7 +17,7 @@ public class BuscarTodosAdministrador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // Cria uma instância do DAO para acessar dados do administrador
+        // Cria uma instância do dao para acessar dados do administrador
         AdministradorDAO administradorDAO = new AdministradorDAO();
 
         // Busca o administrador pelo nome

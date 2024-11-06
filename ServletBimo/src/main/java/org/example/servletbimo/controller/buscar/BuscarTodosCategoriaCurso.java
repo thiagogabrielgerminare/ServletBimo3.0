@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CategoriaCursoDAO;
+import org.example.servletbimo.dao.CategoriaCursoDAO;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class BuscarTodosCategoriaCurso extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Cria uma instância do DAO para acessar dados da categoria de curso
+        // Cria uma instância do dao para acessar dados da categoria de curso
         CategoriaCursoDAO categoriaCursoDAO = new CategoriaCursoDAO();
 
         // Busca a categoria de curso pelo nome

@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CursoDAO;
+import org.example.servletbimo.dao.CursoDAO;
 import org.example.servletbimo.models.Curso;
 
 import java.io.IOException;
@@ -36,7 +36,7 @@ public class BuscarIdCurso extends HttpServlet {
         // Cria um objeto Curso utilizando o ID fornecido
         Curso curso = new Curso(idInt);
 
-        // Instancia o DAO de curso para interagir com o banco de dados
+        // Instancia o dao de curso para interagir com o banco de dados
         CursoDAO cursoDAO = new CursoDAO();
 
         // Realiza a busca do curso pelo ID no banco de dados

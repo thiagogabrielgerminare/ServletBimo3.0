@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CategoriaCursoDAO;
+import org.example.servletbimo.dao.CategoriaCursoDAO;
 import org.example.servletbimo.models.CategoriaCurso;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class CadastrarCategoriaCurso extends HttpServlet {
         // Cria um novo objeto CategoriaCurso com o nome capturado
         CategoriaCurso categoriaCurso = new CategoriaCurso(nome);
 
-        // Instancia o DAO para realizar a inserção da nova categoria de curso no banco de dados
+        // Instancia o dao para realizar a inserção da nova categoria de curso no banco de dados
         CategoriaCursoDAO categoriaCursoDAO = new CategoriaCursoDAO();
         boolean sucesso = categoriaCursoDAO.inserirCategoriaCurso(categoriaCurso); // Tenta inserir a categoria
 

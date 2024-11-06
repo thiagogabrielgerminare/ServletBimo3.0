@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.PlanoPagamentoDAO; // Importa o DAO para manipulação de planos de pagamento
+import org.example.servletbimo.dao.PlanoPagamentoDAO; // Importa o dao para manipulação de planos de pagamento
 import org.example.servletbimo.models.PlanoPagamento; // Importa o modelo PlanoPagamento
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class RemoverPlano extends HttpServlet {
         // Cria um objeto PlanoPagamento com o ID para remoção
         PlanoPagamento planoPagamento = new PlanoPagamento(idInt);
 
-        // Instancia o DAO para realizar a remoção do plano de pagamento
+        // Instancia o dao para realizar a remoção do plano de pagamento
         PlanoPagamentoDAO planoPagamentoDAO = new PlanoPagamentoDAO();
         int sucesso = planoPagamentoDAO.removerPlanoPagamento(planoPagamento); // Tenta remover o plano de pagamento
 

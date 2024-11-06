@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.UsuarioDAO;
+import org.example.servletbimo.dao.UsuarioDAO;
 import org.example.servletbimo.models.Usuario;
 
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class BuscarEmailUsuario extends HttpServlet {
         // Cria um objeto Usuario usando o email
         Usuario usuario = new Usuario(email, 2);
 
-        // Instancia o DAO de usuário para interagir com o banco de dados
+        // Instancia o dao de usuário para interagir com o banco de dados
         UsuarioDAO usuarioDAO = new UsuarioDAO();
 
         // Realiza a busca do usuário pelo email no banco de dados

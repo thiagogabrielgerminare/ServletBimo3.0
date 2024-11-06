@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CategoriaCursoDAO;
+import org.example.servletbimo.dao.CategoriaCursoDAO;
 import org.example.servletbimo.models.CategoriaCurso;
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class RemoverCategoriaCurso extends HttpServlet {
         // Cria um objeto CategoriaCurso com o ID para remoção
         CategoriaCurso categoriaCurso = new CategoriaCurso(idInt);
 
-        // Instancia o DAO para realizar a remoção da categoria de curso
+        // Instancia o dao para realizar a remoção da categoria de curso
         CategoriaCursoDAO categoriaCursoDAO = new CategoriaCursoDAO();
         int sucesso = categoriaCursoDAO.removerCategoriaCurso(categoriaCurso); // Tenta remover a categoria de curso
 

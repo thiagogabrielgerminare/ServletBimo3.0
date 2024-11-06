@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.AdministradorDAO;
+import org.example.servletbimo.dao.AdministradorDAO;
 import org.example.servletbimo.models.Administrador;
 
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class BuscarEmailAdministrador extends HttpServlet {
         // Cria um objeto Administrador com o email fornecido e um valor numérico fixo (2)
         Administrador administrador = new Administrador(email, 2);
 
-        // Instancia o DAO AdministradorDAO para acessar o banco de dados
+        // Instancia o dao AdministradorDAO para acessar o banco de dados
         AdministradorDAO administradorDAO = new AdministradorDAO();
 
         // Realiza a consulta no banco de dados para buscar o administrador pelo email

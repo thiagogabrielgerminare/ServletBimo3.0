@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.UsuarioDAO; // Importa a classe DAO para manipulação de usuários
+import org.example.servletbimo.dao.UsuarioDAO; // Importa a classe dao para manipulação de usuários
 import org.example.servletbimo.models.Usuario; // Importa o modelo Usuario
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class RemoverUsuario extends HttpServlet {
         // Cria um objeto Usuario com o ID para remoção
         Usuario usuario = new Usuario(idInt);
 
-        // Instancia o DAO para realizar a remoção do usuário
+        // Instancia o dao para realizar a remoção do usuário
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         int sucesso = usuarioDAO.removerUsuario(usuario); // Tenta remover o usuário
 

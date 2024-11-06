@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet; // Importa a anotação para decla
 import jakarta.servlet.http.HttpServlet; // Importa a classe base para servlets HTTP
 import jakarta.servlet.http.HttpServletRequest; // Importa a classe para tratar requisições HTTP
 import jakarta.servlet.http.HttpServletResponse; // Importa a classe para tratar respostas HTTP
-import org.example.servletbimo.DAO.MidiaCursoDAO; // Importa a classe de acesso a dados para mídias de curso
+import org.example.servletbimo.dao.MidiaCursoDAO; // Importa a classe de acesso a dados para mídias de curso
 import org.example.servletbimo.models.MidiaCurso; // Importa a classe do modelo de mídia de curso
 
 import java.io.IOException; // Importa a classe para exceções de entrada/saída
@@ -33,7 +33,7 @@ public class CadastrarMidiaCurso extends HttpServlet {
         // Cria um objeto MidiaCurso com os dados fornecidos
         MidiaCurso midiaCurso = new MidiaCurso(idInt, 2, urlFoto);
 
-        // Cria uma instância do DAO para inserir a mídia do curso
+        // Cria uma instância do dao para inserir a mídia do curso
         MidiaCursoDAO midiaCursoDAO = new MidiaCursoDAO();
         boolean success = midiaCursoDAO.inserirMidiaCurso(midiaCurso);
 

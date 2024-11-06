@@ -2,7 +2,7 @@ package org.example.servletbimo.controller.cadastrar;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CategoriaProdutoDAO;
+import org.example.servletbimo.dao.CategoriaProdutoDAO;
 import org.example.servletbimo.models.CategoriaProduto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -22,7 +22,7 @@ public class CadastrarCategoriaProduto extends HttpServlet {
         // Cria um novo objeto CategoriaProduto com o nome capturado
         CategoriaProduto categoriaProduto = new CategoriaProduto(nome);
 
-        // Instancia o DAO para realizar a inserção da nova categoria de produto no banco de dados
+        // Instancia o dao para realizar a inserção da nova categoria de produto no banco de dados
         CategoriaProdutoDAO categoriaProdutoDAO = new CategoriaProdutoDAO();
         boolean sucesso = categoriaProdutoDAO.inserirCategoriaProduto(categoriaProduto); // Tenta inserir a categoria
 

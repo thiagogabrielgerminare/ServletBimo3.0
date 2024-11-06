@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.UsuarioDAO;
+import org.example.servletbimo.dao.UsuarioDAO;
 import org.example.servletbimo.models.Usuario;
 
 import java.io.IOException;

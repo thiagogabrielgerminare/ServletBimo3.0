@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.AdministradorDAO;
+import org.example.servletbimo.dao.AdministradorDAO;
 import org.example.servletbimo.models.Administrador;
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class CadastrarAdministrador extends HttpServlet {
                 // Cria um novo objeto Administrador com os dados capturados
                 Administrador administrador = new Administrador(nome, email, senhaCriptografada);
 
-                // Instancia o DAO para realizar a inserção no banco de dados
+                // Instancia o dao para realizar a inserção no banco de dados
                 boolean sucesso = administradorDAO.inserirAdministrador(administrador); // Tenta inserir o administrador
 
                 // Define o resultado da operação como atributo da requisição

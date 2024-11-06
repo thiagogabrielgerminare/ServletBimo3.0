@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet; // Importa a anotação para defin
 import jakarta.servlet.http.HttpServlet; // Importa a classe base para servlets HTTP
 import jakarta.servlet.http.HttpServletRequest; // Importa a classe para manipulação de requisições HTTP
 import jakarta.servlet.http.HttpServletResponse; // Importa a classe para manipulação de respostas HTTP
-import org.example.servletbimo.DAO.AdministradorDAO; // Importa a classe DAO para interações com o banco de dados
+import org.example.servletbimo.dao.AdministradorDAO; // Importa a classe dao para interações com o banco de dados
 import org.example.servletbimo.models.Administrador; // Importa a classe de modelo do administrador
 
 import java.io.IOException; // Importa a classe de exceções de entrada/saída
@@ -36,7 +36,7 @@ public class AlterarEmailAdm extends HttpServlet {
         // Cria uma nova instância de Administrador com os dados recebidos
         Administrador administrador = new Administrador(idInt, email, 2);
 
-        // Instancia o DAO para manipular os dados do administrador
+        // Instancia o dao para manipular os dados do administrador
         AdministradorDAO administradorDAO = new AdministradorDAO();
 
         // Chama o método para alterar o e-mail do administrador no banco de dados

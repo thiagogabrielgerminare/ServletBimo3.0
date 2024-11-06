@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.AdministradorDAO;
+import org.example.servletbimo.dao.AdministradorDAO;
 import org.example.servletbimo.models.Administrador;
 
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class BuscarNomeAdministrador extends HttpServlet {
         // Cria uma nova instância de Administrador com o nome fornecido
         Administrador administrador = new Administrador(nome, 1); // O '1' aqui parece ser um valor fixo, considere se é necessário
 
-        // Cria uma instância do DAO para acessar dados do administrador
+        // Cria uma instância do dao para acessar dados do administrador
         AdministradorDAO administradorDAO = new AdministradorDAO();
 
         // Busca o administrador pelo nome

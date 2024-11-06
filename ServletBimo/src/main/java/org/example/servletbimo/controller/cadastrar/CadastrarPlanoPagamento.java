@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.PlanoPagamentoDAO;
+import org.example.servletbimo.dao.PlanoPagamentoDAO;
 import org.example.servletbimo.models.PlanoPagamento;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class CadastrarPlanoPagamento extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Instancia o DAO para interagir com a tabela de planos de pagamento
+        // Instancia o dao para interagir com a tabela de planos de pagamento
         PlanoPagamentoDAO pgDAO = new PlanoPagamentoDAO();
 
         // Obtém os parâmetros enviados no formulário de cadastro

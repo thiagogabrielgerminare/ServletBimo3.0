@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.ProdutoDAO;
+import org.example.servletbimo.dao.ProdutoDAO;
 import org.example.servletbimo.models.Produto;
 
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class BuscarEstadoProduto extends HttpServlet {
         // Cria um objeto Produto utilizando o estado fornecido
         Produto produto = new Produto(estado, 2);
 
-        // Instancia o DAO de produto para interagir com o banco de dados
+        // Instancia o dao de produto para interagir com o banco de dados
         ProdutoDAO produtoDAO = new ProdutoDAO();
 
         // Realiza a busca dos produtos pelo estado no banco de dados

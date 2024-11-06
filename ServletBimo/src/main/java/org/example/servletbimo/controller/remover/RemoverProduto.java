@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.ProdutoDAO; // Importa a classe DAO para manipulação de produtos
+import org.example.servletbimo.dao.ProdutoDAO; // Importa a classe dao para manipulação de produtos
 import org.example.servletbimo.models.Produto; // Importa o modelo Produto
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class RemoverProduto extends HttpServlet {
         // Cria um objeto Produto com o ID para remoção
         Produto produto = new Produto(idInt);
 
-        // Instancia o DAO para realizar a remoção do produto
+        // Instancia o dao para realizar a remoção do produto
         ProdutoDAO produtoDAO = new ProdutoDAO();
         int sucesso = produtoDAO.removerProduto(produto); // Tenta remover o produto
 

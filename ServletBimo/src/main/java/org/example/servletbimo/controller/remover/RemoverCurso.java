@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CursoDAO; // Importa o DAO para manipulação de cursos
+import org.example.servletbimo.dao.CursoDAO; // Importa o dao para manipulação de cursos
 import org.example.servletbimo.models.Curso; // Importa o modelo Curso
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class RemoverCurso extends HttpServlet {
         // Cria um objeto Curso com o ID para remoção
         Curso curso = new Curso(idInt);
 
-        // Instancia o DAO para realizar a remoção do curso
+        // Instancia o dao para realizar a remoção do curso
         CursoDAO cursoDAO = new CursoDAO();
         int sucesso = cursoDAO.removerCurso(curso); // Tenta remover o curso
 

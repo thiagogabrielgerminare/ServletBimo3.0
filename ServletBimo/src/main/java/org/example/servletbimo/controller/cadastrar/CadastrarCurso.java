@@ -2,7 +2,7 @@ package org.example.servletbimo.controller.cadastrar;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CursoDAO;
+import org.example.servletbimo.dao.CursoDAO;
 import org.example.servletbimo.models.Curso;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -70,7 +70,7 @@ public class CadastrarCurso extends HttpServlet {
         // Cria um novo objeto Curso com os dados capturados
         Curso curso = new Curso(idCategoriaInt, nome, valorDouble, descricao, statusBool, numInscricaoInt, duracao, certificacao);
 
-        // Instancia o DAO para realizar a inserção do novo curso no banco de dados
+        // Instancia o dao para realizar a inserção do novo curso no banco de dados
         CursoDAO cursoDAO = new CursoDAO();
         boolean sucesso = cursoDAO.inserirCurso(curso); // Tenta inserir o curso
 

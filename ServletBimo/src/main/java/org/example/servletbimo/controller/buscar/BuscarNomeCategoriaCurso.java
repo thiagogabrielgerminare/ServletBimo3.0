@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.CategoriaCursoDAO;
+import org.example.servletbimo.dao.CategoriaCursoDAO;
 import org.example.servletbimo.models.CategoriaCurso;
 
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class BuscarNomeCategoriaCurso extends HttpServlet {
         // Cria uma nova instância de CategoriaCurso com o nome fornecido
         CategoriaCurso categoriaCurso = new CategoriaCurso(nome);
 
-        // Cria uma instância do DAO para acessar dados da categoria de curso
+        // Cria uma instância do dao para acessar dados da categoria de curso
         CategoriaCursoDAO categoriaCursoDAO = new CategoriaCursoDAO();
 
         // Busca a categoria de curso pelo nome

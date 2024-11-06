@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.PlanoPagamentoDAO;
+import org.example.servletbimo.dao.PlanoPagamentoDAO;
 import org.example.servletbimo.models.PlanoPagamento;
 
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class BuscarDescricaoPlano extends HttpServlet {
         // Cria um objeto PlanoPagamento com a descrição fornecida e um valor numérico fixo (2)
         PlanoPagamento planoPagamento = new PlanoPagamento(descricao, 2);
 
-        // Instancia o DAO PlanoPagamentoDAO para acesso ao banco de dados
+        // Instancia o dao PlanoPagamentoDAO para acesso ao banco de dados
         PlanoPagamentoDAO planoPagamentoDAO = new PlanoPagamentoDAO();
 
         // Realiza a consulta no banco de dados para buscar o plano de pagamento pela descrição

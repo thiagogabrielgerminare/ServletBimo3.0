@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.AdministradorDAO;
+import org.example.servletbimo.dao.AdministradorDAO;
 import org.example.servletbimo.models.Administrador;
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class RemoverAdministrador extends HttpServlet {
         // Cria um objeto Administrador com o ID para remoção
         Administrador administrador = new Administrador(idInt);
 
-        // Instancia o DAO para realizar a remoção do administrador
+        // Instancia o dao para realizar a remoção do administrador
         AdministradorDAO administradorDAO = new AdministradorDAO();
         int sucesso = administradorDAO.removerAdministrador(administrador); // Tenta remover o administrador
 

@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet; // Importa a anotação para defin
 import jakarta.servlet.http.HttpServlet; // Importa a classe base para servlets HTTP
 import jakarta.servlet.http.HttpServletRequest; // Importa a classe para manipulação de requisições HTTP
 import jakarta.servlet.http.HttpServletResponse; // Importa a classe para manipulação de respostas HTTP
-import org.example.servletbimo.DAO.MidiaCursoDAO; // Importa a classe DAO para interações com a tabela de mídias de cursos
+import org.example.servletbimo.dao.MidiaCursoDAO; // Importa a classe dao para interações com a tabela de mídias de cursos
 import org.example.servletbimo.models.MidiaCurso; // Importa a classe de modelo para a mídia de curso
 
 import java.io.IOException; // Importa a classe de exceções de entrada/saída
@@ -36,7 +36,7 @@ public class AlterarUrlMidiaCurso extends HttpServlet {
         // Cria uma nova instância de MidiaCurso com os dados recebidos
         MidiaCurso midiaCurso = new MidiaCurso(idInt, 1, url);
 
-        // Instancia o DAO para manipular os dados da mídia de curso
+        // Instancia o dao para manipular os dados da mídia de curso
         MidiaCursoDAO midiaCursoDAO = new MidiaCursoDAO();
 
         // Chama o método para alterar a URL da mídia do curso no banco de dados

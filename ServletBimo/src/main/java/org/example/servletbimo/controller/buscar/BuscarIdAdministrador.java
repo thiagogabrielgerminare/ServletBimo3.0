@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.AdministradorDAO;
+import org.example.servletbimo.dao.AdministradorDAO;
 import org.example.servletbimo.models.Administrador;
 
 import java.io.IOException;
@@ -37,7 +37,7 @@ public class BuscarIdAdministrador extends HttpServlet {
         // Cria um objeto Administrador utilizando o ID fornecido
         Administrador administrador = new Administrador(idInt);
 
-        // Instancia o DAO de administrador para interagir com o banco de dados
+        // Instancia o dao de administrador para interagir com o banco de dados
         AdministradorDAO administradorDAO = new AdministradorDAO();
 
         // Realiza a busca do administrador pelo ID no banco de dados

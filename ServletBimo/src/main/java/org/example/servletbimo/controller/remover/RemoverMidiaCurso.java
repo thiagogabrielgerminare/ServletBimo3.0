@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.servletbimo.DAO.MidiaCursoDAO; // Importa o DAO para manipulação de mídias de curso
+import org.example.servletbimo.dao.MidiaCursoDAO; // Importa o dao para manipulação de mídias de curso
 import org.example.servletbimo.models.MidiaCurso; // Importa o modelo MidiaCurso
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class RemoverMidiaCurso extends HttpServlet {
         // Cria um objeto MidiaCurso com o ID para remoção
         MidiaCurso midiaCurso = new MidiaCurso(idInt);
 
-        // Instancia o DAO para realizar a remoção da mídia de curso
+        // Instancia o dao para realizar a remoção da mídia de curso
         MidiaCursoDAO midiaCursoDAO = new MidiaCursoDAO();
         int sucesso = midiaCursoDAO.removerMidiaCurso(midiaCurso); // Tenta remover a mídia de curso
 
