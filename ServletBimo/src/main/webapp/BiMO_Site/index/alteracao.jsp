@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiMO - Alterações</title>
-    <link rel="stylesheet" href="/BiMO_Site/styles/funcoes.css">
+    <link rel="stylesheet" href="./BiMO_Site/styles/funcoes.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,7 +16,7 @@
         <h2>Altere administradores, categorias e planos facilmente. Mantenha tudo atualizado no BiMO!</h2>
     </div>
     <div id="divimginicio">
-        <img src="/BiMO_Site/image/imagem.png" id="imginicio">
+        <img src="./BiMO_Site/image/imagem.png" id="imginicio">
     </div>
     <div id="quadrado"></div>
 </div>
