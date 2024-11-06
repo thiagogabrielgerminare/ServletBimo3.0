@@ -129,7 +129,7 @@ body{
     display: flex;
     align-items: center;
     position: relative;
-    width: 434px;
+    width: 440px;
 }
 
 #olhinho {
@@ -191,6 +191,12 @@ body{
     .formLogin{
         height: 500px;
     }
+
+    .olho-senha{
+        width: 300px;
+        display: flex;
+        justify-content: center;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -229,7 +235,7 @@ body{
     }
 
     .formLogin .input{
-        width: 80%;
+        width: 250px;
     }
 }
 
@@ -241,6 +247,10 @@ body{
      .login{
          align-items: center;
          height: 320px;
+     }
+
+     .formLogin .input{
+        width: 200px;
      }
 }
 

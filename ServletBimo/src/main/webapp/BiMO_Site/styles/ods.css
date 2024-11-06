@@ -26,15 +26,20 @@ h1 {
     background: linear-gradient(270deg, #2CFC71 28.21%, #23C2FF 97.09%);
     color: #F4F7E6;
     width: 100%;
-    height: 86%;
+    height: 95vh;
     margin-bottom: 50px;
-    padding-top: 5%;
     font-weight: bold;
-    flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .inicio h1{
     color: #F4F7E6;
+}
+
+#seta{
+    font-size: 300%;
+    padding: 0.5%;
+    color: #23C2FF;
 }
 
 .iniciobimo {
@@ -43,11 +48,11 @@ h1 {
     align-items: center;
     width: 40%;
     margin-left: 200px;
-    margin-top: 150px;
+    margin-top: 200px;
 }
 
 .iniciobimo p{
-    font-size: 180%;
+    font-size: 220%;
     margin-top: 40px;
     width: 90%;
 }
@@ -62,18 +67,7 @@ h1 {
 #imginicio {
     max-width: 90%;
     max-height: auto;
-    padding-left: 15%;
-}
-
-#quadrado {
-    background-color: #29E7A4;
-    position: relative;
-    width: 2.11494rem;
-    height: 2.10213rem;
-    transform: rotate(-45deg);
-    top: 97%;
-    right: 38%;
-    z-index: -1;
+    margin-top: 10%;
 }
 
 .textoinicio{
@@ -96,8 +90,8 @@ h1 {
 }
 
 .textomeio img{
-    width: 400px;
-    height: 400px;
+    width: 25%;
+    height: 25%;
     margin-left: 30px;
 }
 
@@ -122,7 +116,29 @@ h1 {
     margin-bottom: 100px;
 }
 
+@media screen and (max-width: 1200px) {
+    .inicio{
+        height: 110vh;
+    }
+}
+
 @media screen and (max-width: 960px) {
+    #imginicio{
+        display: none;
+    }
+
+    .inicio{
+        justify-content: space-between;
+        height: 70vh;
+    }
+
+    .iniciobimo{
+        width: 1000%;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 460px) {
     #imginicio{
         display: none;
     }
@@ -131,12 +147,20 @@ h1 {
         display: flex;
         justify-content: center;
         width: 100%;
-        height: 80vh;
+        height: 100vh;
         padding-top: 0;
     }
 
+    #seta{
+        font-size: 280%;
+        padding: 2px;
+        height: 10vh;
+        padding-right: 320px;
+    }
+
     .iniciobimo{
-        margin-left: 0;
+        position: absolute;
+        margin-left: 20px;
         width: 80%;
         font-size: 100%;
         margin-top: 70px;
@@ -177,6 +201,26 @@ h1 {
 
 @media screen and (max-width: 360px) {
     .inicio{
-        height: 120vh;
+        height: 100vh;
+    }
+
+    .iniciobimo{
+        margin-right: 15px;
+    }
+
+    #seta{
+        font-size: 250%;
+        padding-right: 250px;
+     }
+
+     #textoods{
+        width: 90%;
+        font-size: 130%;
+     }
+}
+
+@media screen and (max-width: 320px) {
+    .inicio{
+        height: 140vh;
     }
 }
