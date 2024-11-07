@@ -86,13 +86,13 @@ h3 {
 
 .opcoes {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 5%;
 }
 
 .opcoes a {
-    width: 20%;
-    font-size: 200%;
+    width: 5%;
+    font-size: 5%;
     text-decoration-line: none;
     color: white;
     background-color: #2CFC71;
