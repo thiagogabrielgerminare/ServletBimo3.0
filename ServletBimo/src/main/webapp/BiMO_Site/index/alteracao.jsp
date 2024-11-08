@@ -17,7 +17,7 @@
         <h2>Altere administradores, categorias e planos facilmente. Mantenha tudo atualizado no BiMO!</h2>
     </div>
     <div id="divimginicio">
-        <img src="/BiMO_Site/image/imagem.png" id="imginicio">
+        <img src="../image/imagem.png" id="imginicio">
     </div>
     <div id="quadrado"></div>
 </div>
