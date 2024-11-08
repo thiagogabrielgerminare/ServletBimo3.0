@@ -18,7 +18,7 @@
 </head>
 <body>
 <div id="pagelogin">
-    <a href="../index/busca.jsp" id="seta"><p>⬅️</p></a>
+    <a href="./busca.jsp" id="seta"><p>⬅️</p></a>
 </div>
 <h1>Resultado da Busca</h1>
 <div class="resultado">
