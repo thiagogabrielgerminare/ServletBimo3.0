@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>BiMO - Remoções</title>
-	<link rel="stylesheet" href="./BiMO_Site/styles/funcoes.css">
+	<link rel="stylesheet" href="../styles/funcoes.css">
 	<link rel="shortcut icon" href="../image/logo.png" type="image/x-icon">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -17,7 +17,7 @@
 		<h2>Remova administradores, categorias e planos com rapidez e segurança. Simplifique a gestão do BiMO!</h2>
 	</div>
 	<div id="divimginicio">
-		<img src="/BiMO_Site/image/imagem.png" id="imginicio">
+		<img src="../image/imagem.png" id="imginicio">
 	</div>
 	<div id="quadrado"></div>
 </div>
