@@ -23,7 +23,7 @@
                 <input type="email" name="email" class="input" placeholder="Digite seu e-mail" required/>
                 <div class="olho-senha">
                     <input type="password" name="senha" class="input" id="password" placeholder="Digite sua senha">
-                    <img src="../image/olho-cortado.png" alt="Mostrar/Esconder Senha" id="olhinho" onclick="togglePassword()" style="cursor: pointer;">
+                    <img src="./BiMO_Site/image/olho-cortado.png" alt="Mostrar/Esconder Senha" id="olhinho" onclick="togglePassword()" style="cursor: pointer;">
                 </div>
                 <a href="./BiMO_Site/index/admin.jsp"><input type="submit" value="Entrar" id="butentrar" /></a>
 
@@ -43,10 +43,10 @@
 
         if (passwordInput.type === "password") {
             passwordInput.type = "text";
-            eyeIcon.src = '../image/olho.png'; // Altera o ícone para olho fechado
+            eyeIcon.src = './BiMO_Site/image/olho.png'; // Altera o ícone para olho fechado
         } else {
             passwordInput.type = "password";
-            eyeIcon.src = '../image/olho-cortado.png'; // Altera o ícone para olho aberto
+            eyeIcon.src = './BiMO_Site/image/olho-cortado.png'; // Altera o ícone para olho aberto
         }
     }
 </script>
