@@ -23,7 +23,7 @@
                 <input type="email" name="email" class="input" placeholder="Digite seu e-mail" required/>
                 <div class="olho-senha">
                     <input type="password" name="senha" class="input" id="password" placeholder="Digite sua senha">
-                    <img src="../image/olho-cortado.png" alt="Mostrar/Esconder Senha" id="olhinho" onclick="togglePassword()" style="cursor: pointer;">
+                    <img src="./BiMO_Site/image/olho.png" alt="Mostrar/Esconder Senha" id="olhinho" onclick="togglePassword()" style="cursor: pointer;">
                 </div>
                 <a href="./BiMO_Site/index/admin.jsp"><input type="submit" value="Entrar" id="butentrar" /></a>
 
